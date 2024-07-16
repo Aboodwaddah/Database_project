@@ -7,41 +7,65 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
    <children>
-      <TextField fx:id="Username" layoutX="439.0" layoutY="227.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText=" User Name" style="-fx-background-color: transparent; -fx-border-color: #349aaf; -fx-border-width: 0px 0px 2px 0px;">
+      <ImageView fitHeight="550.0" fitWidth="700.0" layoutY="-5.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../pngtree-automotive-technology-background-picture-image_2446845.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="Username" layoutX="440.0" layoutY="227.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText=" User Name" style="-fx-background-color: white; -fx-border-color: #349aaf; -fx-border-width: 2px; -fx-background-radius: 18; -fx-border-radius: 18;">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="Password" layoutX="438.0" layoutY="325.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #349aaf; -fx-border-width: 0px 0px 2px 0px;">
+      <PasswordField fx:id="Password" layoutX="438.0" layoutY="325.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: #349aaf; -fx-border-width: 2px; -fx-background-radius: 18; -fx-border-radius: 18;">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="System Bold Italic" size="16.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" layoutX="421.0" layoutY="419.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="20.0" prefWidth="223.0" style="-fx-background-color: #349aaf;" text="Login" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="436.0" layoutY="419.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="20.0" prefWidth="223.0" style="-fx-background-color: #349aaf;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="393.0" layoutY="35.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Login">
+      <Button layoutX="393.0" layoutY="35.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="551.0" layoutY="35.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up">
+      <Button layoutX="551.0" layoutY="35.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="400.0" layoutY="104.0" prefHeight="33.0" prefWidth="178.0" text="Welcome" textFill="#349aaf">
+      <Label layoutX="401.0" layoutY="93.0" prefHeight="37.0" prefWidth="188.0" text="Welcome">
          <font>
-            <Font name="System Bold" size="27.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.5679824352264404" blue="0.9210526347160339" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
       </Label>
-      <Label layoutX="401.0" layoutY="143.0" opacity="0.59" text="Please Login to your account" textFill="RED">
+      <Label layoutX="401.0" layoutY="125.0" prefHeight="30.0" prefWidth="188.0" text="Please Login to your account" textFill="RED">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -55,22 +79,17 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="538.0" fitWidth="393.0" layoutY="-3.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../Screenshot%202024-07-12%20234846.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="103.0" prefHeight="75.0" prefWidth="188.0" text="Car Go" textFill="#349aaf">
+      <Label layoutX="56.0" layoutY="10.0" prefHeight="75.0" prefWidth="188.0" text="Car Go" textFill="#349aaf">
          <font>
-            <Font name="System Bold" size="48.0" />
+            <Font name="MV Boli" size="48.0" />
          </font>
       </Label>
-      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="406.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="393.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../padlock.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="406.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="393.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../user.png" />
          </image>

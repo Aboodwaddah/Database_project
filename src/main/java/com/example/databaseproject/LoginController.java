@@ -10,11 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.Node;
-
 
 import java.io.IOException;
 
@@ -30,36 +27,55 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-private Scene scene2;
-private Stage stage2;
-private Parent P;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+    @FXML
+    private AnchorPane ap;
 
+    public void login(ActionEvent event) throws IOException {
+        if (Username.getText().equals("abood") && Password.getText().equals("1234")) {
+            wrong.setVisible(false);
+            sucess.setVisible(true);
+            sucess.setText("Correct");
 
-
+            root = FXMLLoader.load(getClass().getResource("list.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            sucess.setVisible(false);
+            wrong.setVisible(true);
+            wrong.setText("Incorrect username or password");
+        }
+    }
 
     @FXML
-    public void login(ActionEvent event) throws IOException {
+    private void page1(ActionEvent event) throws IOException {
+        loadPage("page1");
+    }
 
-            if (Username.getText().equals("abood") && Password.getText().equals("1234"))
-            {
-                wrong.setVisible(false);
-                sucess.setVisible(true);
-              sucess.setText("correct");
+    @FXML
+    private void page2(ActionEvent event) throws IOException {
+        loadPage("page2");
+    }
 
-                Parent P = FXMLLoader.load(getClass().getResource("list.fxml"));
-                stage2 = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene2 = new Scene(P);
-                stage2.setScene(scene2);
-                stage2.show();
+    @FXML
+    private void page3(ActionEvent event) throws IOException {
+        loadPage("page3");
+    }
 
-            }
-            else {
+    public void loadPage(String page) throws IOException {
+       // System.out.println("Loading page: " + page);
+       // System.out.println("AnchorPane: " + ap); // Print the AnchorPane reference
 
-                sucess.setVisible(false);
-                wrong.setVisible(true);
-                wrong.setText("Incorrect username or password");
+        Parent root = FXMLLoader.load(getClass().getResource(page + ".fxml"));
+       // System.out.println("Loaded FXML: " + root); // Print the loaded FXML root
 
-            }
-        }
 
+            ap.getChildren().clear();
+            ap.getChildren().add(root);
+
+    }
 }
