@@ -7,91 +7,64 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
    <children>
-      <ImageView fitHeight="550.0" fitWidth="700.0" layoutY="-5.0" pickOnBounds="true">
+      <ImageView fitHeight="303.0" fitWidth="605.0" layoutX="348.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../pngtree-automotive-technology-background-picture-image_2446845.jpg" />
+            <Image url="@../../../1212.png" />
          </image>
       </ImageView>
-      <TextField fx:id="Username" layoutX="440.0" layoutY="227.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText=" User Name" style="-fx-background-color: white; -fx-border-color: #349aaf; -fx-border-width: 2px; -fx-background-radius: 18; -fx-border-radius: 18;">
+      <TextField fx:id="Username" layoutX="508.0" layoutY="227.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText=" User Name" style="-fx-background-color: transparent; -fx-border-color: #055081; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="Password" layoutX="438.0" layoutY="325.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: #349aaf; -fx-border-width: 2px; -fx-background-radius: 18; -fx-border-radius: 18;">
+      <PasswordField fx:id="Password" layoutX="508.0" layoutY="310.0" onAction="#login" onInputMethodTextChanged="#login" prefHeight="33.0" prefWidth="223.0" promptText="Password" style="-fx-background-color: white; -fx-border-color: #055081; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" layoutX="436.0" layoutY="419.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="20.0" prefWidth="223.0" style="-fx-background-color: #349aaf;" text="Login" textFill="WHITE">
+      <Button fx:id="loginButton" layoutX="508.0" layoutY="401.0" mnemonicParsing="false" onAction="#login" onMouseClicked="#login" prefHeight="20.0" prefWidth="223.0" style="-fx-background-color: #055081;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="393.0" layoutY="35.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Login" textFill="WHITE">
+      <Button layoutX="415.0" layoutY="27.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Login">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="551.0" layoutY="35.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up" textFill="WHITE">
+      <Button layoutX="658.0" layoutY="27.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="401.0" layoutY="93.0" prefHeight="37.0" prefWidth="188.0" text="Welcome">
-         <font>
-            <Font name="System Bold" size="32.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color green="0.5679824352264404" blue="0.9210526347160339" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Label>
-      <Label layoutX="401.0" layoutY="125.0" prefHeight="30.0" prefWidth="188.0" text="Please Login to your account" textFill="RED">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
       <Label fx:id="sucess" layoutX="509.0" layoutY="370.0" textFill="#17bf2d">
          <font>
             <Font name="System Bold" size="21.0" />
          </font></Label>
-      <Label fx:id="wrong" layoutX="408.0" layoutY="371.0" prefHeight="30.0" prefWidth="279.0" textFill="RED">
+      <Label fx:id="wrong" layoutX="493.0" layoutY="355.0" prefHeight="30.0" prefWidth="279.0" textFill="RED">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="10.0" prefHeight="75.0" prefWidth="188.0" text="Car Go" textFill="#349aaf">
-         <font>
-            <Font name="MV Boli" size="48.0" />
-         </font>
-      </Label>
-      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="393.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="498.0" fitWidth="398.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../padlock.png" />
+            <Image url="@../../../sky.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="393.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="283.0" fitWidth="460.0" layoutY="82.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../user.png" />
+            <Image url="@../../../5f69c5e2932c1.png" />
+         </image>
+      </ImageView>
+      <Line endX="798.0" endY="10.0" startX="798.0" startY="480.0" stroke="#055081" strokeWidth="5.0" />
+      <ImageView fitHeight="223.0" fitWidth="527.0" layoutX="-4.0" layoutY="161.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../car2.png" />
          </image>
       </ImageView>
    </children>

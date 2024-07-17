@@ -42,8 +42,10 @@ public class LoginController {
             root = FXMLLoader.load(getClass().getResource("list.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
+            root.getStylesheets().add(getClass().getResource("test.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
+
         } else {
             sucess.setVisible(false);
             wrong.setVisible(true);
@@ -61,18 +63,16 @@ public class LoginController {
         loadPage("page2");
     }
 
+
     @FXML
     private void page3(ActionEvent event) throws IOException {
         loadPage("page3");
     }
 
-    public void loadPage(String page) throws IOException {
-       // System.out.println("Loading page: " + page);
-       // System.out.println("AnchorPane: " + ap); // Print the AnchorPane reference
+    public void loadPage(String page) throws IOException
+    {
 
         Parent root = FXMLLoader.load(getClass().getResource(page + ".fxml"));
-       // System.out.println("Loaded FXML: " + root); // Print the loaded FXML root
-
 
             ap.getChildren().clear();
             ap.getChildren().add(root);
