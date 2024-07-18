@@ -35,7 +35,8 @@ public class LoginController {
     private Parent root;
     @FXML
     private AnchorPane ap;
-
+    @FXML
+    private AnchorPane primaryAp;
 
 
     public void login(ActionEvent event) throws IOException {
@@ -97,13 +98,24 @@ public class LoginController {
 
         loadPage("page3");
     }
+    @FXML
+    private void signupPage(ActionEvent event) throws IOException
+    {
+        loadPage1("signUp");
+    }
+
 
     public void loadPage(String page) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
         ap.getChildren().clear();
-       ap.getChildren().add(root);
+        ap.getChildren().add(root);
 
+    }
+    public void loadPage1(String page) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
+        primaryAp.getChildren().clear();
+        primaryAp.getChildren().add(root);
     }
 
 
