@@ -1,51 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="833.0" prefWidth="1184.0" stylesheets="@test.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
    <children>
-      <HBox alignment="TOP_CENTER" layoutX="-3.0" layoutY="-4.0" prefHeight="63.0" prefWidth="1049.0" style="-fx-background-color: black; -fx-border-width: 4;">
+      <Pane prefHeight="74.0" prefWidth="1184.0" style="-fx-background-color: BLACK;">
          <children>
-            <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-family: ae_Granada; -fx-font-size: 20;" text="Home" textFill="RED" />
-            <Button mnemonicParsing="false" onAction="#page1" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-family: ae_Granada; -fx-font-size: 20;" stylesheets="@test.css" text="page1" textFill="RED" />
-            <Button mnemonicParsing="false" onAction="#page2" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-family: ae_Granada; -fx-font-size: 20;" text="page2" textFill="RED" />
-            <Button mnemonicParsing="false" onAction="#page3" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-family: ae_Granada; -fx-font-size: 20;" text="page3" textFill="RED" />
-            <HBox alignment="TOP_RIGHT" prefHeight="63.0" prefWidth="657.0">
+            <ImageView fitHeight="80.0" fitWidth="123.0" layoutX="14.0" layoutY="-3.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../12121.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" layoutX="592.0" layoutY="-3.0" prefHeight="63.0" prefWidth="581.0" style="-fx-background-color: black; -fx-border-width: 4;">
                <children>
-                  <ImageView fitHeight="94.0" fitWidth="128.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../12121.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="h" mnemonicParsing="false" onAction="#Home" prefHeight="40.0" prefWidth="125.0" stylesheets="@test.css" text="Home" />
+                  <Button fx:id="p1" mnemonicParsing="false" onAction="#page1" stylesheets="@test.css" text="Car" textFill="RED">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="p2" mnemonicParsing="false" onAction="#page2" stylesheets="@test.css" text="page2" textFill="RED" />
+                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" text="page3" textFill="RED" />
                </children>
             </HBox>
          </children>
-      </HBox>
-      <AnchorPane fx:id="ap" layoutX="7.0" layoutY="59.0" prefHeight="614.0" prefWidth="1035.0">
-         <children>
-            <ImageView fitHeight="601.0" fitWidth="1055.0" layoutX="-14.0" layoutY="13.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../data-base.jpg" />
-               </image>
-            </ImageView>
-            <Label layoutX="47.0" layoutY="24.0" opacity="0.92" prefHeight="134.0" prefWidth="403.0" style="-fx-font-family: ae_Granada; -fx-font-size: 80;" text="Welcome" textFill="#8a1818">
-               <font>
-                  <Font name="AL_Ebdaa" size="79.0" />
-               </font>
-            </Label>
-            <Label layoutX="99.0" layoutY="150.0" prefHeight="46.0" prefWidth="861.0" text="With our wonderful and comfortable car, fulfill your desire" textFill="#ffe3e3">
-               <font>
-                  <Font name="System Bold" size="31.0" />
-               </font>
-            </Label>
-            <Button layoutX="473.0" layoutY="220.0" mnemonicParsing="false" style="-fx-font-size: 20; -fx-background-color: red; -fx-background-radius: 5;" text="Buy Now" />
-         </children>
-      </AnchorPane>
+      </Pane>
+      <AnchorPane fx:id="ap" layoutX="-1.0" layoutY="73.0" prefHeight="760.0" prefWidth="1184.0" />
    </children>
 </AnchorPane>

@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -15,6 +14,7 @@ public class HelloApplication extends Application {
         Parent root=FXMLLoader.load(getClass().getResource("hello-view.fxml"));
        stage.setScene(new Scene(root,850,500));
         stage.setTitle("Hello!");
+        stage.setResizable(false);
         stage.initStyle(StageStyle.DECORATED);
         stage.show();
 

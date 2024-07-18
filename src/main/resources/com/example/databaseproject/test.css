@@ -1,16 +1,44 @@
+
 .button
 {
-    -fx-background-color: #239c9c;
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+    -fx-min-width: 140px;
+    -fx-min-height: 45px;
+    -fx-background-color: #a81010;
     -fx-background-radius: 30 0 0 30;
+
 }
 
 .button:hover
 {
-    -fx-background-color: #07f7f7;
+    -fx-background-color: #8ba1a1;
     -fx-background-radius:30 0 0 30;
 }
 .button:pressed
 {
-    -fx-background-color: #239c9c;
+    -fx-background-color: #000a0a;
     -fx-background-radius: 30 0 0 30;
 }
+#buy{
+    -fx-background-radius:30 30 30 30;
+
+}
+#h
+{
+    -fx-background-radius:30 0 0 0;
+}
+#p1{
+
+    -fx-background-radius:0 0 0 0;
+}
+
+#p2{
+    -fx-background-radius:0 0 0 0;
+
+}
+#p3{
+    -fx-background-radius:0 30 0 0;
+}
+
+
