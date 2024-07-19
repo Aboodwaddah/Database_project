@@ -37,7 +37,7 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="658.0" layoutY="27.0" mnemonicParsing="false" onAction="#signupPage" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up">
+      <Button layoutX="658.0" layoutY="27.0" mnemonicParsing="false" onAction="#signUpPage" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>

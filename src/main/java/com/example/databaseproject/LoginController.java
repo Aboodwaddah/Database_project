@@ -99,10 +99,10 @@ public class LoginController {
         loadPage("page3");
     }
     @FXML
-    private void signupPage(ActionEvent event) throws IOException
+    /*private void signupPage(ActionEvent event) throws IOException
     {
         loadPage1("signUp");
-    }
+    }*/
 
 
     public void loadPage(String page) throws IOException
@@ -112,10 +112,27 @@ public class LoginController {
         ap.getChildren().add(root);
 
     }
-    public void loadPage1(String page) throws IOException {
+    /*public void loadPage1(String page) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
         primaryAp.getChildren().clear();
         primaryAp.getChildren().add(root);
+    }*/
+
+    public void signUpPage(ActionEvent event) throws IOException {
+        myMethod(event,"signUp");
+    }
+
+    public void signInPage(ActionEvent event) throws IOException {
+        myMethod(event,"hello-view");
+    }
+
+    public void myMethod(ActionEvent event,String string) throws IOException {
+        Stage myStage;
+        Parent root=FXMLLoader.load(getClass().getResource(string+".fxml"));
+        myStage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene=new Scene(root);
+        myStage.setScene(scene);
+        myStage.show();
     }
 
 
