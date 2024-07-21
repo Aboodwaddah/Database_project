@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="primaryAp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+<AnchorPane fx:id="primaryAp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
    <children>
       <ImageView fitHeight="303.0" fitWidth="605.0" layoutX="348.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -37,7 +37,7 @@
             <Font name="System Bold Italic" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="658.0" layoutY="27.0" mnemonicParsing="false" onAction="#signupPage" prefHeight="33.0" prefWidth="114.0" stylesheets="@login.css" text="Sign Up">
+      <Button layoutX="658.0" layoutY="27.0" mnemonicParsing="false" onAction="#signupPage" prefHeight="33.0" prefWidth="114.0" style="-fx-background-color: transparent;" text="Sign Up">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>

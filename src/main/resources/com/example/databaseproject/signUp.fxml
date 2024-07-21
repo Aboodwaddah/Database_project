@@ -25,7 +25,7 @@
       <TextField layoutX="103.0" layoutY="127.0" prefHeight="38.0" prefWidth="327.0" promptText="Choose Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
       <TextField layoutX="103.0" layoutY="181.0" prefHeight="38.0" prefWidth="327.0" promptText="PASSWORD" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
       <TextField layoutX="103.0" layoutY="230.0" prefHeight="38.0" prefWidth="327.0" promptText="CONFIRM PASSWORD" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
-      <Button fx:id="signup" layoutX="228.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="SIGN UP" textFill="WHITE" />
+      <Button layoutX="228.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="SIGN UP" textFill="WHITE" />
       <Button layoutX="240.0" layoutY="376.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="LOGIN" textFill="WHITE" />
       <Label layoutX="126.0" layoutY="375.0" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #F5F5F5;" text="Alredy a User ?">
          <font>

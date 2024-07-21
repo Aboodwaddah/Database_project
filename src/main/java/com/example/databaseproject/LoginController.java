@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -38,9 +37,6 @@ public class LoginController {
     private AnchorPane ap;
     @FXML
     private AnchorPane primaryAp;
-@FXML
-private AnchorPane pab;
-
 
 
     public void login(ActionEvent event) throws IOException {
@@ -54,7 +50,7 @@ private AnchorPane pab;
             root = loader.load();
 
 
-             ap = (AnchorPane) loader.getNamespace().get("ap");
+            AnchorPane ap = (AnchorPane) loader.getNamespace().get("ap");
 
 
             Parent list1Root = FXMLLoader.load(getClass().getResource("list1.fxml"));
@@ -72,10 +68,10 @@ private AnchorPane pab;
             wrong.setText("Incorrect username or password");
         }
     }
-
-    public void BuyCarPage(ActionEvent event) throws IOException
+    @FXML
+    public void BuyCarPage(ActionEvent event)throws IOException
     {
-        loadPage3("BuyCar");
+   loadPage("BuyCar");
     }
 
     @FXML
@@ -111,27 +107,15 @@ private AnchorPane pab;
 
     public void loadPage(String page) throws IOException
     {
-
-        AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page +".fxml")) );
-       // ap.getChildren().clear();
-        //ap.getChildren().add(root);
-        ap.getChildren().setAll(root);
+        Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
+        ap.getChildren().clear();
+        ap.getChildren().add(root);
 
     }
-    public void loadPage1(String page) throws IOException
-    {
+    public void loadPage1(String page) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
         primaryAp.getChildren().clear();
         primaryAp.getChildren().add(root);
-    }
-    public void loadPage3(String page) throws IOException
-    {
-
-        AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(page +".fxml")) );
-        // ap.getChildren().clear();
-        //ap.getChildren().add(root);
-        pab.getChildren().setAll(root);
-
     }
 
 
