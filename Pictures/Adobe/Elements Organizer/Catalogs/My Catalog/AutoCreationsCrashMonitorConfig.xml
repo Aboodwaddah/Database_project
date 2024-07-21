@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- pending events and analysis operation --><AutoCreation version="2">
+	
+	
+	
+	
+	
+<Config blacklistedMedia=""/><AutoRestart>
+			
+	<Config failedAttempts="0"/></AutoRestart><Analysis>
+		
+	<Config failedAttempts="0" currentMedia=""/></Analysis><Events>
+		
+		
+		
+		
+	<EventType type="smart_tag_event">
+			
+		<Config failedAttempts="0" currentMedia=""/></EventType><EventType type="trip">
+			
+		<Config failedAttempts="0" currentMedia=""/></EventType><EventType type="media_across_years">
+			
+		<Config failedAttempts="0" currentMedia=""/></EventType><EventType type="non_occasion_event">
+			
+		<Config failedAttempts="0" currentMedia=""/></EventType></Events><Creations>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	<Creation type="slideshow">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="photo_collage">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="video_collage">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="candid_moments">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="photo_curation">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="bnw_selection">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="pattern_art">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="depth_of_field">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation><Creation type="painterly">
+			
+		<Config failedAttempts="0" currentMedia=""/></Creation></Creations></AutoCreation>
