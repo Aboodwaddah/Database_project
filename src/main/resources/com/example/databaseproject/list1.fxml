@@ -102,6 +102,6 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="buy" layoutX="528.0" layoutY="265.0" minHeight="35.0" minWidth="127.0" mnemonicParsing="false" onAction="#BuyCarPage" prefHeight="35.0" prefWidth="127.0" text="Buy Now" />
+      <Button fx:id="buy" layoutX="528.0" layoutY="265.0" minHeight="35.0" minWidth="127.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="127.0" text="Buy Now" />
    </children>
 </AnchorPane>

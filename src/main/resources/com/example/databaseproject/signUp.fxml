@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="532.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="817.0" style="-fx-background-color: #F5F5F5;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="48.0" layoutY="24.0" prefHeight="26.0" prefWidth="99.0" text="SIGN UP" textFill="STEELBLUE">
          <font>
@@ -20,21 +20,36 @@
             <Blend />
          </effect>
       </Label>
-      <TextField layoutX="103.0" layoutY="80.0" prefHeight="38.0" prefWidth="156.0" promptText="FIRST NAME" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
-      <TextField layoutX="274.0" layoutY="80.0" prefHeight="38.0" prefWidth="156.0" promptText="LAST NAME" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
-      <TextField layoutX="103.0" layoutY="127.0" prefHeight="38.0" prefWidth="327.0" promptText="Choose Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
-      <TextField layoutX="103.0" layoutY="181.0" prefHeight="38.0" prefWidth="327.0" promptText="PASSWORD" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
-      <TextField layoutX="103.0" layoutY="230.0" prefHeight="38.0" prefWidth="327.0" promptText="CONFIRM PASSWORD" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
-      <Button layoutX="228.0" layoutY="315.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="SIGN UP" textFill="WHITE" />
-      <Button layoutX="240.0" layoutY="376.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="LOGIN" textFill="WHITE" />
-      <Label layoutX="126.0" layoutY="375.0" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #F5F5F5;" text="Alredy a User ?">
+      <TextField layoutX="62.0" layoutY="73.0" prefHeight="38.0" prefWidth="156.0" promptText="FIRST NAME" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
+      <TextField layoutX="236.0" layoutY="73.0" prefHeight="38.0" prefWidth="156.0" promptText="LAST NAME" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
+      <TextField layoutX="62.0" layoutY="126.0" prefHeight="38.0" prefWidth="327.0" promptText="Choose Username" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
+      <TextField layoutX="62.0" layoutY="178.0" prefHeight="38.0" prefWidth="327.0" promptText="PASSWORD" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
+      <TextField layoutX="62.0" layoutY="230.0" prefHeight="38.0" prefWidth="327.0" promptText="CONFIRM PASSWORD" style="-fx-background-color: #FFFFFF; -fx-border-color: #808080;" />
+      <Button layoutX="200.0" layoutY="332.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="SIGN UP" textFill="WHITE" />
+      <Button layoutX="231.0" layoutY="389.0" mnemonicParsing="false" style="-fx-background-color: #4682B4;" text="LOGIN" textFill="WHITE" />
+      <Label layoutX="115.0" layoutY="388.0" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #F5F5F5;" text="Alredy a User ?">
          <font>
             <Font size="15.0" />
          </font></Label>
-      <CheckBox contentDisplay="CENTER" layoutX="108.0" layoutY="268.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #F5F5F5;" text="ACCEPT TERMS AND CONDITIONS" textFill="STEELBLUE" underline="true" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="358.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+      <CheckBox contentDisplay="CENTER" layoutX="98.0" layoutY="275.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="207.0" style="-fx-background-color: #F5F5F5;" text="ACCEPT TERMS AND CONDITIONS" textFill="STEELBLUE" underline="true" />
+      <ImageView fitHeight="511.0" fitWidth="448.0" layoutX="419.0" layoutY="-6.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../sky.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="215.0" fitWidth="327.0" layoutX="455.0" layoutY="-34.0" pickOnBounds="true">
          <image>
             <Image url="@../../../1212.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="283.0" fitWidth="460.0" layoutX="389.0" layoutY="82.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../car1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="223.0" fitWidth="527.0" layoutX="330.0" layoutY="157.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../car%2022.png" />
          </image>
       </ImageView>
    </children>
