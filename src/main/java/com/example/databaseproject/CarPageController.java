@@ -34,7 +34,7 @@ public class CarPageController implements Initializable {
     private HBox Caricon;
     private List<Car> recentlyAdded;
 
-    int value;
+    int value;    //
 
     private void addImageToCarIcon(String imagePath) {
         try {
