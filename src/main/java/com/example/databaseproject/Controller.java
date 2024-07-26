@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable
 {
-
+//s
     @FXML
     private Slider PriceSlider;
     @FXML
