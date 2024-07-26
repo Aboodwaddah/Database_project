@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Pab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="760.0" prefWidth="1184.0" stylesheets="@test2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+<AnchorPane fx:id="Pab" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" stylesheets="@test2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
    <children>
       <ImageView fitHeight="691.0" fitWidth="1191.0" layoutX="-1.0" layoutY="-3.0" pickOnBounds="true">
          <image>
@@ -45,7 +45,8 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Pane layoutX="749.0" layoutY="491.0" prefHeight="269.0" prefWidth="444.0" style="-fx-background-color: #a81010;">
+      <Button fx:id="buy" layoutX="528.0" layoutY="265.0" minHeight="35.0" minWidth="127.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="127.0" text="Buy Now" />
+      <Pane layoutX="749.0" layoutY="550.0" prefHeight="316.0" prefWidth="444.0" style="-fx-background-color: #a81010;">
          <children>
             <Label layoutX="67.0" layoutY="41.0" prefHeight="14.0" prefWidth="317.0" text="ARE YOU LOOKING FOR A CAR?" textFill="WHITE">
                <font>
@@ -64,7 +65,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="400.0" layoutY="491.0" prefHeight="269.0" prefWidth="349.0" style="-fx-background-color: #a81010;">
+      <Pane layoutX="400.0" layoutY="551.0" prefHeight="316.0" prefWidth="349.0" style="-fx-background-color: #a81010;">
          <children>
             <Label layoutX="16.0" layoutY="43.0" prefHeight="14.0" prefWidth="317.0" text="DO YOU WANT TO SELL YOUR CAR?" textFill="WHITE">
                <font>
@@ -83,7 +84,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="-1.0" layoutY="491.0" prefHeight="269.0" prefWidth="401.0" style="-fx-background-color: #a81010;">
+      <Pane layoutX="-1.0" layoutY="551.0" prefHeight="316.0" prefWidth="401.0" style="-fx-background-color: #a81010;">
          <children>
             <Label layoutX="14.0" layoutY="45.0" prefHeight="28.0" prefWidth="401.0" text="Do you want to know what distinguishes us " textFill="WHITE">
                <font>
@@ -102,6 +103,5 @@
             </Button>
          </children>
       </Pane>
-      <Button fx:id="buy" layoutX="528.0" layoutY="265.0" minHeight="35.0" minWidth="127.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="127.0" text="Buy Now" />
    </children>
 </AnchorPane>
