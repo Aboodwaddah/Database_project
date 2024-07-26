@@ -42,6 +42,7 @@ public class CarPageController implements Initializable {
             Image image = new Image(getClass().getResourceAsStream(imagePath));
             ImageView imageView = new ImageView(image);
             imageView.setPreserveRatio(true);
+            imageView.setFitWidth(100);
             Caricon.getChildren().add(imageView);
         } catch (Exception e) {
             System.err.println("Error loading image from path: " + imagePath);
@@ -63,10 +64,6 @@ public class CarPageController implements Initializable {
                 VBox cardbox = fxmlLoader.load();
                 CardController cardController = fxmlLoader.getController();
                 cardController.setData(car);
-
-
-                    addImageToCarIcon("/main/resources/pngwing.png");
-
 
                 if(coul==3)
                 {
@@ -102,9 +99,10 @@ public class CarPageController implements Initializable {
         car1.setYear("2019");
         car1.setType("sedan");
         car1.setTrans("auto");
-        car1.setImagSrc("C:/Users/PC/Documents/Database_project/DatabaseProject/src/main/resources/car1.png");
+        car1.setImagSrc("C:/Users/PC/Documents/Database_project/DatabaseProject/src/main/resources/1720429035182-966x500.jpg");
         car1.setDiscribe("Just used for 3 months");
         car1.setMake("skoda");
+        addImageToCarIcon("/main/resources/pngwing.png");
         ls.add(car1);
 
 
