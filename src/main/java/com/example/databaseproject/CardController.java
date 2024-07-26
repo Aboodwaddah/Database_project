@@ -5,7 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import model.Car;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class CardController {
     @FXML
@@ -27,10 +29,10 @@ public class CardController {
     @FXML
     private Label year;
 
-    public void setData(Car car)
-    {
-        Image image = new Image(getClass().getResourceAsStream(car.getImagSrc()));
-        CarPic.setImage(image);
+    public void setData(Car car) throws FileNotFoundException {
+        FileInputStream input = new FileInputStream(car.getImagSrc());
+        Image img = new Image(input);
+        CarPic.setImage(img);
         describe.setText(car.getDiscribe());
         make.setText(car.getMake());
         trans.setText(car.getTrans());
