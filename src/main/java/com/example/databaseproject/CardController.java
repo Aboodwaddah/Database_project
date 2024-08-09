@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.example.databaseproject.CarPageController.Conditionn;
+import static com.example.databaseproject.CarPageController.EconomyCity;
 
 public class CardController implements Initializable
 {
@@ -65,6 +66,12 @@ public class CardController implements Initializable
     public Label model;
     public Label BodyStylee;
     public Label Distance;
+    public Label Engine;
+
+    public Label EconomyRateCity;
+    public Label EconomyRateHighway;
+
+
 
 public Car c;
     public void setData(Car car) throws FileNotFoundException
@@ -100,7 +107,9 @@ public void showInfoBtn() throws FileNotFoundException {
        model.setText(c.getModel());
        BodyStylee.setText(c.getBodyStyle());
        Distance.setText(c.getDistance());
-
+       Engine.setText(c.getEngine());
+      EconomyRateCity.setText(c.getFuelEconomyCity());
+    EconomyRateHighway.setText(c.getFuelEconomyHighway());
 }
 
 
@@ -120,6 +129,9 @@ public void showInfoBtn() throws FileNotFoundException {
         model=CarPageController.modell;
         BodyStylee=CarPageController.Bodyst;
         Distance=CarPageController.distance;
+        Engine=CarPageController.engine;
+        EconomyRateCity= CarPageController.EconomyCity;
+        EconomyRateHighway=CarPageController.EconomyHighway;
     }
 };
 

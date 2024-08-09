@@ -28,7 +28,7 @@ public class CarPageController implements Initializable {
     public static  Label Bodyst;
     public static  Label distance;
     public static  Label Conditionn;
-
+    public static  Label engine;
     public static  Label EconomyCity;
     public static  Label EconomyHighway;
     public static  Label Fueltype;
@@ -87,7 +87,8 @@ public class CarPageController implements Initializable {
     @FXML
     private Label trans;
 
-
+    @FXML
+    private Label Engine;
 
     @FXML
     private Label year;
@@ -161,6 +162,9 @@ public class CarPageController implements Initializable {
         modell=Model;
         Bodyst=Bodystyle;
         distance=Distance;
+      engine=Engine;
+      EconomyCity=EconomyRateCity;
+     EconomyHighway=EconomyRateHighway;
 
     }
 
@@ -179,8 +183,26 @@ public class CarPageController implements Initializable {
         car1.setModel("Octaiva");
         car1.setBodyStyle("sedan");
         car1.setDistance("12500km");
+        car1.setEngine("2000cc");
+        car1.setFuelEconomyCity("14");
+        car1.setFuelEconomyHighway("20");
         ls.add(car1);
 
+        car1 = new Car();
+        car1.setYear("2012");
+        car1.setTransmission("auto");
+        car1.setImagSrc("C://Users//PC//Documents//Database_project//DatabaseProject//src//main//resources//car2.png");
+        car1.setPrice("250000$");
+        car1.setMake("skoda");
+        addImageToCarIcon("/main/resources/pngwing.png");
+        car1.setCondition("New");
+        car1.setModel("Octaiva");
+        car1.setBodyStyle("sedan");
+        car1.setDistance("12500km");
+        car1.setEngine("2000cc");
+        car1.setFuelEconomyCity("14");
+        car1.setFuelEconomyHighway("20");
+        ls.add(car1);
 
         return ls;
     }
