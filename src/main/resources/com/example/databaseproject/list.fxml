@@ -22,11 +22,11 @@
                   <Button fx:id="h" mnemonicParsing="false" onAction="#Home" prefHeight="40.0" prefWidth="125.0" stylesheets="@test.css" text="Home" />
                   <Button fx:id="p1" mnemonicParsing="false" onAction="#page1" stylesheets="@test.css" text="Car" textFill="RED">
                      <font>
-                        <Font size="13.0" />
+                        <Font name="MingLiU_HKSCS-ExtB" size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="p2" mnemonicParsing="false" onAction="#page2" stylesheets="@test.css" text="page2" textFill="RED" />
-                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" stylesheets="@test.css" text="page3" textFill="RED" />
+                  <Button fx:id="p2" mnemonicParsing="false" onAction="#page2" stylesheets="@test.css" text="Sell your Car" textFill="RED" />
+                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" stylesheets="@test.css" text="Contact Us" textFill="RED" />
                </children>
             </HBox>
          </children>

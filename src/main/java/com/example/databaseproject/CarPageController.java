@@ -95,19 +95,7 @@ public class CarPageController implements Initializable {
 
     int value;
 
-    private void addImageToCarIcon(String imagePath) {
-        try {
-            System.out.println("Loading image from path: " + imagePath);
-            Image image = new Image(getClass().getResourceAsStream(imagePath));
-            ImageView imageView = new ImageView(image);
-            imageView.setPreserveRatio(true);
-            imageView.setFitWidth(100);
-            Caricon.getChildren().add(imageView);
-        } catch (Exception e) {
-            System.err.println("Error loading image from path: " + imagePath);
-            e.printStackTrace();
-        }
-    }
+   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         recentlyAdded = recentlyAdded();
@@ -167,6 +155,10 @@ public class CarPageController implements Initializable {
      EconomyHighway=EconomyRateHighway;
 
     }
+    public void Return ()
+    {
+        infoPane.setVisible(false);
+    }
 
 
     private List<Car> recentlyAdded() {
@@ -178,7 +170,6 @@ public class CarPageController implements Initializable {
         car1.setImagSrc("C:/Users/PC/Documents/Database_project/DatabaseProject/src/main/resources/1720429035182-966x500.jpg");
         car1.setPrice("250000$");
         car1.setMake("skoda");
-        addImageToCarIcon("/main/resources/pngwing.png");
         car1.setCondition("New");
         car1.setModel("Octaiva");
         car1.setBodyStyle("sedan");
@@ -194,7 +185,6 @@ public class CarPageController implements Initializable {
         car1.setImagSrc("C://Users//PC//Documents//Database_project//DatabaseProject//src//main//resources//car2.png");
         car1.setPrice("250000$");
         car1.setMake("skoda");
-        addImageToCarIcon("/main/resources/pngwing.png");
         car1.setCondition("New");
         car1.setModel("Octaiva");
         car1.setBodyStyle("sedan");
@@ -203,6 +193,7 @@ public class CarPageController implements Initializable {
         car1.setFuelEconomyCity("14");
         car1.setFuelEconomyHighway("20");
         ls.add(car1);
+
 
         return ls;
     }
