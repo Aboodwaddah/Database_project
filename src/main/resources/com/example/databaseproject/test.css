@@ -40,5 +40,9 @@
 #p3{
     -fx-background-radius:0 30 0 0;
 }
+#details
+{
+    -fx-background-radius: 15;
+}
 
 

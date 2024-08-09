@@ -1,22 +1,40 @@
 package com.example.databaseproject;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
-public class CardController {
+import static com.example.databaseproject.CarPageController.Conditionn;
+
+public class CardController implements Initializable
+{
     @FXML
     private ImageView CarPic;
-
     @FXML
-    private Label describe;
+    private AnchorPane P1;
+    @FXML
+    private Label Price;
     @FXML
     private AnchorPane CAP;
+
     @FXML
     private Label make;
 
@@ -28,16 +46,80 @@ public class CardController {
 
     @FXML
     private Label year;
+    @FXML
+    public Label Bodystyle;
+    @FXML
+    private  Button details;
+    @FXML
+    private AnchorPane APListCar;
+    @FXML
+    private Pane PaneListCar;
+    private List<Car> recentlyAdded;
+    private Pane infoPane;
+    public ImageView img;
+    public Label Price1;
+    public  Label Condition;
+    public Label yearr;
+    public Label makee;
+    public Label transs;
+    public Label model;
+    public Label BodyStylee;
+    public Label Distance;
 
-    public void setData(Car car) throws FileNotFoundException {
+public Car c;
+    public void setData(Car car) throws FileNotFoundException
+    {
         FileInputStream input = new FileInputStream(car.getImagSrc());
         Image img = new Image(input);
         CarPic.setImage(img);
-        describe.setText(car.getDiscribe());
+        Price.setText(car.getPrice());
         make.setText(car.getMake());
-        trans.setText(car.getTrans());
+        trans.setText(car.getTransmission());
         year.setText(car.getYear());
-        type.setText(car.getType());
+        Bodystyle.setText(car.getBodyStyle());
+
+        c=new Car();
+        c=car;
+
+    }
+
+
+
+
+public void showInfoBtn() throws FileNotFoundException {
+       infoPane.setVisible(true);
+        FileInputStream input = new FileInputStream(c.getImagSrc());
+        Image i = new Image(input);
+       img.setImage(i);
+
+       Price1.setText(c.getPrice());
+      Condition.setText(c.getCondition());
+       yearr.setText(c.getYear());
+       makee.setText(c.getMake());
+       transs.setText(c.getTransmission());
+       model.setText(c.getModel());
+       BodyStylee.setText(c.getBodyStyle());
+       Distance.setText(c.getDistance());
+
+}
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        infoPane=new Pane();
+        infoPane= CarPageController.p;
+
+        img=new ImageView();
+        img=CarPageController.img;
+        Condition=new Label();
+        Condition=CarPageController.Conditionn;
+        Price1=CarPageController.Pricee;
+        yearr=CarPageController.yearr;
+        makee=CarPageController.makee;
+        transs=CarPageController.transs;
+        model=CarPageController.modell;
+        BodyStylee=CarPageController.Bodyst;
+        Distance=CarPageController.distance;
     }
 };
 

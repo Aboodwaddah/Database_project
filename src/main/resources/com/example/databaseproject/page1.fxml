@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" stylesheets="@combo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.CarPageController">
    <children>
@@ -79,9 +80,9 @@
             <ScrollPane hbarPolicy="ALWAYS" prefHeight="535.0" prefWidth="1143.0" vbarPolicy="ALWAYS" VBox.vgrow="ALWAYS">
                <content>
                   <GridPane fx:id="CarContainer" prefHeight="5.0" prefWidth="12.0">
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                   </GridPane>
                </content>
             </ScrollPane>
@@ -92,5 +93,192 @@
             <HBox fx:id="Caricon" prefHeight="135.0" prefWidth="1535.0" />
          </content>
       </ScrollPane>
+      <Pane fx:id="infoPane" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <AnchorPane layoutX="87.0" prefHeight="876.0" prefWidth="984.0">
+               <children>
+                  <ImageView fx:id="CarPic" fitHeight="324.0" fitWidth="544.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="describe" layoutX="609.0" layoutY="109.0" opacity="0.85" text="2013 Touata Caroola 2.0T ">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="Description" layoutX="609.0" layoutY="200.0" opacity="0.79" prefHeight="493.0" prefWidth="337.0" style="-fx-background-color: gray;">
+                     <children>
+                        <Label fx:id="make" layoutX="224.0" layoutY="126.0" text="Touta" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description">
+                           <font>
+                              <Font name="Fredoka One" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="8.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year" textAlignment="CENTER" wrappingWidth="47.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="8.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make" textAlignment="CENTER" wrappingWidth="47.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="9.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model" textAlignment="CENTER" wrappingWidth="56.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="-2.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Body Style" textAlignment="CENTER" wrappingWidth="113.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="7.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Condition" wrappingWidth="87.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="5.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance(km)" wrappingWidth="120.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="4.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transmission" wrappingWidth="120.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="17.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Engine" wrappingWidth="66.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="17.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Type" wrappingWidth="95.13671875">
+                           <font>
+                              <Font name="Fredoka One" size="18.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="year" layoutX="224.0" layoutY="85.0" text="2013" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Model" layoutX="224.0" layoutY="169.0" text="Carola" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Bodystyle" layoutX="226.0" layoutY="214.0" text="Hashbag" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Condition" layoutX="231.0" layoutY="254.0" text="Used" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Distance" layoutX="236.0" layoutY="293.0" text="50766" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="trans" layoutX="228.0" layoutY="332.0" text="Automatic" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="engine" layoutX="169.0" layoutY="374.0" prefHeight="0.0" prefWidth="162.0" text="2.0L Turbo I4 211hp " textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="FuelType" layoutX="228.0" layoutY="414.0" prefHeight="0.0" prefWidth="162.0" text="Gasoline" textFill="WHITE">
+                           <font>
+                              <Font name="Fredoka One" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="609.0" layoutY="710.0" opacity="0.85" prefHeight="109.0" prefWidth="337.0" style="-fx-background-color: red;">
+                     <children>
+                        <ImageView fitHeight="65.0" fitWidth="45.0" layoutX="133.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../clipart1892318.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="42.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Economy Rating">
+                           <font>
+                              <Font name="System Bold" size="23.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="20.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="252.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highway">
+                           <font>
+                              <Font name="System Bold" size="17.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="EconomyRateCity" layoutX="25.0" layoutY="64.0" text="20" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="EconomyRateHighway" layoutX="277.0" layoutY="64.0" text="30" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Button layoutX="22.0" layoutY="366.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="227.0" style="-fx-background-color: white; -fx-border-color: black;" text="Buy ">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="77.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../car-for-sale.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="286.0" layoutY="366.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="237.0" style="-fx-background-color: white; -fx-border-color: black;" text="Connect with us">
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../contact-us.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="Price" layoutX="609.0" layoutY="151.0" text="35000$" textFill="RED">
+                     <font>
+                        <Font name="Engravers MT" size="31.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="143.0" layoutY="438.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="270.0" style="-fx-background-color: white; -fx-border-color: black;" text="Return to Showroom">
+                     <graphic>
+                        <ImageView fitHeight="52.0" fitWidth="49.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../../../cc.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children></Pane>
    </children>
 </AnchorPane>

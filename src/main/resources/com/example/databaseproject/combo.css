@@ -1,12 +1,12 @@
 .combo-box
 {
 
-    -fx-background-color: #527c7e;
+    -fx-background-color: #cccbcb;
     -fx-background-radius:10px ;
-    -fx-text-fill: #000000;
+    -fx-text-fill: #1a0b0b;
     -fx-border-color: black;
     -fx-border-radius:10px ;
     -fx-padding: 3 0 2 7;
-    -fx-font-family:"Segoe UI Black";
+    -fx-font-family:"Lucida Sans";
 
 }

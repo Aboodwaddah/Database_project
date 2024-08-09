@@ -40,7 +40,7 @@ public class LoginController
     private Scene scene;
     private Parent root;
     @FXML
-    private AnchorPane ap;
+    public AnchorPane ap;
     @FXML
     private AnchorPane primaryAp;
 
@@ -113,7 +113,6 @@ public class LoginController
     {
         Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
         ap.getChildren().clear();
-        //ap.getChildren().add(root);
         ap.getChildren().addAll(root);
 
     }

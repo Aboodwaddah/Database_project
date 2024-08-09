@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -21,6 +22,23 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CarPageController implements Initializable {
+
+    public static Pane p;
+    public static ImageView img;
+    public static  Label Bodyst;
+    public static  Label distance;
+    public static  Label Conditionn;
+
+    public static  Label EconomyCity;
+    public static  Label EconomyHighway;
+    public static  Label Fueltype;
+    public static  Label modell;
+    public static  Label Pricee;
+    public static  Label makee;
+    public static  Label yearr;
+
+    public static  Label transs;
+
     @FXML
     private GridPane CarContainer;
 
@@ -28,13 +46,53 @@ public class CarPageController implements Initializable {
     private HBox NewCar;
     @FXML
     private Slider mySlider;
-   @FXML
+    @FXML
     private Label price;
     @FXML
     private HBox Caricon;
-    private List<Car> recentlyAdded;
+    @FXML
+    private Pane infoPane;
 
-    int value;    //
+    private List<Car> recentlyAdded;
+    @FXML
+    private ImageView CarPic;
+    @FXML
+    private Label Bodystyle;
+
+    @FXML
+    private Label Condition;
+
+    @FXML Label Distance;
+
+    @FXML
+    private Pane Description;
+
+    @FXML
+    private Label EconomyRateCity;
+
+    @FXML
+    private Label EconomyRateHighway;
+
+    @FXML
+    private Label FuelType;
+
+    @FXML
+    private Label Model;
+
+    @FXML
+    private Label Price;
+    @FXML
+    private Label make;
+
+    @FXML
+    private Label trans;
+
+
+
+    @FXML
+    private Label year;
+
+    int value;
 
     private void addImageToCarIcon(String imagePath) {
         try {
@@ -52,6 +110,7 @@ public class CarPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         recentlyAdded = recentlyAdded();
+        initiateComponent();
 
 
         int row = 1;
@@ -79,30 +138,47 @@ public class CarPageController implements Initializable {
 
         value=(int)mySlider.getValue();
         price.setText(Integer.toString(value)+"$");
-      mySlider.valueProperty().addListener(new ChangeListener<Number>() {
-          @Override
-          public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1)
-          {
-              value=(int)mySlider.getValue();
-              price.setText(Integer.toString(value)+"$");
-          }
-      });
+        mySlider.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1)
+            {
+                value=(int)mySlider.getValue();
+                price.setText(Integer.toString(value)+"$");
+            }
+        });
     }
 
+    private void initiateComponent() {
+        p=new Pane();
+        p=infoPane;
+        img=new ImageView();
+        img=CarPic;
+        Conditionn=Condition;
+        Pricee=Price;
+        yearr=year;
+        makee=make;
+        transs=trans;
+        modell=Model;
+        Bodyst=Bodystyle;
+        distance=Distance;
 
+    }
 
 
     private List<Car> recentlyAdded() {
         List<Car> ls = new ArrayList<>();
 
         Car car1 = new Car();
-        car1.setYear("2019");
-        car1.setType("sedan");
-        car1.setTrans("auto");
+        car1.setYear("2012");
+        car1.setTransmission("auto");
         car1.setImagSrc("C:/Users/PC/Documents/Database_project/DatabaseProject/src/main/resources/1720429035182-966x500.jpg");
-        car1.setDiscribe("Just used for 3 months");
+        car1.setPrice("250000$");
         car1.setMake("skoda");
         addImageToCarIcon("/main/resources/pngwing.png");
+        car1.setCondition("New");
+        car1.setModel("Octaiva");
+        car1.setBodyStyle("sedan");
+        car1.setDistance("12500km");
         ls.add(car1);
 
 

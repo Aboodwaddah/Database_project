@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="938.0" prefWidth="1184.0" stylesheets="@test.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="938.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
    <children>
       <Pane prefHeight="74.0" prefWidth="1184.0" style="-fx-background-color: BLACK;">
          <children>
@@ -26,7 +26,7 @@
                      </font>
                   </Button>
                   <Button fx:id="p2" mnemonicParsing="false" onAction="#page2" stylesheets="@test.css" text="page2" textFill="RED" />
-                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" text="page3" textFill="RED" />
+                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" stylesheets="@test.css" text="page3" textFill="RED" />
                </children>
             </HBox>
          </children>
