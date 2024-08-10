@@ -1,0 +1,24 @@
+.radio-button {
+    -fx-text-fill: #000000;
+    -fx-font-size: 20px;
+    -fx-font-family: Gill Sans MT;
+    -fx-padding: 5px 10px;
+}
+
+.radio-button:selected {
+    -fx-text-fill: #ffffff;         /* Text color when selected */
+    -fx-background-color: #194686;  /* Background color when selected */
+    -fx-border-radius: 10px;        /* Rounded border */
+    -fx-background-radius: 10px;    /* Rounded background */
+}
+
+.radio-button.radio {
+    -fx-background-color: #0078D7, #ffffff; /* Circle color and border */
+    -fx-padding: 2px;                    /* Padding inside the circle */
+}
+
+/* Custom Hover Effects */
+.radio-button:hover .radio {
+    -fx-border-color: #000000;      /* Border color on hover */
+    -fx-background-color: #FFF5E6;  /* Background color on hover */
+}

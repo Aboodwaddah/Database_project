@@ -1,16 +1,320 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
-   <children>
-      <Label layoutX="161.0" layoutY="77.0" prefHeight="162.0" prefWidth="300.0" text="page3">
-         <font>
-            <Font size="96.0" />
-         </font>
-      </Label>
-   </children>
-</AnchorPane>
+<ScrollPane prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+   <content>
+      <AnchorPane prefHeight="1124.0" prefWidth="889.0" stylesheets="@radiobutton.css">
+         <children>
+            <ImageView fitHeight="385.0" fitWidth="1184.0" opacity="0.69" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../Reviews.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="#063b9ecc" layoutX="52.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What do our customers say about us?" wrappingWidth="583.79052734375">
+               <font>
+                  <Font name="Gill Sans MT" size="66.0" />
+               </font>
+            </Text>
+            <Pane layoutX="664.0" layoutY="347.0" prefHeight="167.0" prefWidth="494.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;">
+               <children>
+                  <Label layoutX="367.0" layoutY="22.0" text="4.8" textFill="#203e79">
+                     <font>
+                        <Font name="Gill Sans MT" size="53.0" />
+                     </font>
+                  </Label>
+                  <Text fill="#203e79cc" layoutX="28.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“If you're not happy, neither are we!”" wrappingWidth="438.79052734375">
+                     <font>
+                        <Font name="Gill Sans MT" size="28.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="75.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1764  reviews" wrappingWidth="253.48388671875">
+                     <font>
+                        <Font name="System Bold" size="37.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutY="562.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the ease of navigation on our website?">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op1" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o1" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op2" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op3" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op4" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op5" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane layoutY="632.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the availability and clarity of information about the cars on our website?" wrappingWidth="661.3131103515625">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op11" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o11" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op21" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o11">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op31" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o11">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op41" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o11">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op51" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o11">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane layoutY="711.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the friendliness and professionalism of our staff?">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op12" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o12" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op22" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o12">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op32" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o12">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op42" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o12">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op52" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o12">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane layoutY="790.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the responsiveness and helpfulness of our online customer support?" wrappingWidth="673.2711791992188">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op121" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o121" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op221" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o121">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op321" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o121">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op421" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o121">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op521" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o121">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane layoutY="869.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the friendliness and professionalism of our staff?">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op122" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o122" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op222" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o122">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op322" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o122">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op422" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o122">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op522" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o122">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane layoutY="948.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How would you rate the ease of completing a car purchase through our website?" wrappingWidth="673.2711791992188">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op123" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o123" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op223" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o123">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op323" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o123">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op423" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o123">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op523" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o123">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane layoutY="1035.0" prefHeight="79.0" prefWidth="1131.0" styleClass="radio-button" stylesheets="@radiobutton.css">
+               <children>
+                  <Text layoutX="14.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How likely are you to recommend our car showroom website to others?">
+                     <font>
+                        <Font name="Fredoka One" size="19.0" />
+                     </font>
+                  </Text>
+                  <RadioButton fx:id="op1231" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="o1231" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="op2231" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o1231">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op3231" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o1231">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op4231" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o1231">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="op5231" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o1231">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Text fill="#dd0d0d" layoutX="26.0" layoutY="423.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any comments or suggestions?">
+               <font>
+                  <Font name="AL-Bsher" size="25.0" />
+               </font>
+            </Text>
+            <TextArea layoutX="40.0" layoutY="449.0" prefHeight="130.0" prefWidth="526.0" promptText="Write Your notes here">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </TextArea>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

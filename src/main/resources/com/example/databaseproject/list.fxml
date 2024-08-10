@@ -26,7 +26,7 @@
                      </font>
                   </Button>
                   <Button fx:id="p2" mnemonicParsing="false" onAction="#page2" stylesheets="@test.css" text="Sell your Car" textFill="RED" />
-                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" stylesheets="@test.css" text="Contact Us" textFill="RED" />
+                  <Button fx:id="p3" minWidth="123.0" mnemonicParsing="false" onAction="#page3" prefHeight="45.0" prefWidth="123.0" stylesheets="@test.css" text="Reviews" textFill="RED" />
                </children>
             </HBox>
          </children>
