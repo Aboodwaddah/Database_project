@@ -92,9 +92,6 @@ public class LoginController
 
     @FXML
     private void page2(ActionEvent event) throws IOException {
-
-
-
         loadPage("page2");
     }
 
