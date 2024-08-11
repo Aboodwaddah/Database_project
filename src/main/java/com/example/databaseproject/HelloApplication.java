@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
         Parent root=FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         stage.setScene(new Scene(root,850,500));
         stage.setTitle("Hello!");
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.initStyle(StageStyle.DECORATED);
         stage.show();
 
@@ -24,5 +24,6 @@ public class HelloApplication extends Application {
     {
         launch();
         //qweq ewqwe qew
+        //og -orjt-jt 3t34
     }
 }
