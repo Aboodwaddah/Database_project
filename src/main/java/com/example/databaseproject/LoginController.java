@@ -93,6 +93,8 @@ public class LoginController
     @FXML
     private void page2(ActionEvent event) throws IOException {
 
+
+
         loadPage("page2");
     }
 
@@ -119,10 +121,8 @@ public class LoginController
     public void loadPage1(String page) throws IOException
     {
         Parent root = FXMLLoader.load(getClass().getResource(page +".fxml"));
-       primaryAp.getChildren().clear();
+        primaryAp.getChildren().clear();
         primaryAp.getChildren().add(root);
-
-
     }
 
 
