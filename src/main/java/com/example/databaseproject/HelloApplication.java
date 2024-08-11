@@ -24,6 +24,6 @@ public class HelloApplication extends Application {
     {
         launch();
         //qweq ewqwe qew
-        //og -orjt-jt 3t34
+        //og -orjt-jt 3t34wqlr mpqernwer 2
     }
 }
