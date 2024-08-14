@@ -1,12 +1,13 @@
 package com.example.databaseproject;
 
+
 public class Car
 {
+
     private String ImagSrc;
     private String Year;
     private String Make;
-    private String Trans;
-
+    private String Color;
     private String Price;
 
     private String Model;
@@ -16,8 +17,15 @@ public class Car
     private String Transmission;
     private String Engine;
     private String FuelType;
-    private String FuelEconomyCity;
-    private String FuelEconomyHighway;
+    private String IdCar;
+
+    public String getIdCar() {
+        return IdCar;
+    }
+
+    public void setIdCar(String idCar) {
+        IdCar = idCar;
+    }
 
     public String getModel() {
         return Model;
@@ -75,21 +83,6 @@ public class Car
         FuelType = fuelType;
     }
 
-    public String getFuelEconomyCity() {
-        return FuelEconomyCity;
-    }
-
-    public void setFuelEconomyCity(String fuelEconomyCity) {
-        FuelEconomyCity = fuelEconomyCity;
-    }
-
-    public String getFuelEconomyHighway() {
-        return FuelEconomyHighway;
-    }
-
-    public void setFuelEconomyHighway(String fuelEconomyHighway) {
-        FuelEconomyHighway = fuelEconomyHighway;
-    }
 
     public String getPrice() {
         return Price;
@@ -124,10 +117,13 @@ public class Car
         Make = make;
     }
 
+    public String getColor() {
+        return Color;
+    }
 
-
-
-
+    public void setColor(String color) {
+        Color = color;
+    }
 
 
 

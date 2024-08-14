@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,37 +47,64 @@ public class LoginController
 
 
 
-    public void login(ActionEvent event) throws IOException {
-        if (Username.getText().equals("abood") && Password.getText().equals("1234")) {
-            wrong.setVisible(false);
-            sucess.setVisible(true);
-            sucess.setText("Correct");
+    public void login(ActionEvent event ) throws IOException, SQLException {
+        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        String personType = null;
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
+        try (PreparedStatement pstmt = conn.prepareStatement(
+                "SELECT person_type FROM person WHERE username = ? AND password = ?")) {
+            pstmt.setString(1, this.Username.getText());
+            pstmt.setInt(2, Integer.parseInt(this.Password.getText()));
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
-            root = loader.load();
+            ResultSet rs = pstmt.executeQuery();
 
-
-            AnchorPane ap = (AnchorPane) loader.getNamespace().get("ap");
-
-
-            Parent list1Root = FXMLLoader.load(getClass().getResource("list1.fxml"));
-            ap.getChildren().clear();
-            ap.getChildren().add(list1Root);
-
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
+            if (rs.next()) {
+                personType = rs.getString("person_type");
+                System.out.println("Person type retrieved: " + personType);
             } else {
-
-                wrong.setVisible(true);
-                sucess.setVisible(false);
-                wrong.setText("Incorrect UserName or Password");
+                System.out.println("No user found with the given username and password.");
             }
+
+            if ("admin".equals(personType)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
+                Parent root = loader.load();
+
+                // Get the current stage (window) and set the new scene
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+
+
+            }
+            else if ("employee".equals(personType)) {
+                // Redirect to employee page
+            } else if ("customer".equals(personType)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
+                root = loader.load();
+
+
+                AnchorPane ap = (AnchorPane) loader.getNamespace().get("ap");
+
+
+                Parent list1Root = FXMLLoader.load(getClass().getResource("list1.fxml"));
+                ap.getChildren().clear();
+                ap.getChildren().add(list1Root);
+
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } else {
+                System.out.println("User not found or incorrect credentials.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-
+    }
 
     @FXML
     private void Home(ActionEvent event) throws IOException {

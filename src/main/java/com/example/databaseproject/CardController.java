@@ -108,8 +108,7 @@ public void showInfoBtn() throws FileNotFoundException {
        BodyStylee.setText(c.getBodyStyle());
        Distance.setText(c.getDistance());
        Engine.setText(c.getEngine());
-      EconomyRateCity.setText(c.getFuelEconomyCity());
-    EconomyRateHighway.setText(c.getFuelEconomyHighway());
+
 }
 
 

@@ -263,40 +263,6 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="609.0" layoutY="710.0" opacity="0.85" prefHeight="109.0" prefWidth="337.0" style="-fx-background-color: red;">
-                     <children>
-                        <ImageView fitHeight="65.0" fitWidth="45.0" layoutX="133.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../clipart1892318.png" />
-                           </image>
-                        </ImageView>
-                        <Text fill="WHITE" layoutX="42.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fuel Economy Rating">
-                           <font>
-                              <Font name="System Bold" size="23.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="20.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Text>
-                        <Text fill="WHITE" layoutX="252.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highway">
-                           <font>
-                              <Font name="System Bold" size="17.0" />
-                           </font>
-                        </Text>
-                        <Label fx:id="EconomyRateCity" layoutX="25.0" layoutY="64.0" text="20" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="EconomyRateHighway" layoutX="277.0" layoutY="64.0" text="30" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
                   <Button layoutX="22.0" layoutY="366.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" style="-fx-background-color: white; -fx-border-color: black;" text="Buy ">
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">

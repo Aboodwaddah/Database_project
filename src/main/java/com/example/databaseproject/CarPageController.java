@@ -175,8 +175,7 @@ public class CarPageController implements Initializable {
         car1.setBodyStyle("sedan");
         car1.setDistance("12500km");
         car1.setEngine("2000cc");
-        car1.setFuelEconomyCity("14");
-        car1.setFuelEconomyHighway("20");
+
         ls.add(car1);
 
         car1 = new Car();
@@ -190,8 +189,7 @@ public class CarPageController implements Initializable {
         car1.setBodyStyle("sedan");
         car1.setDistance("12500km");
         car1.setEngine("2000cc");
-        car1.setFuelEconomyCity("14");
-        car1.setFuelEconomyHighway("20");
+
         ls.add(car1);
 
 
