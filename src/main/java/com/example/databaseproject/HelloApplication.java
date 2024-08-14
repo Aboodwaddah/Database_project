@@ -23,7 +23,6 @@ public class HelloApplication extends Application {
     public static void main(String[] args)
     {
         launch();
-        //qweq ewqwe qew
-        //og -orjt-jt 3t34wqlr mpqernwer 2
+
     }
 }

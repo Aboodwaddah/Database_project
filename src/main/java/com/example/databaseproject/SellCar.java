@@ -54,12 +54,13 @@ public class SellCar {
         Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Statement statement=connection.createStatement();
-        String sql = "INSERT INTO Car (id_car,make, model, condition, year, price, Engine_capacity, color, fuel_type, transmission, body_style, distance) " +
-                "VALUES ( ,'" + this.make.getText() + "', '" + this.model.getText() + "', '" + this.condition.getText() + "', "
+        String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance) " +
+                "VALUES ('" + this.make.getText() + "', '" + this.model.getText() + "', '" + this.condition.getText() + "', "
                 + Integer.parseInt(this.year.getText()) + ", " + Integer.parseInt(this.price.getText()) + ", "
                 + Integer.parseInt(this.engine.getText()) + ", '" + this.color.getText() + "', '"
                 + this.fuel.getText() + "', '" + this.trans.getText() + "', '" + this.body.getText() + "', "
-                + Integer.parseInt(this.distance.getText()) + " )";
+                + Integer.parseInt(this.distance.getText()) + ")";
+
         statement.executeUpdate(sql);
         conn.close();
     }

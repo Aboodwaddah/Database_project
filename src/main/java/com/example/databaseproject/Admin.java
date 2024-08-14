@@ -63,7 +63,7 @@ public class Admin  implements Initializable{
     @FXML
     private TextField IDForCar;
     @FXML
-    private TextField MakeForCar;
+    private ChoiceBox<String> MakeForCar;
     @FXML
     private TextField condition;
     @FXML
@@ -94,7 +94,25 @@ public class Admin  implements Initializable{
     private TextField trans;
     @FXML
     private TextField year;
-    private final String[]conditions={"New","Used","Rent"};
+    private final String[]conditions={"","new","used","rent"};
+    private final String[] CarsType = {
+            "",
+            "bmw",
+            "skoda",
+            "toyota",
+            "mercedes-benz",
+            "audi",
+            "honda",
+            "ford",
+            "volkswagen",
+            "hyundai",
+            "nissan",
+            "chevrolet",
+            "kia",
+            "volvo",
+            "tesla",
+            "subaru"
+    };
     @FXML
     private void insertCar() {
         try {
@@ -164,6 +182,7 @@ public class Admin  implements Initializable{
         DistanceColumn.setCellValueFactory(cellData -> cellData.getValue().distanceProperty().asObject());
         fillTableWithCars();
         ConditionForCar.getItems().addAll(conditions);
+        MakeForCar.getItems().addAll(CarsType);
         CarInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
         {
             if (newValue != null)
@@ -351,13 +370,31 @@ public class Admin  implements Initializable{
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Statement statement = connection.createStatement();
 
-        String searchQuery = "SELECT * FROM car WHERE id_car = " + this.IDForCar.getText();
 
-        ResultSet resultSet = statement.executeQuery(searchQuery);
+        String selectedMake = MakeForCar.getValue();
+        String idForCar = IDForCar.getText();
+        String cond=ConditionForCar.getValue();
+
+
+        StringBuilder searchQuery = new StringBuilder("SELECT * FROM car WHERE 1=1");
+
+        if (idForCar != null && !idForCar.isEmpty()) {
+            searchQuery.append(" AND id_car = ").append(idForCar);
+        }
+
+        if (selectedMake != null && !selectedMake.isEmpty()) {
+            searchQuery.append(" AND make = '").append(selectedMake).append("'");
+        }
+        if (cond != null && !cond.isEmpty()) {
+            searchQuery.append(" AND condition = '").append(cond).append("'");
+        }
+
+        ResultSet resultSet = statement.executeQuery(searchQuery.toString());
 
         ArrayList<Cars> carList = new ArrayList<>();
 
-        while (resultSet.next()) {
+        while (resultSet.next())
+        {
             Cars car = new Cars(
                     resultSet.getInt("id_car"),
                     resultSet.getString("make"),
@@ -381,6 +418,8 @@ public class Admin  implements Initializable{
         statement.close();
         connection.close();
     }
+
+
 
 
 
