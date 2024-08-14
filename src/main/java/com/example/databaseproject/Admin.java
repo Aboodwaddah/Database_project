@@ -130,7 +130,7 @@ public class Admin  implements Initializable{
     public void changePhoto() {
         showroom.setImage(new Image(getClass().getResource("/addCar.png").toString()));
     }
-@FXML
+    @FXML
     public void changePhoto2() {
         showroom.setImage(new Image(getClass().getResource("/VehicleShowroom.jpg").toString()));
     }

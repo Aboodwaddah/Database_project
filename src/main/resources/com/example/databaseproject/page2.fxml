@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.SellCar">
    <children>
       <Pane prefHeight="150.0" prefWidth="1184.0" style="-fx-background-color: #055081;">
          <children>
@@ -29,59 +29,39 @@
                </image>
             </ImageView>
          </children></Pane>
-      <TextField layoutX="65.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Car Type">
+      <TextField fx:id="make" layoutX="65.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Make">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField layoutX="65.0" layoutY="340.0" prefHeight="40.0" prefWidth="185.0" promptText="Year Of Manufacture">
+      <TextField fx:id="year" layoutX="65.0" layoutY="340.0" prefHeight="40.0" prefWidth="185.0" promptText="Year Of Manufacture">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField layoutX="65.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" promptText="Engine capacity">
+      <TextField fx:id="engine" layoutX="65.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" promptText="Engine capacity">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField layoutX="64.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="Price">
+      <TextField fx:id="price" layoutX="64.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="Price">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField layoutX="450.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Body Style">
+      <TextField fx:id="body" layoutX="450.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Body Style">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField layoutX="450.0" layoutY="340.0" prefHeight="40.0" prefWidth="185.0" promptText="Distance">
+      <TextField fx:id="distance" layoutX="450.0" layoutY="340.0" prefHeight="40.0" prefWidth="185.0" promptText="Distance">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField layoutX="450.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" promptText="Condition">
+      <TextField fx:id="condition" layoutX="450.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" promptText="Condition">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField layoutX="450.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Transmission ">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></TextField>
-      <TextField layoutX="450.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="IMGE">
+      <TextField fx:id="trans" layoutX="449.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Trans">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField layoutX="835.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Fuel Economy City">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></TextField>
-      <TextField layoutX="835.0" layoutY="340.0" prefHeight="40.0" prefWidth="185.0" promptText="Fuel Economy Highway">
-         <font>
-            <Font size="15.0" />
-         </font></TextField>
-      <TextField layoutX="835.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" promptText="Trans">
-         <font>
-            <Font size="15.0" />
-         </font></TextField>
-      <TextArea layoutX="66.0" layoutY="656.0" prefHeight="73.0" prefWidth="978.0" promptText="You can enter other details">
-         <font>
-            <Font size="21.0" />
-         </font></TextArea>
-      <Button layoutX="519.0" layoutY="771.0" mnemonicParsing="false" text="Submit">
+      <Button layoutX="449.0" layoutY="685.0" mnemonicParsing="false" onAction="#addCar" prefHeight="40.0" prefWidth="186.0" stylesheets="@test2.css" text="Submit">
          <font>
             <Font size="24.0" />
          </font></Button>
@@ -90,17 +70,19 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <TextField layoutX="835.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Your phone number">
+      <TextField fx:id="fuel" layoutX="65.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Fuel Type">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField layoutX="835.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="Your Email">
+      <TextField fx:id="model" layoutX="449.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="model">
          <font>
             <Font name="System Bold" size="15.0" />
-         </font></TextField>
-      <TextField layoutX="65.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Fuel Type">
+         </font>
+      </TextField>
+      <TextField fx:id="color" layoutX="833.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="color">
          <font>
-            <Font size="15.0" />
-         </font></TextField>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
