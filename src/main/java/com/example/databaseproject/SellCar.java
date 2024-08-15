@@ -51,7 +51,6 @@ public class SellCar {
     private TextField color;
 
     public void addCar() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Statement statement=connection.createStatement();
         String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance) " +
@@ -60,9 +59,8 @@ public class SellCar {
                 + Integer.parseInt(this.engine.getText()) + ", '" + this.color.getText() + "', '"
                 + this.fuel.getText() + "', '" + this.trans.getText() + "', '" + this.body.getText() + "', "
                 + Integer.parseInt(this.distance.getText()) + ")";
-
         statement.executeUpdate(sql);
-        conn.close();
+        connection.close();
     }
 
 }

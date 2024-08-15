@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
+<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
    <children>
       <Pane layoutY="-1.0" prefHeight="75.0" prefWidth="1184.0" style="-fx-background-color: #8f0d0d;">
          <children>
@@ -150,7 +150,7 @@
             </AnchorPane>
          </children>
       </Pane>
-      <Pane fx:id="CarTableView" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: white;">
+      <Pane fx:id="CarTableView" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: white;" visible="false">
          <children>
             <Pane prefHeight="354.0" prefWidth="66.0" style="-fx-background-color: #8F0D0DFF;">
                <children>
@@ -234,6 +234,49 @@
                   <Image url="@../../../244ceb913681359956100c1de6f94101.gif" />
                </image>
             </ImageView>
+         </children>
+      </Pane>
+      <Pane prefHeight="860.0" prefWidth="1185.0" style="-fx-background-color: white;">
+         <children>
+            <TextField layoutX="770.0" layoutY="210.0" prefHeight="50.0" />
+            <TextField layoutX="842.0" layoutY="379.0" prefHeight="50.0" />
+            <TextField layoutX="812.0" layoutY="575.0" prefHeight="50.0" />
+            <TextField layoutX="158.0" layoutY="374.0" prefHeight="50.0" prefWidth="750.0" text="How likely are you to recommend our car showroom website to others?">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="214.0" layoutY="477.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the ease of cpmpletin a car purchase thouge our ">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="209.0" layoutY="562.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the responsiveness and helpfulness of our online customer support?">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="203.0" layoutY="668.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the friendliness and professionalism of our staff?">
+               <font>
+                  <Font name="Arial" size="17.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="131.0" layoutY="282.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the availability and clarity of information about the cars on our website?">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </TextField>
+            <TextField layoutX="114.0" layoutY="202.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the ease of navigation on our website?">
+               <font>
+                  <Font name="Arial" size="17.0" />
+               </font>
+            </TextField>
+         </children>
+      </Pane>
+      <Pane prefHeight="147.0" prefWidth="1184.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="83.0" text="Button" />
+            <ScrollPane prefHeight="250.0" prefWidth="1184.0" visible="false" />
          </children>
       </Pane>
    </children>
