@@ -21,10 +21,15 @@ import org.postgresql.Driver;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
+import java.util.Locale;
 public class Admin  implements Initializable{
+    @FXML
+    private Slider PriceForCar1;
+    @FXML
+    private Label PriceOfCar;
     @FXML
     private TableView<Cars> CarInfo;
     @FXML
@@ -51,7 +56,7 @@ public class Admin  implements Initializable{
     private TableColumn<Cars, String> BodystyleColumn;
     @FXML
     private TableColumn<Cars, Integer> DistanceColumn;
-   @FXML
+    @FXML
     private Pane CarTableView;
     @FXML
     private Pane addcar;
@@ -59,7 +64,8 @@ public class Admin  implements Initializable{
     private TextField color;
     @FXML
     private TextField body;
-
+    @FXML
+    ChoiceBox<String>StyleForCar;
     @FXML
     private TextField IDForCar;
     @FXML
@@ -94,6 +100,7 @@ public class Admin  implements Initializable{
     private TextField trans;
     @FXML
     private TextField year;
+
     private final String[]conditions={"","new","used","rent"};
     private final String[] CarsType = {
             "",
@@ -112,6 +119,17 @@ public class Admin  implements Initializable{
             "volvo",
             "tesla",
             "subaru"
+    };
+    private final String[] CarStyle = {
+            "",
+            "sedan",
+            "suv",
+            "hatchback",
+            "convertible",
+            "coupe",
+            "wagon",
+            "pickup",
+            "van"
     };
     @FXML
     private void insertCar() {
@@ -156,9 +174,9 @@ public class Admin  implements Initializable{
     public void changePhoto3() {
         CarTable.setImage(new Image(getClass().getResource("/CarViewtable2.png").toString()));
     }
-@FXML
+    @FXML
     public void changePhoto4() {
-    CarTable.setImage(new Image(getClass().getResource("/CarViewtable.jpg").toString()));
+        CarTable.setImage(new Image(getClass().getResource("/CarViewtable.jpg").toString()));
     }
 
     @FXML
@@ -183,14 +201,19 @@ public class Admin  implements Initializable{
         fillTableWithCars();
         ConditionForCar.getItems().addAll(conditions);
         MakeForCar.getItems().addAll(CarsType);
+        StyleForCar.getItems().addAll(CarStyle);
         CarInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
         {
-            if (newValue != null)
-            {
+            if (newValue != null) {
                 SelectShow();
             }
-        });
 
+        });
+        PriceForCar1.valueProperty().addListener((observable, oldValue, newValue) -> {
+            NumberFormat numberFormat = NumberFormat.getInstance(Locale.ENGLISH);
+            String formattedPrice = numberFormat.format(newValue.intValue());
+            PriceOfCar.setText(formattedPrice);
+        });
     }
 
 
@@ -337,7 +360,7 @@ public class Admin  implements Initializable{
             e.printStackTrace();
         }
     }
-@FXML
+    @FXML
     private void updateCarInDatabase(Cars car) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
@@ -364,60 +387,92 @@ public class Admin  implements Initializable{
         }
     }
     @FXML
-    public void search(ActionEvent event) throws SQLException {
+    public void search(ActionEvent event) {
         CarInfo.getItems().clear();
 
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             Statement statement = connection.createStatement()) {
+
+            double price = PriceForCar1.getValue();
+            String selectedMake = MakeForCar.getValue();
+            String idForCar = IDForCar.getText();
+            String cond = ConditionForCar.getValue();
+            String style = StyleForCar.getValue();
+
+            StringBuilder searchQuery = new StringBuilder("SELECT * FROM car WHERE 1=1");
+
+            if (idForCar != null && !idForCar.isEmpty()) {
+                searchQuery.append(" AND id_car = ").append(idForCar);
+            }
+
+            if (selectedMake != null && !selectedMake.isEmpty()) {
+                searchQuery.append(" AND make = '").append(selectedMake).append("'");
+            }
+
+            if (cond != null && !cond.isEmpty()) {
+                searchQuery.append(" AND condition = '").append(cond).append("'");
+            }
+
+            if (price > 0) {
+                searchQuery.append(" AND price BETWEEN 0 AND ").append(price);
+            }
+
+            if (style != null && !style.isEmpty()) {
+                searchQuery.append(" AND body_style = '").append(style).append("'");
+            }
+
+            System.out.println("Search Query: " + searchQuery.toString());
+
+            ResultSet resultSet = statement.executeQuery(searchQuery.toString());
+
+            ArrayList<Cars> carList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Cars car = new Cars(
+                        resultSet.getInt("id_car"),
+                        resultSet.getString("make"),
+                        resultSet.getString("model"),
+                        resultSet.getString("condition"),
+                        resultSet.getInt("year"),
+                        resultSet.getInt("price"),
+                        resultSet.getInt("engine_capacity"),
+                        resultSet.getString("color"),
+                        resultSet.getString("fuel_type"),
+                        resultSet.getString("transmission"),
+                        resultSet.getString("body_style"),
+                        resultSet.getInt("distance")
+                );
+                carList.add(car);
+            }
+
+            CarInfo.setItems(FXCollections.observableArrayList(carList));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void DeletfromDB(Cars car) throws SQLException {
+        int selectedId = car.idCarProperty().get();
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Statement statement = connection.createStatement();
-
-
-        String selectedMake = MakeForCar.getValue();
-        String idForCar = IDForCar.getText();
-        String cond=ConditionForCar.getValue();
-
-
-        StringBuilder searchQuery = new StringBuilder("SELECT * FROM car WHERE 1=1");
-
-        if (idForCar != null && !idForCar.isEmpty()) {
-            searchQuery.append(" AND id_car = ").append(idForCar);
-        }
-
-        if (selectedMake != null && !selectedMake.isEmpty()) {
-            searchQuery.append(" AND make = '").append(selectedMake).append("'");
-        }
-        if (cond != null && !cond.isEmpty()) {
-            searchQuery.append(" AND condition = '").append(cond).append("'");
-        }
-
-        ResultSet resultSet = statement.executeQuery(searchQuery.toString());
-
-        ArrayList<Cars> carList = new ArrayList<>();
-
-        while (resultSet.next())
-        {
-            Cars car = new Cars(
-                    resultSet.getInt("id_car"),
-                    resultSet.getString("make"),
-                    resultSet.getString("model"),
-                    resultSet.getString("condition"),
-                    resultSet.getInt("year"),
-                    resultSet.getInt("price"),
-                    resultSet.getInt("engine_capacity"),
-                    resultSet.getString("color"),
-                    resultSet.getString("fuel_type"),
-                    resultSet.getString("transmission"),
-                    resultSet.getString("body_style"),
-                    resultSet.getInt("distance")
-            );
-            carList.add(car);
-        }
-
-        CarInfo.setItems(FXCollections.observableArrayList(carList));
-
-        resultSet.close();
+        String delete = "DELETE FROM car WHERE id_car = " + selectedId + ";";
+        statement.executeUpdate(delete);
         statement.close();
         connection.close();
     }
+@FXML
+   private void Remove() throws SQLException {
+        Cars selectedCar = CarInfo.getSelectionModel().getSelectedItem();
+if(selectedCar !=null)
+{
+    CarInfo.getItems().remove(selectedCar);
+    DeletfromDB(selectedCar);
+}
+
+    }
+
+
 
 
 

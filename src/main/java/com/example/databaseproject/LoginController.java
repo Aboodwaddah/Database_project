@@ -27,7 +27,7 @@ import  java.net.URL;
 public class LoginController
 {
     @FXML
-    private TextField Username;
+    private   TextField Username;
     @FXML
     private PasswordField Password;
     @FXML
@@ -150,6 +150,8 @@ public class LoginController
         primaryAp.getChildren().add(root);
     }
 
-
+    public TextField getUsernameField() {
+        return Username;
+    }
 
 };
