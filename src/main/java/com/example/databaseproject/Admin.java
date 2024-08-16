@@ -521,6 +521,7 @@ if(selectedCar !=null)
             while (notesResultSet.next()) {
                 String note = notesResultSet.getString("note");
                 Label label = new Label(note);
+                label.setStyle("-fx-font-weight: bold; -fx-font-size: 25px;");
                 vbox.getChildren().add(label);
             }
         }

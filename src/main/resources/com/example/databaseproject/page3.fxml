@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <ScrollPane prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.reviews">
    <content>
       <AnchorPane prefHeight="1124.0" prefWidth="889.0" stylesheets="@radiobutton.css">
@@ -202,7 +201,7 @@
                         <Font name="Fredoka One" size="19.0" />
                      </font>
                   </Text>
-                  <RadioButton fx:id="op123" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                  <RadioButton fx:id="E1" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -210,22 +209,22 @@
                         <ToggleGroup fx:id="o123" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="op223" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o123">
+                  <RadioButton fx:id="E2" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o123">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op323" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o123">
+                  <RadioButton fx:id="E3" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o123">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op423" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o123">
+                  <RadioButton fx:id="E4" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o123">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op523" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o123">
+                  <RadioButton fx:id="E5" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o123">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -239,7 +238,7 @@
                         <Font name="Fredoka One" size="19.0" />
                      </font>
                   </Text>
-                  <RadioButton fx:id="op1231" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                  <RadioButton fx:id="F1" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -247,22 +246,22 @@
                         <ToggleGroup fx:id="o1231" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="op2231" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o1231">
+                  <RadioButton fx:id="F2" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o1231">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op3231" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o1231">
+                  <RadioButton fx:id="F3" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o1231">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op4231" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o1231">
+                  <RadioButton fx:id="F4" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o1231">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op5231" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o1231">
+                  <RadioButton fx:id="F5" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o1231">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
