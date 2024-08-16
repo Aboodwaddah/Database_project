@@ -17,8 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
+<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
    <children>
       <Pane layoutY="-1.0" prefHeight="75.0" prefWidth="1190.0" style="-fx-background-color: #8f0d0d;">
          <children>
@@ -45,7 +46,14 @@
       </Pane>
       <Pane layoutX="430.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black;" />
       <Pane layoutX="69.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black;" />
-      <Pane layoutX="775.0" layoutY="228.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black;" />
+      <Pane layoutX="775.0" layoutY="228.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
+         <children>
+            <ImageView fx:id="review" fitHeight="188.0" fitWidth="272.0" layoutX="6.0" layoutY="6.0" onMouseEntered="#changePhoto5" onMouseExited="#changePhoto6" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../customer.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
       <Pane layoutX="430.0" layoutY="228.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
             <ImageView fx:id="CarTable" fitHeight="188.0" fitWidth="279.0" layoutX="5.0" layoutY="8.0" onMouseClicked="#PaneCarTableView" onMouseEntered="#changePhoto3" onMouseExited="#changePhoto4" pickOnBounds="true">
@@ -272,50 +280,62 @@
          </children>
       </Pane>
       <Pane layoutX="1185.0" layoutY="-2.0" prefHeight="876.0" prefWidth="14.0" style="-fx-background-color: #8f0d0d;" />
-      <Pane prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: white;">
+      <Pane prefHeight="874.0" prefWidth="1199.0" style="-fx-background-color: white;" visible="false">
          <children>
-            <TextField fx:id="r6" editable="false" layoutX="770.0" layoutY="510.0" prefHeight="50.0" />
-            <Pane prefHeight="150.0" prefWidth="1184.0" />
-            <TextField editable="false" layoutX="6.0" layoutY="210.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the ease of navigation on our website?">
+            <TextField fx:id="r6" editable="false" layoutX="770.0" layoutY="485.0" prefHeight="50.0" />
+            <Pane prefHeight="63.0" prefWidth="1199.0" style="-fx-background-color: #8F0D0D;">
+               <children>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reviews" wrappingWidth="167.13671875">
+                     <font>
+                        <Font name="Alhurra" size="40.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="51.0" fitWidth="66.0" layoutX="1125.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../iscons8.gif" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+            <TextField editable="false" layoutX="6.0" layoutY="115.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the ease of navigation on our website?">
                <font>
-                  <Font name="Arial" size="17.0" />
+                  <Font name="Arial Bold" size="17.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="6.0" layoutY="270.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the availability and clarity of information about the cars on our website?">
+            <TextField editable="false" layoutX="6.0" layoutY="189.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the availability and clarity of information about the cars on our website?">
                <font>
-                  <Font size="17.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="6.0" layoutY="330.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the friendliness and professionalism of our staff?">
+            <TextField editable="false" layoutX="6.0" layoutY="265.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the friendliness and professionalism of our staff?">
                <font>
-                  <Font name="Arial" size="17.0" />
+                  <Font name="Arial Bold" size="17.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="6.0" layoutY="390.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the responsiveness and helpfulness of our online customer support?">
+            <TextField editable="false" layoutY="340.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the responsiveness and helpfulness of our online customer support?">
                <font>
-                  <Font size="17.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="6.0" layoutY="450.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the ease of cpmpletin a car purchase thouge our ">
+            <TextField editable="false" layoutX="6.0" layoutY="412.0" prefHeight="50.0" prefWidth="750.0" text="How would you rate the ease of cpmpletin a car purchase thouge our ">
                <font>
-                  <Font size="17.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </TextField>
-            <TextField editable="false" layoutX="6.0" layoutY="510.0" prefHeight="50.0" prefWidth="750.0" text="How likely are you to recommend our car showroom website to others?">
+            <TextField editable="false" layoutX="6.0" layoutY="485.0" prefHeight="50.0" prefWidth="750.0" text="How likely are you to recommend our car showroom website to others?">
                <font>
-                  <Font size="17.0" />
+                  <Font name="System Bold" size="17.0" />
                </font>
             </TextField>
-            <TextField fx:id="r1" layoutX="770.0" layoutY="210.0" onAction="#setReviews" prefHeight="50.0" />
-            <TextField fx:id="r2" layoutX="770.0" layoutY="270.0" prefHeight="50.0" />
-            <TextField fx:id="r3" layoutX="770.0" layoutY="330.0" prefHeight="50.0" />
-            <TextField fx:id="r4" editable="false" layoutX="770.0" layoutY="390.0" prefHeight="50.0" />
-            <TextField fx:id="r5" editable="false" layoutX="770.0" layoutY="450.0" prefHeight="50.0" />
+            <TextField fx:id="r1" layoutX="770.0" layoutY="115.0" onAction="#setReviews" prefHeight="50.0" prefWidth="149.0" />
+            <TextField fx:id="r2" layoutX="770.0" layoutY="189.0" prefHeight="50.0" />
+            <TextField fx:id="r3" layoutX="770.0" layoutY="265.0" prefHeight="50.0" />
+            <TextField fx:id="r4" editable="false" layoutX="770.0" layoutY="340.0" prefHeight="50.0" />
+            <TextField fx:id="r5" editable="false" layoutX="770.0" layoutY="412.0" prefHeight="50.0" />
             <ScrollPane layoutY="607.0" prefHeight="250.0" prefWidth="1184.0">
                <content>
-                  <VBox fx:id="vbox" prefHeight="250.0" prefWidth="919.0" />
+                  <VBox fx:id="vbox" prefHeight="250.0" prefWidth="1161.0" />
                </content></ScrollPane>
-            <Button fx:id="R" layoutX="460.0" layoutY="569.0" mnemonicParsing="false" onAction="#setReviews" text="Rev" />
+            <Button fx:id="R" layoutX="1059.0" layoutY="513.0" mnemonicParsing="false" onAction="#setReviews" prefHeight="31.0" prefWidth="125.0" stylesheets="@test.css" text="Show Reviews" />
          </children>
       </Pane>
    </children>

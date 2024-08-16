@@ -13,11 +13,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import org.postgresql.Driver;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -82,6 +84,7 @@ public class Admin  implements Initializable{
     private TextField engine;
     @FXML
     private TextField fuel;
+
     @FXML
     private ImageView showroom;
     @FXML
@@ -120,7 +123,8 @@ public class Admin  implements Initializable{
 
     @FXML
     private TextField r6;
-
+   @FXML
+   private ImageView review;
     @FXML
     private VBox vbox;
 
@@ -172,6 +176,7 @@ public class Admin  implements Initializable{
         }
     }
 
+
     @FXML
     public void ShowInformationCar()
     {
@@ -200,6 +205,15 @@ public class Admin  implements Initializable{
     @FXML
     public void changePhoto4() {
         CarTable.setImage(new Image(getClass().getResource("/CarViewtable.jpg").toString()));
+    }
+
+    @FXML
+    public void changePhoto5() {
+        review.setImage(new Image(getClass().getResource("/customerrevie.png").toString()));
+    }
+    @FXML
+    public void changePhoto6() {
+        review.setImage(new Image(getClass().getResource("/customer.png").toString()));
     }
 
     @FXML
@@ -519,9 +533,9 @@ if(selectedCar !=null)
             vbox.getChildren().clear();
 
             while (notesResultSet.next()) {
-                String note = notesResultSet.getString("note");
+                String note = "note :"+notesResultSet.getString("note");
                 Label label = new Label(note);
-                label.setStyle("-fx-font-weight: bold; -fx-font-size: 25px;");
+                label.setStyle("-fx-font-weight: bold; -fx-font-size: 18px;");
                 vbox.getChildren().add(label);
             }
         }
