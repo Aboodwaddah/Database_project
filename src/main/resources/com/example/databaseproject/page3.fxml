@@ -164,7 +164,7 @@
                         <Font name="Fredoka One" size="19.0" />
                      </font>
                   </Text>
-                  <RadioButton fx:id="op121" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
+                  <RadioButton fx:id="D1" layoutX="694.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@radiobutton.css" text="1">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -172,22 +172,22 @@
                         <ToggleGroup fx:id="o121" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="op221" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o121">
+                  <RadioButton fx:id="D2" layoutX="788.0" layoutY="26.0" mnemonicParsing="false" text="2" toggleGroup="$o121">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op321" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o121">
+                  <RadioButton fx:id="D3" layoutX="879.0" layoutY="27.0" mnemonicParsing="false" text="3" toggleGroup="$o121">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op421" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o121">
+                  <RadioButton fx:id="D4" layoutX="969.0" layoutY="27.0" mnemonicParsing="false" text="4" toggleGroup="$o121">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="op521" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o121">
+                  <RadioButton fx:id="D5" layoutX="1059.0" layoutY="27.0" mnemonicParsing="false" text="5" toggleGroup="$o121">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>

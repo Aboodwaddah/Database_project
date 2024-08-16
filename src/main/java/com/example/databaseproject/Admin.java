@@ -14,10 +14,12 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import org.postgresql.Driver;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -100,6 +102,27 @@ public class Admin  implements Initializable{
     private TextField trans;
     @FXML
     private TextField year;
+
+    @FXML
+    private TextField r1;
+
+    @FXML
+    private TextField r2;
+
+    @FXML
+    private TextField r3;
+
+    @FXML
+    private TextField r4;
+
+    @FXML
+    private TextField r5;
+
+    @FXML
+    private TextField r6;
+
+    @FXML
+    private VBox vbox;
 
     private final String[]conditions={"","new","used","rent"};
     private final String[] CarsType = {
@@ -469,6 +492,43 @@ if(selectedCar !=null)
     CarInfo.getItems().remove(selectedCar);
     DeletfromDB(selectedCar);
 }
+
+    }
+
+
+    public void setReviews() throws SQLException {
+
+
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             Statement statement = connection.createStatement()) {
+
+            String query = "SELECT AVG(rate1) as avg_r1, AVG(rate2) as avg_r2, AVG(rate3) as avg_r3,AVG(rate4) as avg_r4,AVG(rate5) as avg_r5,AVG(rate6) as avg_r6 FROM reviews";
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                r1.setText(String.valueOf(resultSet.getDouble("avg_r1")));
+                r2.setText(String.valueOf(resultSet.getDouble("avg_r2")));
+                r3.setText(String.valueOf(resultSet.getDouble("avg_r3")));
+                r4.setText(String.valueOf(resultSet.getDouble("avg_r4")));
+                r5.setText(String.valueOf(resultSet.getDouble("avg_r5")));
+                r6.setText(String.valueOf(resultSet.getDouble("avg_r6")));
+
+            }
+            String notesQuery = "SELECT note FROM reviews";
+            ResultSet notesResultSet = statement.executeQuery(notesQuery);
+
+            vbox.getChildren().clear();
+
+            while (notesResultSet.next()) {
+                String note = notesResultSet.getString("note");
+                Label label = new Label(note);
+                vbox.getChildren().add(label);
+            }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 

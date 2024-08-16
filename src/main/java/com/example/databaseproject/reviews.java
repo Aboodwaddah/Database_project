@@ -64,12 +64,32 @@ public class reviews {
     @FXML
     private Button submit;
 
+    @FXML
+    private RadioButton D1;
+
+    @FXML
+    private RadioButton D2;
+
+    @FXML
+    private RadioButton D3;
+
+    @FXML
+    private RadioButton D4;
+
+    @FXML
+    private RadioButton D5;
+
     public void submitInformation() throws SQLException {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
             Statement statement=connection.createStatement();
-            String strSql = "INSERT INTO reviews (note) VALUES ('"+note1.getText()+"')";
-            statement.executeUpdate(strSql);
+            String string="insert into reviews (rate1,rate2,rate3,note) values("+getSelectedEvaluation(A1, A2, A3, A4, A5)+","
+                    +getSelectedEvaluation(B1, B2, B3, B4, B5)+","+getSelectedEvaluation(C1, C2, C3, C4, C5)+"," +
+                    "getSelectedEvaluation(D1,D2,D3,D4,D5)"+
+                    "'"+note1.getText()+"')";
+            statement.executeUpdate(string);
             connection.close();
+
+
     }
     private int getSelectedEvaluation(RadioButton... buttons) {
         for (int i = 0; i < buttons.length; i++) {
@@ -77,6 +97,7 @@ public class reviews {
                 return i + 1;
             }
         }
+        JOptionPane.showMessageDialog(null,"NOT SUCCsisfuly !");
         return 0;
     }
 }
