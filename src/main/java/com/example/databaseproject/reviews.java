@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -110,22 +108,18 @@ public class reviews {
 
     @FXML
     private RadioButton F5;
-    @FXML
-    private static Pane Rate;
 
-    public static Pane getRate() {
-        return Rate;
-    }
+
     public void submitInformation() throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-        Statement statement=connection.createStatement();
-        String string="insert into reviews (rate1,rate2,rate3,rate4,rate5,rate6,note) values("+getSelectedEvaluation(A1, A2, A3, A4, A5)+","
-                +getSelectedEvaluation(B1, B2, B3, B4, B5)+","+getSelectedEvaluation(C1, C2, C3, C4, C5)+","
-                +getSelectedEvaluation(D1,D2,D3,D4,D5)+","+getSelectedEvaluation(E1,E2,E3,E4,E5)+","
-                +getSelectedEvaluation(F1,F2,F3,F4,F5)+",'"
-                +note1.getText()+"')";
-        statement.executeUpdate(string);
-        connection.close();
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement=connection.createStatement();
+            String string="insert into reviews (rate1,rate2,rate3,rate4,rate5,rate6,note) values("+getSelectedEvaluation(A1, A2, A3, A4, A5)+","
+                    +getSelectedEvaluation(B1, B2, B3, B4, B5)+","+getSelectedEvaluation(C1, C2, C3, C4, C5)+","
+                    +getSelectedEvaluation(D1,D2,D3,D4,D5)+","+getSelectedEvaluation(E1,E2,E3,E4,E5)+","
+                    +getSelectedEvaluation(F1,F2,F3,F4,F5)+",'"
+                    +note1.getText()+"')";
+            statement.executeUpdate(string);
+            connection.close();
 
 
     }
