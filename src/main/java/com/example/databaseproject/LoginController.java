@@ -70,7 +70,6 @@ public class LoginController
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Admin.fxml"));
                 Parent root = loader.load();
 
-                // Get the current stage (window) and set the new scene
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
@@ -80,7 +79,7 @@ public class LoginController
 
             }
             else if ("employee".equals(personType)) {
-                // Redirect to employee page
+
             } else if ("customer".equals(personType)) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
                 root = loader.load();

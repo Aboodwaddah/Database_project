@@ -15,8 +15,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,11 +69,7 @@ public class CarPageController implements Initializable {
     @FXML
     private Pane Description;
 
-    @FXML
-    private Label EconomyRateCity;
 
-    @FXML
-    private Label EconomyRateHighway;
 
     @FXML
     private Label FuelType;
@@ -94,11 +92,15 @@ public class CarPageController implements Initializable {
     private Label year;
 
     int value;
-
+    private byte[] image;
    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        recentlyAdded = recentlyAdded();
+        try {
+            recentlyAdded = recentlyAdded();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         initiateComponent();
 
 
@@ -112,12 +114,12 @@ public class CarPageController implements Initializable {
                 VBox cardbox = fxmlLoader.load();
                 CardController cardController = fxmlLoader.getController();
                 cardController.setData(car);
-
                 if(coul==3)
                 {
                     coul=0;
                     row++;
                 }
+
                 CarContainer.add(cardbox,coul++,row);
                 GridPane.setMargin(cardbox, new Insets(8));
             } catch (IOException e) {
@@ -137,6 +139,7 @@ public class CarPageController implements Initializable {
         });
     }
 
+
     private void initiateComponent() {
         p=new Pane();
         p=infoPane;
@@ -151,8 +154,7 @@ public class CarPageController implements Initializable {
         Bodyst=Bodystyle;
         distance=Distance;
       engine=Engine;
-      EconomyCity=EconomyRateCity;
-     EconomyHighway=EconomyRateHighway;
+
 
     }
     public void Return ()
@@ -161,39 +163,39 @@ public class CarPageController implements Initializable {
     }
 
 
-    private List<Car> recentlyAdded() {
-        List<Car> ls = new ArrayList<>();
+    public List<Car> recentlyAdded() throws SQLException {
+        List<Car> cars = new ArrayList<>();
+try{
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             Statement statement = connection.createStatement();
 
-        Car car1 = new Car();
-        car1.setYear("2012");
-        car1.setTransmission("auto");
-        car1.setImagSrc("C:/Users/PC/Documents/Database_project/DatabaseProject/src/main/resources/1720429035182-966x500.jpg");
-        car1.setPrice("250000$");
-        car1.setMake("skoda");
-        car1.setCondition("New");
-        car1.setModel("Octaiva");
-        car1.setBodyStyle("sedan");
-        car1.setDistance("12500km");
-        car1.setEngine("2000cc");
+            String sql = "SELECT year, transmission, image, price, make, condition, model, body_style, distance, engine_capacity " +
+                    "FROM Car ORDER BY id_car";
 
-        ls.add(car1);
+            ResultSet resultSet = statement.executeQuery(sql);
 
-        car1 = new Car();
-        car1.setYear("2012");
-        car1.setTransmission("auto");
-        car1.setImagSrc("C://Users//PC//Documents//Database_project//DatabaseProject//src//main//resources//car2.png");
-        car1.setPrice("250000$");
-        car1.setMake("skoda");
-        car1.setCondition("New");
-        car1.setModel("Octaiva");
-        car1.setBodyStyle("sedan");
-        car1.setDistance("12500km");
-        car1.setEngine("2000cc");
+            while (resultSet.next()) {
+                Car car = new Car();
+                car.setYear(String.valueOf(resultSet.getInt("year")));
+                car.setTransmission(resultSet.getString("transmission"));
+                car.setImageSrc(resultSet.getBytes("image"));
+                car.setPrice(String.valueOf(resultSet.getInt("price")));
+                car.setMake(resultSet.getString("make"));
+                car.setCondition(resultSet.getString("condition"));
+                car.setModel(resultSet.getString("model"));
+                car.setBodyStyle(resultSet.getString("body_style"));
+                car.setDistance(String.valueOf(resultSet.getInt("distance")));
+                car.setEngine(String.valueOf(resultSet.getInt("engine_capacity")));
 
-        ls.add(car1);
+                cars.add(car);
 
+            }
 
-        return ls;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return cars;
     }
 
 

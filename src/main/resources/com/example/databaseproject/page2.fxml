@@ -9,21 +9,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: #F8F8F8;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.SellCar">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: #F8F8F8;" stylesheets="@textfiled.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.SellCar">
    <children>
+      <ImageView fitHeight="710.0" fitWidth="1184.0" layoutY="150.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../login.gif" />
+         </image>
+      </ImageView>
       <Pane prefHeight="150.0" prefWidth="1184.0" style="-fx-background-color: #055081;">
          <children>
-            <TextArea layoutX="99.0" layoutY="45.0" prefHeight="57.0" prefWidth="362.0" style="-fx-background-color: #FFFFFF;" text="Sell ​​your car easily with ">
+            <TextArea layoutX="99.0" layoutY="43.0" prefHeight="81.0" prefWidth="396.0" style="-fx-background-color: #FFFFFF;" text="Sell ​​your car easily with ">
                <font>
-                  <Font name="System Bold" size="19.0" />
+                  <Font name="Harlow Solid Italic" size="26.0" />
                </font>
             </TextArea>
-            <TextArea layoutX="622.0" layoutY="34.0" prefHeight="77.0" prefWidth="409.0" text="Welcome to Car Go. On this page, you can offer your car for sale,&#10; knowing that it willfirst be submitted to the official for approval &#10;of the offer.&#10;Enter your car information and click the button below.">
+            <TextArea layoutX="622.0" layoutY="34.0" prefHeight="87.0" prefWidth="544.0" text="Welcome to Car Go. On this page, you can offer your car for sale,&#10; knowing that it willfirst be submitted to the official for approval &#10;of the offer.&#10;Enter your car information and click the button below.">
                <font>
-                  <Font name="System Bold Italic" size="12.0" />
+                  <Font name="Castellar" size="12.0" />
                </font>
             </TextArea>
-            <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="306.0" layoutY="22.0" pickOnBounds="true">
+            <ImageView fitHeight="128.0" fitWidth="150.0" layoutX="345.0" layoutY="34.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../12121.png" />
                </image>
@@ -45,27 +50,27 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField fx:id="body" layoutX="450.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Body Style">
+      <TextField fx:id="body" layoutX="724.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="Body Style">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></TextField>
-      <TextField fx:id="distance" layoutX="450.0" layoutY="340.0" prefHeight="40.0" prefWidth="185.0" promptText="Distance">
+      <TextField fx:id="distance" layoutX="724.0" layoutY="332.0" prefHeight="40.0" prefWidth="185.0" promptText="Distance">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField fx:id="condition" layoutX="450.0" layoutY="420.0" prefHeight="40.0" prefWidth="185.0" promptText="Condition">
+      <TextField fx:id="condition" layoutX="724.0" layoutY="409.0" prefHeight="40.0" prefWidth="185.0" promptText="Condition">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField fx:id="trans" layoutX="449.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Trans">
+      <TextField fx:id="trans" layoutX="724.0" layoutY="500.0" prefHeight="40.0" prefWidth="185.0" promptText="Trans">
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <Button layoutX="449.0" layoutY="685.0" mnemonicParsing="false" onAction="#addCar" prefHeight="40.0" prefWidth="186.0" stylesheets="@test2.css" text="Submit">
+      <Button layoutX="396.0" layoutY="657.0" mnemonicParsing="false" onAction="#addCar" prefHeight="40.0" prefWidth="186.0" stylesheets="@test2.css" text="Submit">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <TextField editable="false" layoutX="60.0" layoutY="204.0" prefHeight="31.0" prefWidth="396.0" text="Fill out the information below to list your car for sale.">
+      <TextField editable="false" layoutX="14.0" layoutY="156.0" prefHeight="31.0" prefWidth="396.0" text="Fill out the information below to list your car for sale.">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -74,12 +79,12 @@
          <font>
             <Font size="15.0" />
          </font></TextField>
-      <TextField fx:id="model" layoutX="449.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="model">
+      <TextField fx:id="model" layoutX="724.0" layoutY="580.0" prefHeight="40.0" prefWidth="185.0" promptText="model">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="color" layoutX="833.0" layoutY="260.0" prefHeight="40.0" prefWidth="185.0" promptText="color">
+      <TextField fx:id="color" layoutX="406.0" layoutY="260.0" prefHeight="42.0" prefWidth="166.0" promptText="color">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

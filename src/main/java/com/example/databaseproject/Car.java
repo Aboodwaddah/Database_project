@@ -1,130 +1,127 @@
 package com.example.databaseproject;
 
+import javafx.scene.image.Image;
 
-public class Car
-{
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
-    private String ImagSrc;
-    private String Year;
-    private String Make;
-    private String Color;
-    private String Price;
+public class Car {
+    private byte[] imageSrc; // Changed field name to follow Java naming conventions
+    private String year;
+    private String make;
+    private String color;
+    private String price;
 
-    private String Model;
-    private String Bodystyle;
-    private String Condition;
-    private String Distance;
-    private String Transmission;
-    private String Engine;
-    private String FuelType;
-    private String IdCar;
+    private String model;
+    private String bodyStyle;
+    private String condition;
+    private String distance;
+    private String transmission;
+    private String engine;
+    private String fuelType;
+    private String idCar;
 
     public String getIdCar() {
-        return IdCar;
+        return idCar;
     }
 
     public void setIdCar(String idCar) {
-        IdCar = idCar;
+        this.idCar = idCar;
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
     public void setModel(String model) {
-        Model = model;
+        this.model = model;
     }
 
     public String getBodyStyle() {
-        return Bodystyle;
+        return bodyStyle;
     }
 
     public void setBodyStyle(String bodyStyle) {
-        Bodystyle = bodyStyle;
+        this.bodyStyle = bodyStyle;
     }
 
     public String getCondition() {
-        return Condition;
+        return condition;
     }
 
     public void setCondition(String condition) {
-        Condition = condition;
+        this.condition = condition;
     }
 
     public String getDistance() {
-        return Distance;
+        return distance;
     }
 
     public void setDistance(String distance) {
-        Distance = distance;
+        this.distance = distance;
     }
 
     public String getTransmission() {
-        return Transmission;
+        return transmission;
     }
 
     public void setTransmission(String transmission) {
-        Transmission = transmission;
+        this.transmission = transmission;
     }
 
     public String getEngine() {
-        return Engine;
+        return engine;
     }
 
     public void setEngine(String engine) {
-        Engine = engine;
+        this.engine = engine;
     }
 
     public String getFuelType() {
-        return FuelType;
+        return fuelType;
     }
 
     public void setFuelType(String fuelType) {
-        FuelType = fuelType;
+        this.fuelType = fuelType;
     }
-
 
     public String getPrice() {
-        return Price;
+        return price;
     }
 
-    public void setPrice(String P) {
-        Price = P;
-    }
-
-
-    public void setImagSrc(String imagSrc) {
-        ImagSrc = imagSrc;
-    }
-    public String getImagSrc()
-    {
-        return ImagSrc;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public String getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(String year) {
-        Year = year;
+        this.year = year;
     }
 
     public String getMake() {
-        return Make;
+        return make;
     }
 
     public void setMake(String make) {
-        Make = make;
+        this.make = make;
     }
 
     public String getColor() {
-        return Color;
+        return color;
     }
 
     public void setColor(String color) {
-        Color = color;
+        this.color = color;
     }
 
+    public byte[] getImageSrc() {
+        return imageSrc;
+    }
 
-
+    public void setImageSrc(byte[] imageSrc) {
+        this.imageSrc = imageSrc;
+    }
 }

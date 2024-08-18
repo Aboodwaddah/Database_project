@@ -1,0 +1,20 @@
+.text-field {
+    -fx-background-color: #186093; /* White background */
+    -fx-border-color: #fff8f8;     /* Light grey border */
+    -fx-border-width: 1px;         /* 1px border width */
+    -fx-border-radius: 5px;        /* Rounded corners */
+    -fx-padding: 10px;             /* Padding inside the text field */
+    -fx-font-size: 14px;           /* Font size */
+    -fx-text-fill: #333333;        /* Text color */
+}
+
+/* Placeholder text styling */
+.text-field .text-field .prompt-text {
+    -fx-text-fill: #ffffff; /* Grey color for placeholder text */
+}
+
+/* Focused state styling */
+.text-field:focused {
+    -fx-border-color: #b92424; /* Green border when focused */
+    -fx-background-color: #f9f9f9; /* Slightly different background on focus */
+}

@@ -16,17 +16,22 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import org.postgresql.Driver;
 import org.w3c.dom.Text;
-
+import java.io.File;
+import java.io.FileInputStream;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.ResourceBundle;
 import java.util.Locale;
 public class Admin  implements Initializable{
@@ -84,7 +89,6 @@ public class Admin  implements Initializable{
     private TextField engine;
     @FXML
     private TextField fuel;
-
     @FXML
     private ImageView showroom;
     @FXML
@@ -147,7 +151,8 @@ public class Admin  implements Initializable{
             "tesla",
             "subaru"
     };
-    private final String[] CarStyle = {
+    private final String[] CarStyle =
+            {
             "",
             "sedan",
             "suv",
@@ -157,25 +162,86 @@ public class Admin  implements Initializable{
             "wagon",
             "pickup",
             "van"
-    };
+            };
     @FXML
     private void insertCar() {
+
         try {
-            DriverManager.registerDriver(new Driver());
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-            Statement statement = connection.createStatement();
-            String sql = "INSERT INTO Car (id_car, make, model, condition, year, price, Engine_capacity, color, fuel_type, transmission, body_style, distance, fuel_aconomy_rating_city, fuel_aconomy_rating_highway) " +
-                    "VALUES (" + Integer.parseInt(this.idcar.getText()) + ", '" + this.make.getText() + "', '" + this.model.getText() + "', '" + this.condition.getText() + "', "
-                    + Integer.parseInt(this.year.getText()) + ", " + Integer.parseInt(this.price.getText()) + ", "
-                    + Integer.parseInt(this.engine.getText()) + ", '" + this.color.getText() + "', '"
-                    + this.fuel.getText() + "', '" + this.trans.getText() + "', '" + this.body.getText() + "', "
-                    + Integer.parseInt(this.distance.getText()) + " )";
-            statement.executeUpdate(sql);
+            DriverManager.registerDriver(new org.postgresql.Driver());
+
+            String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance, image) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+
+            statement.setString(1, this.make.getText());
+            statement.setString(2, this.model.getText());
+            statement.setString(3, this.condition.getText());
+            statement.setInt(4, Integer.parseInt(this.year.getText()));
+            statement.setInt(5, Integer.parseInt(this.price.getText()));
+            statement.setInt(6, Integer.parseInt(this.engine.getText()));
+            statement.setString(7, this.color.getText());
+            statement.setString(8, this.fuel.getText());
+            statement.setString(9, this.trans.getText());
+            statement.setString(10, this.body.getText());
+            statement.setInt(11, Integer.parseInt(this.distance.getText()));
+
+            // Handle the image file
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png"));
+            fileChooser.showOpenDialog(null);
+            File file = fileChooser.getSelectedFile();
+            if (file != null) {
+                statement.setBinaryStream(12, new FileInputStream(file));
+            } else {
+
+                statement.setNull(12, java.sql.Types.BINARY);
+            }
+
+
+            statement.executeUpdate();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Car added successfully");
+            alert.showAndWait();
+            connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
+        private String encodeFileToBase64(File file) throws IOException {
+        FileInputStream fileInputStream = new FileInputStream(file);
+        byte[] bytes = new byte[(int) file.length()];
+        fileInputStream.read(bytes);
+        return Base64.getEncoder().encodeToString(bytes);
+    }
+
+    @FXML
+    private  void addPhoto() throws SQLException, FileNotFoundException {
+
+
+       /* if (file != null) {
+            DriverManager.registerDriver(new Driver());
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            FileInputStream fis = new FileInputStream(file);
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO car (id_car, image) VALUES (?, ?)");
+            ps.setInt(1, 1);
+            ps.setBinaryStream(2, fis,(int) file.length());
+            ps.executeUpdate();
+            ps.close();
+connection.close();
+        }
+    }
+    */
+
+    }
 
     @FXML
     public void ShowInformationCar()
@@ -546,9 +612,17 @@ if(selectedCar !=null)
 
 
     }
+    public void returnFromAddCar()
+    {
+        addcar.setVisible(false);
+        CarTableView.setVisible(false);
+    }
 
-
-
+    public void returnFromTableview()
+    {
+        addcar.setVisible(false);
+        CarTableView.setVisible(false);
+    }
 
 
 
