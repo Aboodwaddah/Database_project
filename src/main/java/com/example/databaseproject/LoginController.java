@@ -33,6 +33,9 @@ public class LoginController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private Button employeeButton;
     @FXML
     public AnchorPane ap;
     @FXML
@@ -105,6 +108,19 @@ public String x;
 
             } else if ("employee".equals(personType)) {
 
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
+                root = loader.load();
+                AnchorPane ap = (AnchorPane) loader.getNamespace().get("ap");
+                Parent list1Root = FXMLLoader.load(getClass().getResource("list1.fxml"));
+                ap.getChildren().clear();
+                ap.getChildren().add(list1Root);
+
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+                employeeButton.setVisible(true);
+
             } else if ("customer".equals(personType)) {
 
                 userid.setText(String.valueOf(rs.getInt("id_person")));
@@ -136,6 +152,7 @@ public String x;
 
     @FXML
     private void page1(ActionEvent event) throws IOException {
+
         loadPage("page1");
     }
 
