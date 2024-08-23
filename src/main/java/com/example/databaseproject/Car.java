@@ -6,12 +6,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 public class Car {
-    private byte[] imageSrc; // Changed field name to follow Java naming conventions
+    private byte[] imageSrc;
     private String year;
     private String make;
     private String color;
     private String price;
-
     private String model;
     private String bodyStyle;
     private String condition;
@@ -77,9 +76,7 @@ public class Car {
         this.engine = engine;
     }
 
-    public String getFuelType() {
-        return fuelType;
-    }
+
 
     public void setFuelType(String fuelType) {
         this.fuelType = fuelType;
@@ -124,4 +121,6 @@ public class Car {
     public void setImageSrc(byte[] imageSrc) {
         this.imageSrc = imageSrc;
     }
+
+
 }

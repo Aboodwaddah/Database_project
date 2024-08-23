@@ -13,11 +13,12 @@ public class Cars {
     private StringProperty color;
     private StringProperty fuelType;
     private StringProperty transmission;
+    private StringProperty CarPend;
     private StringProperty bodyStyle;
     private IntegerProperty distance;
 
     public Cars(int idCar, String make, String model, String condition, int year, int price, int engineCapacity,
-                String color, String fuelType, String transmission, String bodyStyle, int distance) {
+                String color, String fuelType, String transmission, String bodyStyle, int distance,String CarPend) {
         this.idCar = new SimpleIntegerProperty(idCar);
         this.make = new SimpleStringProperty(make);
         this.model = new SimpleStringProperty(model);
@@ -30,9 +31,10 @@ public class Cars {
         this.transmission = new SimpleStringProperty(transmission);
         this.bodyStyle = new SimpleStringProperty(bodyStyle);
         this.distance = new SimpleIntegerProperty(distance);
+        this.CarPend =new SimpleStringProperty(CarPend);
     }
+    public StringProperty PendingCarProperty() { return CarPend; }
 
-    // Property accessors
     public IntegerProperty idCarProperty() { return idCar; }
     public StringProperty makeProperty() { return make; }
     public StringProperty modelProperty() { return model; }
@@ -46,7 +48,7 @@ public class Cars {
     public StringProperty bodyStyleProperty() { return bodyStyle; }
     public IntegerProperty distanceProperty() { return distance; }
 
-    // Property setters
+    public void setPending(String CarPend) { this.CarPend.set(CarPend); }
     public void setMake(String make) { this.make.set(make); }
     public void setModel(String model) { this.model.set(model); }
     public void setCondition(String condition) { this.condition.set(condition); }

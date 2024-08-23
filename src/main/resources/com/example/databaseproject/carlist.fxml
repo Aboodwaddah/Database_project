@@ -24,7 +24,7 @@
             </Pane>
             <Pane layoutX="43.0" layoutY="169.0" prefHeight="129.0" prefWidth="319.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 25px;">
                <children>
-                  <Label fx:id="Bodystyle" layoutX="13.0" layoutY="36.0" prefHeight="25.0" prefWidth="48.0" text="sedan">
+                  <Label fx:id="Bodystyle" layoutX="13.0" layoutY="36.0" prefHeight="25.0" prefWidth="69.0" text="sedan">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

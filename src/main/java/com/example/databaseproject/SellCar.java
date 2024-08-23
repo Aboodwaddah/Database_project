@@ -60,8 +60,8 @@ public class SellCar {
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
 
-        String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance, image) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance, image,pending) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
         PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -77,6 +77,7 @@ public class SellCar {
         statement.setString(9, this.trans.getText());
         statement.setString(10, this.body.getText());
         statement.setInt(11, Integer.parseInt(this.distance.getText()));
+        statement.setString(13,"pending");
 
         // Handle the image file
         JFileChooser fileChooser = new JFileChooser();
