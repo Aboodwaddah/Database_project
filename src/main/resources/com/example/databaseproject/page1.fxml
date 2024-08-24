@@ -274,7 +274,7 @@
                         <Font name="System Bold" size="19.0" />
                      </font>
                   </Button>
-                  <Button layoutX="286.0" layoutY="365.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="245.0" style="-fx-background-color: white; -fx-border-color: black;" text="Connect with us">
+                  <Button layoutX="286.0" layoutY="365.0" mnemonicParsing="false" onAction="#ContactUs" prefHeight="54.0" prefWidth="245.0" style="-fx-background-color: white; -fx-border-color: black;" text="Connect with us">
                      <graphic>
                         <ImageView fitHeight="39.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -303,7 +303,31 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Button>
-                  <Label fx:id="hiddenid" layoutX="778.0" layoutY="84.0" text="Label" />
+                  <Label fx:id="hiddenid" layoutX="778.0" layoutY="84.0" opacity="0.0" text="Label" />
+                  <Pane fx:id="Contact" layoutX="55.0" layoutY="516.0" prefHeight="132.0" prefWidth="462.0" style="-fx-background-color: silver; -fx-border-color: red;" visible="false">
+                     <children>
+                        <Label layoutX="8.0" layoutY="14.0" prefHeight="34.0" prefWidth="95.0" text="Email :">
+                           <font>
+                              <Font name="Fredoka One" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Email" layoutX="93.0" layoutY="17.0" prefHeight="29.0" prefWidth="303.0">
+                           <font>
+                              <Font name="Fredoka One" size="19.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="4.0" layoutY="66.0" prefHeight="34.0" prefWidth="198.0" text="phone number :">
+                           <font>
+                              <Font name="Fredoka One" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Phone" layoutX="187.0" layoutY="71.0" prefHeight="29.0" prefWidth="218.0">
+                           <font>
+                              <Font name="Fredoka One" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
          </children></Pane>

@@ -119,7 +119,7 @@ public String x;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-                employeeButton.setVisible(true);
+
 
             } else if ("customer".equals(personType)) {
 
@@ -136,6 +136,7 @@ public String x;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
+
             } else {
                 System.out.println("User not found or incorrect credentials.");
             }

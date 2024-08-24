@@ -845,7 +845,6 @@ if(selectedCar !=null)
 
 
 
-
     public void setReviews() throws SQLException {
 
 
@@ -1026,8 +1025,8 @@ ExpensesTable.getItems().clear();
             String delete = "DELETE FROM expenses WHERE id_expenses = " + selectedId + ";";
             statement.executeUpdate(delete);
 
-
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             e.printStackTrace();
         }
     }

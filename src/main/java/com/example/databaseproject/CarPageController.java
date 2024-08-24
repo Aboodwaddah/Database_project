@@ -110,6 +110,12 @@ public Label getuserid;
     private Label year;
     @FXML
     private  Label id;
+    @FXML
+    private Label Phone;
+    @FXML
+    private Label Email;
+    @FXML
+    private  Pane Contact;
     public static int id1;
     int value;
     private byte[] image;
@@ -186,6 +192,7 @@ public Label getuserid;
           }
 
     public void Return() {
+        Contact.setVisible(false);
         infoPane.setVisible(false);
     }
 
@@ -391,6 +398,23 @@ public Label getuserid;
 
             }
         }
+    }
+    @FXML
+    public void ContactUs() throws SQLException {
+        Contact.setVisible(true);
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Statement statement= connection.createStatement();;
+        DriverManager.registerDriver(new org.postgresql.Driver());
+        String sql ="select email,phone from person where person_type='employee' ORDER BY RANDOM() LIMIT 1;";
+        ResultSet resultSet= statement.executeQuery(sql);
+        while(resultSet.next())
+        {
+        Phone.setText(resultSet.getString("phone"));
+        Email.setText(resultSet.getString("email"));
+        }
+        resultSet.close();
+        statement.close();
+        connection.close();
     }
 
 

@@ -12,7 +12,7 @@
    <children>
       <Pane prefHeight="74.0" prefWidth="1184.0" style="-fx-background-color: BLACK;">
          <children>
-            <Button fx:id="employeeButton" layoutX="246.0" layoutY="25.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="employeeButton" layoutX="321.0" layoutY="16.0" mnemonicParsing="false" text="Button" visible="false" />
             <ImageView fitHeight="80.0" fitWidth="123.0" layoutX="14.0" layoutY="-3.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../12121.png" />
