@@ -809,7 +809,7 @@ String t="false";
 
     private void DeletfromDB(Cars car) throws SQLException {
         int selectedId = car.idCarProperty().get();
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres1", "postgres", "1234");
         Statement statement = connection.createStatement();
         String delete = "DELETE FROM car WHERE id_car = " + selectedId + ";";
         statement.executeUpdate(delete);

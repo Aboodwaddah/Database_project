@@ -120,6 +120,47 @@ public Label getuserid;
     int value;
     private byte[] image;
 
+    @FXML
+    private Button butEmp;
+
+    @FXML
+    private Pane paneEmp;
+
+    @FXML
+    private TableView<Cars> CarInfo;
+
+    @FXML
+    private TableColumn<Cars, Integer> IdColumn;
+    @FXML
+    private TableColumn<Cars, String> MakeColumn;
+    @FXML
+    private TableColumn<Cars, String> ModelColumn;
+    @FXML
+    private TableColumn<Cars, String> ConditionColumn;
+    @FXML
+    private TableColumn<Cars, Integer> YearColumn;
+    @FXML
+    private TableColumn<Cars,String> PendCarColumn;
+    @FXML
+    private TableColumn<Cars, Integer> PriceColumn;
+    @FXML
+    private TableColumn<Cars, Integer> EngineColumn;
+    @FXML
+    private TableColumn<Cars, String> ColorColumn;
+    @FXML
+    private TableColumn<Cars, String> FuelColumn;
+    @FXML
+    private TableColumn<Cars, String> TransColumn;
+    @FXML
+    private TableColumn<Cars, String> BodystyleColumn;
+    @FXML
+    private TableColumn<Cars, Integer> DistanceColumn;
+
+    public void setButtonEmployee(ActionEvent event) {
+        paneEmp.setVisible(true);
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -170,6 +211,21 @@ public Label getuserid;
         for (int year = 2000; year <= 2024; year++) {
             Year.getItems().add(String.valueOf(year));
         }
+        IdColumn.setCellValueFactory(cellData -> cellData.getValue().idCarProperty().asObject());
+        MakeColumn.setCellValueFactory(cellData -> cellData.getValue().makeProperty());
+        ModelColumn.setCellValueFactory(cellData -> cellData.getValue().modelProperty());
+        ConditionColumn.setCellValueFactory(cellData -> cellData.getValue().conditionProperty());
+        YearColumn.setCellValueFactory(cellData -> cellData.getValue().yearProperty().asObject());
+        PriceColumn.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+        EngineColumn.setCellValueFactory(cellData -> cellData.getValue().engineCapacityProperty().asObject());
+        ColorColumn.setCellValueFactory(cellData -> cellData.getValue().colorProperty());
+        FuelColumn.setCellValueFactory(cellData -> cellData.getValue().fuelTypeProperty());
+        TransColumn.setCellValueFactory(cellData -> cellData.getValue().transmissionProperty());
+        BodystyleColumn.setCellValueFactory(cellData -> cellData.getValue().bodyStyleProperty());
+        DistanceColumn.setCellValueFactory(cellData -> cellData.getValue().distanceProperty().asObject());
+        PendCarColumn.setCellValueFactory(cellData -> cellData.getValue().PendingCarProperty());
+        fillTableWithCars();
+
 
     }
 
@@ -397,6 +453,49 @@ public Label getuserid;
                 e.printStackTrace();
 
             }
+        }
+    }
+
+    public void setSelected() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        DriverManager.registerDriver(new org.postgresql.Driver());
+        Statement statement = connection.createStatement();
+        String str="select from person where person_type='employee'";
+    }
+
+    @FXML
+    private void fillTableWithCars()
+    {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM car c order by c.id_car");
+
+            ObservableList<Cars> cars = FXCollections.observableArrayList();
+            while (resultSet.next()) {
+                Cars car = new Cars(
+                        resultSet.getInt("id_car"),
+                        resultSet.getString("make"),
+                        resultSet.getString("model"),
+                        resultSet.getString("condition"),
+                        resultSet.getInt("year"),
+                        resultSet.getInt("price"),
+                        resultSet.getInt("engine_capacity"),
+                        resultSet.getString("color"),
+                        resultSet.getString("fuel_type"),
+                        resultSet.getString("transmission"),
+                        resultSet.getString("body_style"),
+                        resultSet.getInt("distance"),
+                        resultSet.getString("pending")
+                );
+                cars.add(car);
+            }
+
+            CarInfo.setItems(cars);
+
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
     @FXML

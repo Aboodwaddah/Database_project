@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" stylesheets="@combo.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.CarPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="860.0" prefWidth="1184.0" stylesheets="@combo.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.CarPageController">
    <children>
       <Pane layoutX="72.0" layoutY="8.0" prefHeight="149.0" prefWidth="1053.0" style="-fx-background-color: transpare; -fx-border-color: black; -fx-border-width: 3px;">
          <children>
@@ -41,7 +43,7 @@
                </font>
             </Label>
             <Slider fx:id="mySlider" layoutX="699.0" layoutY="38.0" max="1000000.0" prefHeight="57.0" prefWidth="331.0" />
-            <Button layoutX="786.0" layoutY="90.0" mnemonicParsing="false" onAction="#searchCar" prefHeight="35.0" prefWidth="133.0" stylesheets="@test2.css" text="Search">
+            <Button layoutX="714.0" layoutY="92.0" mnemonicParsing="false" onAction="#searchCar" prefHeight="35.0" prefWidth="133.0" stylesheets="@test2.css" text="Search">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -52,6 +54,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </TextField>
+            <Button fx:id="butEmp" layoutX="902.0" layoutY="96.0" mnemonicParsing="false" onAction="#setButtonEmployee" prefHeight="25.0" prefWidth="95.0" text="Button" />
          </children>
       </Pane>
       <VBox layoutX="15.0" layoutY="318.0" prefHeight="530.0" prefWidth="1154.0">
@@ -331,5 +334,35 @@
                </children>
             </AnchorPane>
          </children></Pane>
+      <Pane fx:id="paneEmp" prefHeight="860.0" prefWidth="1184.0" style="-fx-background-color: white;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="1184.0">
+               <children>
+                  <Button layoutX="189.0" layoutY="88.0" mnemonicParsing="false" onAction="#fillTableWithCars" text="Button" />
+               </children>
+            </Pane>
+            <ScrollPane layoutX="6.0" layoutY="224.0" prefHeight="633.0" prefWidth="1175.0">
+               <content>
+                  <TableView fx:id="CarInfo" prefHeight="1187.0" prefWidth="1176.0" stylesheets="@viewtable.css">
+                     <columns>
+                        <TableColumn fx:id="IdColumn" prefWidth="58.0" text="ID" />
+                        <TableColumn fx:id="MakeColumn" prefWidth="111.0" text="Make" />
+                        <TableColumn fx:id="ModelColumn" prefWidth="108.0" text="Model" />
+                        <TableColumn fx:id="YearColumn" minWidth="0.0" prefWidth="67.0" text="Year" />
+                        <TableColumn fx:id="ConditionColumn" minWidth="9.0" prefWidth="105.0" text="Condition" />
+                        <TableColumn fx:id="EngineColumn" prefWidth="78.0" text="Engine" />
+                        <TableColumn fx:id="BodystyleColumn" prefWidth="101.0" text="BodyStyle" />
+                        <TableColumn fx:id="ColorColumn" prefWidth="87.0" text="Color" />
+                        <TableColumn fx:id="FuelColumn" prefWidth="87.0" text="FuelType" />
+                        <TableColumn fx:id="TransColumn" prefWidth="109.0" text="Transmission" />
+                        <TableColumn fx:id="PriceColumn" prefWidth="54.0" text="Price" />
+                        <TableColumn fx:id="DistanceColumn" prefWidth="82.0" text="Distance" />
+                        <TableColumn fx:id="PendCarColumn" prefWidth="127.0" text="Pending" />
+                     </columns>
+                  </TableView>
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
