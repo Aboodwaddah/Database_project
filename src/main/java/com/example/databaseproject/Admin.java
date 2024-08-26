@@ -191,7 +191,7 @@ public class Admin  implements Initializable {
     private ImageView ExpensesPic;
     @FXML
     private Pane expensesPane;
-    private final String[] conditions = {"", "new", "used", "rent"};
+    private final String[] conditions = {"", "new", "used"};
     private final String[] CarsType = {
             "",
             "bmw",
@@ -265,6 +265,9 @@ public class Admin  implements Initializable {
 
 
             statement.executeUpdate();
+            connection.commit();
+            connection.close();
+
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success");
@@ -799,6 +802,7 @@ public class Admin  implements Initializable {
 
             CarInfo.setItems(cars);
 
+
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -900,6 +904,8 @@ public class Admin  implements Initializable {
 
             CarInfo.setItems(FXCollections.observableArrayList(carList));
 
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -971,6 +977,7 @@ public class Admin  implements Initializable {
                 label.setStyle("-fx-font-weight: bold; -fx-font-size: 18px;");
                 vbox.getChildren().add(label);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -1192,6 +1199,7 @@ public class Admin  implements Initializable {
             }
 
             SalesTable.setItems(sales);
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -1264,6 +1272,7 @@ public class Admin  implements Initializable {
             SalesTable.getItems().remove(selectedSales);
             DeleteSales(selectedSales);
         }
+
     }
 
 
@@ -1289,6 +1298,7 @@ public class Admin  implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
 
@@ -1320,6 +1330,7 @@ public class Admin  implements Initializable {
         }
 
         SalesTable.setItems(sales);
+        connection.close();
     }
 
 }

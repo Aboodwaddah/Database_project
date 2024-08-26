@@ -1,6 +1,7 @@
 package com.example.databaseproject;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -70,7 +71,8 @@ public class LoginController implements Initializable {
     private Pane SignupPane;
     @FXML
     private Label userid;
-
+    @FXML
+    private Label WelcomeName;
 
 public String x;
 
@@ -82,7 +84,7 @@ public String x;
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 
         try (PreparedStatement pstmt = conn.prepareStatement(
-                "SELECT person_type,id_person FROM person WHERE username = ? AND password = ?")) {
+                "SELECT person_type,id_person,name FROM person WHERE username = ? AND password = ?")) {
             pstmt.setString(1, this.Username.getText());
             pstmt.setInt(2, Integer.parseInt(this.Password.getText()));
 
@@ -91,7 +93,7 @@ public String x;
             if (rs.next()) {
                 personType = rs.getString("person_type");
                 System.out.println("Person type retrieved: " + personType);
-           CarPageController.id1=rs.getInt("id_person");
+                CarPageController.id1 = rs.getInt("id_person");
             } else {
                 System.out.println("No user found with the given username and password.");
             }
@@ -123,28 +125,64 @@ public String x;
             } else if ("customer".equals(personType)) {
 
                 userid.setText(String.valueOf(rs.getInt("id_person")));
-               System.out.println(userid.getText());
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
-                root = loader.load();
-                AnchorPane ap = (AnchorPane) loader.getNamespace().get("ap");
-                Parent list1Root = FXMLLoader.load(getClass().getResource("list1.fxml"));
-                ap.getChildren().clear();
-                ap.getChildren().add(list1Root);
+                System.out.println(userid.getText());
 
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
+
+                FXMLLoader loader1 = new FXMLLoader(getClass().getResource("Welcome.fxml"));
+                Parent welcomeRoot = loader1.load();
+
+
+                Label WelcomeName = (Label) loader1.getNamespace().get("WelcomeName");
+
+                WelcomeName.setText(rs.getString("name"));
+
+
+                PauseTransition changeTextPause = new PauseTransition(Duration.seconds(3));
+                changeTextPause.setOnFinished(event1 -> {
+                    try {
+                        WelcomeName.setText(rs.getString("name"));
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene welcomeScene = new Scene(welcomeRoot);
+                stage.setScene(welcomeScene);
                 stage.show();
+                stage.setResizable(false);
+
+                PauseTransition switchScenePause = new PauseTransition(Duration.seconds(5));
+                switchScenePause.setOnFinished(e -> {
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("list.fxml"));
+                        Parent root = loader.load();
+
+                        AnchorPane ap = (AnchorPane) loader.getNamespace().get("ap");
+                        Parent list1Root = FXMLLoader.load(getClass().getResource("list1.fxml"));
+                        ap.getChildren().clear();
+                        ap.getChildren().add(list1Root);
+
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+
+
+                switchScenePause.play();
+
             } else {
                 System.out.println("User not found or incorrect credentials.");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-
     }
 
-    @FXML
+
+
+            @FXML
     private void Home(ActionEvent event) throws IOException {
         loadPage("list1");
     }

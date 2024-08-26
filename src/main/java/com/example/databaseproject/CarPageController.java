@@ -22,12 +22,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CarPageController implements Initializable {
-
+    @FXML
+    ChoiceBox<String> StyleForCar;
+    @FXML
+    private TextField IDForCar;
+    @FXML
+    private ChoiceBox<String> MakeForCar;
+    @FXML
+    private ChoiceBox<String> ConditionForCar;
+    @FXML
+    private Label PriceOfCar;
+    @FXML
+    private Slider PriceForCar1;
     @FXML
     private ComboBox<String> Distance1;
     @FXML
@@ -247,9 +260,47 @@ public class CarPageController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        PriceForCar1.valueProperty().addListener((observable, oldValue, newValue) -> {
+            NumberFormat numberFormat = NumberFormat.getInstance(Locale.ENGLISH);
+            String formattedPrice = numberFormat.format(newValue.intValue());
+            PriceOfCar.setText(formattedPrice);
+        });
+        ConditionForCar.getItems().addAll(conditions);
+        MakeForCar.getItems().addAll(CarsType);
+        StyleForCar.getItems().addAll(CarStyle);
     }
 
-
+    private final String[] conditions = {"", "new", "used"};
+    private final String[] CarsType = {
+            "",
+            "bmw",
+            "skoda",
+            "toyota",
+            "mercedes-benz",
+            "audi",
+            "honda",
+            "ford",
+            "volkswagen",
+            "hyundai",
+            "nissan",
+            "chevrolet",
+            "kia",
+            "volvo",
+            "tesla",
+            "subaru"
+    };
+    private final String[] CarStyle =
+            {
+                    "",
+                    "sedan",
+                    "suv",
+                    "hatchback",
+                    "convertible",
+                    "coupe",
+                    "wagon",
+                    "pickup",
+                    "van"
+            };
     private void initiateComponent() {
         //p = new Pane();
         p = infoPane;
@@ -370,6 +421,9 @@ public class CarPageController implements Initializable {
         connection.close();
     }
 
+
+
+
     private void updateCarContainer(ObservableList<Car> observableCarList) {
         CarContainer.getChildren().clear();
         int row = 1;
@@ -393,6 +447,76 @@ public class CarPageController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    @FXML
+    public void search(ActionEvent event) {
+        CarInfo.getItems().clear();
+
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             Statement statement = connection.createStatement()) {
+
+            double price = PriceForCar1.getValue();
+            String selectedMake = MakeForCar.getValue();
+            String idForCar = IDForCar.getText();
+            String cond = ConditionForCar.getValue();
+            String style = StyleForCar.getValue();
+
+            StringBuilder searchQuery = new StringBuilder("SELECT * FROM car WHERE 1=1");
+
+            if (idForCar != null && !idForCar.isEmpty()) {
+                searchQuery.append(" AND id_car = ").append(idForCar);
+            }
+
+            if (selectedMake != null && !selectedMake.isEmpty()) {
+                searchQuery.append(" AND make = '").append(selectedMake).append("'");
+            }
+
+            if (cond != null && !cond.isEmpty()) {
+                searchQuery.append(" AND condition = '").append(cond).append("'");
+            }
+
+            if (price > 0) {
+                searchQuery.append(" AND price BETWEEN 0 AND ").append(price);
+            }
+
+            if (style != null && !style.isEmpty()) {
+                searchQuery.append(" AND body_style = '").append(style).append("'");
+            }
+
+            System.out.println("Search Query: " + searchQuery.toString());
+
+            ResultSet resultSet = statement.executeQuery(searchQuery.toString());
+
+            ArrayList<Cars> carList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Cars car = new Cars(
+                        resultSet.getInt("id_car"),
+                        resultSet.getString("make"),
+                        resultSet.getString("model"),
+                        resultSet.getString("condition"),
+                        resultSet.getInt("year"),
+                        resultSet.getInt("price"),
+                        resultSet.getInt("engine_capacity"),
+                        resultSet.getString("color"),
+                        resultSet.getString("fuel_type"),
+                        resultSet.getString("transmission"),
+                        resultSet.getString("body_style"),
+                        resultSet.getInt("distance"),
+                        resultSet.getString("pending"),
+                        resultSet.getString("sell")
+                );
+                carList.add(car);
+            }
+
+            CarInfo.setItems(FXCollections.observableArrayList(carList));
+
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -454,7 +578,6 @@ public class CarPageController implements Initializable {
                 try (PreparedStatement insertStatement = connection.prepareStatement(insertSql)) {
                     insertStatement.setInt(1, Integer.parseInt(hiddenid.getText()));
                     insertStatement.setInt(2, Integer.parseInt(String.valueOf(id1)));
-
                     insertStatement.executeUpdate();
 
                 }
@@ -465,7 +588,7 @@ public class CarPageController implements Initializable {
                     updateStatement.executeUpdate();
 
                 }
-                connection.commit();
+
                 Sales();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -572,6 +695,7 @@ public class CarPageController implements Initializable {
                     }
                 }
             }
+
         }
 
         return null;
@@ -594,6 +718,8 @@ public class CarPageController implements Initializable {
             butEmp.setVisible(false);
 
         }
+
+        connection.close();
     }
 
 
