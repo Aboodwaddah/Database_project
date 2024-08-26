@@ -4,7 +4,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,9 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.postgresql.Driver;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,8 +27,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CarPageController implements Initializable {
-    @FXML
-    public Label getuserid;
+
     @FXML
     private ComboBox<String> Distance1;
     @FXML
@@ -559,17 +554,20 @@ public class CarPageController implements Initializable {
 
     private Image getImageFromDatabase(int idCar) throws SQLException, IOException {
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234")) {
-            DriverManager.registerDriver(new Driver());
+
+
+
             String sql = "SELECT image FROM car WHERE id_car = ?";
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, idCar);
+
                 try (ResultSet resultSet = statement.executeQuery()) {
                     if (resultSet.next()) {
                         byte[] imageBytes = resultSet.getBytes("image");
                         if (imageBytes != null) {
+
                             InputStream is = new ByteArrayInputStream(imageBytes);
-                            BufferedImage bufferedImage = ImageIO.read(is);
-                            return SwingFXUtils.toFXImage(bufferedImage, null);
+                            return new Image(is);
                         }
                     }
                 }
