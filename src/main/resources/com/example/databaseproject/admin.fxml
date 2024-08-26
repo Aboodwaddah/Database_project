@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
+<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
    <children>
       <Pane layoutX="1194.0" prefHeight="900.0" prefWidth="5.0" style="-fx-background-color: #8f0d0d;" />
       <Pane layoutY="-1.0" prefHeight="75.0" prefWidth="1199.0" style="-fx-background-color: #8f0d0d;">
@@ -43,7 +43,7 @@
             </Pane>
          </children>
       </Pane>
-      <Pane layoutX="44.0" layoutY="142.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
+      <Pane layoutX="69.0" layoutY="228.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
             <ImageView fx:id="showroom" fitHeight="188.0" fitWidth="266.0" layoutX="10.0" layoutY="6.0" onMouseClicked="#PageAddCar" onMouseEntered="#changePhoto" onMouseExited="#changePhoto2" pickOnBounds="true">
                <image>
@@ -52,7 +52,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="775.0" layoutY="450.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
+      <Pane layoutX="430.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
             <ImageView fx:id="ExpensesPic" fitHeight="188.0" fitWidth="272.0" layoutX="6.0" layoutY="7.0" onMouseClicked="#EnterExpensesPage" onMouseEntered="#changePhoto7" onMouseExited="#changePhoto8" pickOnBounds="true">
                <image>
@@ -60,7 +60,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="151.0" layoutY="450.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
+      <Pane layoutX="69.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
             <ImageView fitHeight="177.0" fitWidth="272.0" layoutX="7.0" layoutY="12.0" onMousePressed="#GoToSales" pickOnBounds="true">
                <image>
@@ -68,7 +68,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="840.0" layoutY="142.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
+      <Pane layoutX="775.0" layoutY="228.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
             <ImageView fx:id="review" fitHeight="188.0" fitWidth="272.0" layoutX="6.0" layoutY="6.0" onMouseClicked="#goToReview" onMouseEntered="#changePhoto5" onMouseExited="#changePhoto6" pickOnBounds="true">
                <image>
@@ -76,7 +76,7 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="447.0" layoutY="142.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
+      <Pane layoutX="430.0" layoutY="228.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
             <ImageView fx:id="CarTable" fitHeight="188.0" fitWidth="272.0" layoutX="7.0" layoutY="6.0" onMouseClicked="#PaneCarTableView" onMouseEntered="#changePhoto3" onMouseExited="#changePhoto4" pickOnBounds="true">
                <image>
@@ -84,6 +84,7 @@
                </image>
             </ImageView>
          </children></Pane>
+      <Pane layoutX="775.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black;" />
       <Pane fx:id="addcar" prefHeight="860.0" prefWidth="1199.0" style="-fx-background-color: white;" stylesheets="@textfiled.css" visible="false">
          <children>
             <AnchorPane layoutX="-14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="874.0" prefWidth="1221.0" style="-fx-background-color: #0A0A0AFF;">

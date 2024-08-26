@@ -12,6 +12,15 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalDateStringConverter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 import java.io.File;
 import java.io.FileInputStream;
 import javax.swing.*;
@@ -20,11 +29,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.sql.Date;
 import java.text.NumberFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-import java.util.Locale;
+import java.util.*;
 
 
 public class Admin  implements Initializable {
@@ -1331,6 +1339,49 @@ public class Admin  implements Initializable {
 
         SalesTable.setItems(sales);
         connection.close();
+    }
+
+    public void showReport() {
+        try {
+
+
+            /*Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+
+            String reportPath = "C:\\Users\\mokha\\Database_project\\src\\main\\resources\\Report";
+            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile(reportPath);
+
+            Map<String, Object> parameters = new HashMap<>();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
+
+            JasperViewer.viewReport(jasperPrint, false);
+
+            connection.close();*/
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            JasperDesign design= JRXmlLoader.load("src/main/resources/Report/sales.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null,connection);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);
+            jasperViewer.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+
+        }
+    }
+
+    public void showReportExpenses(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            JasperDesign design= JRXmlLoader.load("src/main/resources/Report/Expenses.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null,connection);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);
+            jasperViewer.setVisible(true);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
 }
