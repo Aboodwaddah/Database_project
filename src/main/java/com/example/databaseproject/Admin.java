@@ -25,9 +25,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Locale;
-public class Admin  implements Initializable{
+
+
+public class Admin  implements Initializable {
     @FXML
-     private TextField CategoryText;
+    private TextField CategoryText;
     @FXML
     private TextField AmountText;
     @FXML
@@ -57,7 +59,7 @@ public class Admin  implements Initializable{
     @FXML
     private TableColumn<Expenses, String> TypeColumn;
     @FXML
-    private TableColumn<Expenses,String> DescribtionColumn;
+    private TableColumn<Expenses, String> DescribtionColumn;
     @FXML
     private TableColumn<Expenses, Integer> ExhibColumn;
     @FXML
@@ -71,7 +73,7 @@ public class Admin  implements Initializable{
     @FXML
     private TableColumn<Cars, Integer> YearColumn;
     @FXML
-    private TableColumn<Cars,String> PendCarColumn;
+    private TableColumn<Cars, String> PendCarColumn;
     @FXML
     private TableColumn<Cars, Integer> PriceColumn;
     @FXML
@@ -85,9 +87,11 @@ public class Admin  implements Initializable{
     @FXML
     private TableColumn<Cars, String> BodystyleColumn;
     @FXML
+    private TableColumn<Cars, String> SellCarColumn;
+    @FXML
     private TableColumn<Cars, Integer> DistanceColumn;
     @FXML
-    private TableView<Sales>SalesTable;
+    private TableView<Sales> SalesTable;
     @FXML
     private TableColumn<Sales, Integer> amountColumn;
     @FXML
@@ -97,15 +101,25 @@ public class Admin  implements Initializable{
     @FXML
     private TableColumn<Sales, String> dateColumn;
     @FXML
-    private TableColumn<Sales,Integer> employeeColumn;
+    private TableColumn<Sales, Integer> employeeColumn;
     @FXML
     private TableColumn<Sales, Integer> exhibColumn;
     @FXML
     private TableColumn<Sales, Integer> salesIdColumn;
     @FXML
-    private TableColumn<Sales, String> typeColumn;
-  @FXML
-  private TextArea EmployeeTable;
+    private TextField SalesTextFiled;
+    @FXML
+    private TextField EmployeeTextFiled;
+    @FXML
+    private TextField CustomerTextFiled;
+    @FXML
+    private TextField AmountTextFiled;
+    @FXML
+    private TextField CarTextFiled;
+    @FXML
+    private TextField ExhibtionTextFiled;
+    @FXML
+    private TextArea EmployeeTable;
     @FXML
     private Pane CarTableView;
     @FXML
@@ -117,7 +131,7 @@ public class Admin  implements Initializable{
     @FXML
     private Pane ReviewPane;
     @FXML
-    ChoiceBox<String>StyleForCar;
+    ChoiceBox<String> StyleForCar;
     @FXML
     private TextField IDForCar;
     @FXML
@@ -137,7 +151,7 @@ public class Admin  implements Initializable{
     @FXML
     private ImageView CarTable;
     @FXML
-    private ChoiceBox<String>ConditionForCar;
+    private ChoiceBox<String> ConditionForCar;
     @FXML
     private TextField make;
     @FXML
@@ -167,17 +181,17 @@ public class Admin  implements Initializable{
 
     @FXML
     private TextField r6;
-   @FXML
-   private ImageView review;
+    @FXML
+    private ImageView review;
     @FXML
     private VBox vbox;
     @FXML
     private Pane salesPane;
     @FXML
     private ImageView ExpensesPic;
-@FXML
-private Pane expensesPane;
-    private final String[]conditions={"","new","used","rent"};
+    @FXML
+    private Pane expensesPane;
+    private final String[] conditions = {"", "new", "used", "rent"};
     private final String[] CarsType = {
             "",
             "bmw",
@@ -198,16 +212,17 @@ private Pane expensesPane;
     };
     private final String[] CarStyle =
             {
-            "",
-            "sedan",
-            "suv",
-            "hatchback",
-            "convertible",
-            "coupe",
-            "wagon",
-            "pickup",
-            "van"
+                    "",
+                    "sedan",
+                    "suv",
+                    "hatchback",
+                    "convertible",
+                    "coupe",
+                    "wagon",
+                    "pickup",
+                    "van"
             };
+
     @FXML
     private void insertCar() {
 
@@ -220,8 +235,8 @@ private Pane expensesPane;
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
-String s="true";
-String t="false";
+            String s = "true";
+            String t = "false";
 
             statement.setString(1, this.make.getText());
             statement.setString(2, this.model.getText());
@@ -265,14 +280,13 @@ String t="false";
     }
 
 
-        @FXML
-    public void ShowInformationCar()
-    {
+    @FXML
+    public void ShowInformationCar() {
         fillTableWithCars();
     }
+
     @FXML
-    public  void PaneCarTableView()
-    {
+    public void PaneCarTableView() {
         addcar.setVisible(false);
         CarTableView.setVisible(true);
 
@@ -282,14 +296,17 @@ String t="false";
     public void changePhoto() {
         showroom.setImage(new Image(getClass().getResource("/addCar.png").toString()));
     }
+
     @FXML
     public void changePhoto2() {
         showroom.setImage(new Image(getClass().getResource("/VehicleShowroom.jpg").toString()));
     }
+
     @FXML
     public void changePhoto3() {
         CarTable.setImage(new Image(getClass().getResource("/CarViewtable2.png").toString()));
     }
+
     @FXML
     public void changePhoto4() {
         CarTable.setImage(new Image(getClass().getResource("/CarViewtable.jpg").toString()));
@@ -299,6 +316,7 @@ String t="false";
     public void changePhoto5() {
         review.setImage(new Image(getClass().getResource("/customerrevie.png").toString()));
     }
+
     @FXML
     public void changePhoto6() {
         review.setImage(new Image(getClass().getResource("/customer.png").toString()));
@@ -309,33 +327,32 @@ String t="false";
 
         ExpensesPic.setImage(new Image(getClass().getResource("/expenses2.jpg").toString()));
     }
+
     @FXML
     public void changePhoto8() {
         ExpensesPic.setImage(new Image(getClass().getResource("/expenses1.png").toString()));
     }
 
     @FXML
-    public void EnterExpensesPage()
-    {
+    public void EnterExpensesPage() {
         expensesPane.setVisible(true);
     }
+
     @FXML
-    public void BackExpensesPage()
-    {
+    public void BackExpensesPage() {
         expensesPane.setVisible(false);
 
     }
 
     @FXML
-    public void goToReview()
-    {
+    public void goToReview() {
         ReviewPane.setVisible(true);
         CarTableView.setVisible(false);
         addcar.setVisible(false);
     }
+
     @FXML
-    public void ReturnBackReview()
-    {
+    public void ReturnBackReview() {
         ReviewPane.setVisible(false);
         CarTableView.setVisible(false);
         addcar.setVisible(false);
@@ -346,6 +363,12 @@ String t="false";
         CarTableView.setVisible(false);
         addcar.setVisible(true);
     }
+
+    @FXML
+    public void ReturnFromSales() {
+        salesPane.setVisible(false);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         IdColumn.setCellValueFactory(cellData -> cellData.getValue().idCarProperty().asObject());
@@ -361,6 +384,7 @@ String t="false";
         BodystyleColumn.setCellValueFactory(cellData -> cellData.getValue().bodyStyleProperty());
         DistanceColumn.setCellValueFactory(cellData -> cellData.getValue().distanceProperty().asObject());
         PendCarColumn.setCellValueFactory(cellData -> cellData.getValue().PendingCarProperty());
+        SellCarColumn.setCellValueFactory(cellData -> cellData.getValue().sellProperty());
         ExpensesColumn.setCellValueFactory(cellData -> cellData.getValue().idExpensesProperty().asObject());
         DateColumn.setCellValueFactory(cellData -> cellData.getValue().expensesDateProperty());
         AmountColumn.setCellValueFactory(cellData -> cellData.getValue().amountProperty().asObject());
@@ -368,9 +392,22 @@ String t="false";
         TypeColumn.setCellValueFactory(cellData -> cellData.getValue().categoryProperty());
         ExhibColumn.setCellValueFactory(cellData -> cellData.getValue().idExhibitionProperty().asObject());
         EmployeeColumn.setCellValueFactory(cellData -> cellData.getValue().idEmployeeProperty().asObject());
+        salesIdColumn.setCellValueFactory(cellData -> cellData.getValue().idSalesProperty().asObject());
+        carColumn.setCellValueFactory(cellData -> cellData.getValue().idCarProperty().asObject());
+        dateColumn.setCellValueFactory(cellData -> cellData.getValue().dateSalesProperty());
+        exhibColumn.setCellValueFactory(cellData -> cellData.getValue().exhibitionIdProperty().asObject());
+        employeeColumn.setCellValueFactory(cellData -> cellData.getValue().idEmployeeProperty().asObject());
+        customerColumn.setCellValueFactory(cellData -> cellData.getValue().idCustomerProperty().asObject());
+        amountColumn.setCellValueFactory(cellData -> cellData.getValue().amountProperty().asObject());
         ConditionForCar.getItems().addAll(conditions);
         MakeForCar.getItems().addAll(CarsType);
         StyleForCar.getItems().addAll(CarStyle);
+        try {
+            InsertSales();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         fillTableWithCars();
         GetExpenses();
         CarInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->
@@ -388,23 +425,20 @@ String t="false";
     }
 
 
-    public void setEdit()
-    {
+    public void setEdit() {
         CarInfo.setEditable(true);
 
         setupColumnEditing();
     }
+
     @FXML
-    public void SelectShow()
-    {
+    public void SelectShow() {
         Cars selectedCar = CarInfo.getSelectionModel().getSelectedItem();
-        if (selectedCar != null)
-        {
+        if (selectedCar != null) {
             int carId = selectedCar.idCarProperty().get();
             IDForCar.setText(String.valueOf(carId));
         }
     }
-
 
 
     private void setupColumnEditing() {
@@ -416,14 +450,12 @@ String t="false";
             updateCarInDatabase(car);
         });
 
-
         ModelColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         ModelColumn.setOnEditCommit(event -> {
             Cars car = event.getRowValue();
             car.setModel(event.getNewValue());
             updateCarInDatabase(car);
         });
-
 
         ConditionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         ConditionColumn.setOnEditCommit(event -> {
@@ -505,11 +537,6 @@ String t="false";
     }
 
 
-
-
-
-
-
     private void setupColumnEditingExpenses() {
 
         EmployeeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -587,6 +614,7 @@ String t="false";
 
         setupColumnEditingExpenses();
     }
+
     public void updateExpenseInDatabase(Expenses expense) throws SQLException {
         String sql = "UPDATE expenses SET expenses_date = ?, amount = ?, description = ?, category = ?, id_exhibition = ?, id_employee = ? WHERE id_expenses = ?";
 
@@ -608,6 +636,7 @@ String t="false";
             e.printStackTrace();
         }
     }
+
     @FXML
     private void insertExpensesOperation() throws SQLException {
         String category = CategoryText.getText();
@@ -636,26 +665,102 @@ String t="false";
             e.printStackTrace();
         }
     }
+@FXML
+    public void setupSalesTable() {
+
+    amountColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    amountColumn.setOnEditCommit(event -> {
+        Sales sale = event.getRowValue();
+        sale.setAmount(event.getNewValue());
+        updateSalesInDatabase(sale);
+    });
+
+
+    carColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    carColumn.setOnEditCommit(event -> {
+        Sales sale = event.getRowValue();
+        sale.setIdCar(event.getNewValue());
+        updateSalesInDatabase(sale);
+    });
+
+
+    dateColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+    dateColumn.setOnEditCommit(event -> {
+        Sales sale = event.getRowValue();
+        sale.setDateSales(String.valueOf(LocalDate.parse(event.getNewValue())));
+        updateSalesInDatabase(sale);
+    });
+
+
+    employeeColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    employeeColumn.setOnEditCommit(event -> {
+        Sales sale = event.getRowValue();
+        sale.setIdEmployee(event.getNewValue());
+        updateSalesInDatabase(sale);
+    });
+
+
+    customerColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    customerColumn.setOnEditCommit(event -> {
+        Sales sale = event.getRowValue();
+        sale.setIdCustomer(event.getNewValue());
+        updateSalesInDatabase(sale);
+    });
+
+
+    exhibColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+    exhibColumn.setOnEditCommit(event -> {
+        Sales sale = event.getRowValue();
+        sale.setExhibitionId(event.getNewValue());
+        updateSalesInDatabase(sale);
+    });
+
+
+
+
+    SalesTable.setEditable(true);
+    }
+
+    private void updateSalesInDatabase(Sales sale) {
+        String sql = "UPDATE sales SET id_car = ?, date_sales = ?, exhibition_id = ?, id_employee = ?, id_customer = ?, amount = ? WHERE id_sales = ?";
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, sale.getIdCar());
+            preparedStatement.setDate(2, java.sql.Date.valueOf(sale.getDateSales()));
+            preparedStatement.setInt(3, sale.getExhibitionId());
+            preparedStatement.setInt(4, sale.getIdEmployee());
+            preparedStatement.setInt(5, sale.getIdCustomer());
+            preparedStatement.setInt(6, sale.getAmount());
+            preparedStatement.setInt(7, sale.getIdSales());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     @FXML
     public void ShowAllExpenses() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-        Statement statement= connection.createStatement();
+        Statement statement = connection.createStatement();
         String sql = "SELECT * FROM expenses order by id_expenses;";
-       ResultSet resultSet=statement.executeQuery(sql);
+        ResultSet resultSet = statement.executeQuery(sql);
         ExpensesTable.getItems().clear();
-       while (resultSet.next())
-       {
-           int idExpenses = resultSet.getInt("id_expenses");
-           LocalDate expensesDate = resultSet.getDate("expenses_date").toLocalDate();
-           int amount = resultSet.getInt("amount");
-           String description = resultSet.getString("description");
-           String category = resultSet.getString("category");
-           int idExhibition = resultSet.getInt("id_exhibition");
-           int idEmployee = resultSet.getInt("id_employee");
+        while (resultSet.next()) {
+            int idExpenses = resultSet.getInt("id_expenses");
+            LocalDate expensesDate = resultSet.getDate("expenses_date").toLocalDate();
+            int amount = resultSet.getInt("amount");
+            String description = resultSet.getString("description");
+            String category = resultSet.getString("category");
+            int idExhibition = resultSet.getInt("id_exhibition");
+            int idEmployee = resultSet.getInt("id_employee");
 
-           Expenses expense = new Expenses(idExpenses, expensesDate, amount, description, category, idExhibition, idEmployee);
-           ExpensesTable.getItems().add(expense);
-       }
+            Expenses expense = new Expenses(idExpenses, expensesDate, amount, description, category, idExhibition, idEmployee);
+            ExpensesTable.getItems().add(expense);
+        }
 
 
         resultSet.close();
@@ -664,9 +769,7 @@ String t="false";
     }
 
 
-
-    private void fillTableWithCars()
-    {
+    private void fillTableWithCars() {
         try {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
             Statement statement = connection.createStatement();
@@ -687,7 +790,9 @@ String t="false";
                         resultSet.getString("transmission"),
                         resultSet.getString("body_style"),
                         resultSet.getInt("distance"),
-                        resultSet.getString("pending")
+                        resultSet.getString("pending"),
+                        resultSet.getString("sell")
+
                 );
                 cars.add(car);
             }
@@ -699,8 +804,6 @@ String t="false";
             e.printStackTrace();
         }
     }
-
-
 
 
     @FXML
@@ -731,8 +834,6 @@ String t="false";
             e.printStackTrace();
         }
     }
-
-
 
 
 
@@ -791,7 +892,8 @@ String t="false";
                         resultSet.getString("transmission"),
                         resultSet.getString("body_style"),
                         resultSet.getInt("distance"),
-                        resultSet.getString("pending")
+                        resultSet.getString("pending"),
+                        resultSet.getString("sell")
                 );
                 carList.add(car);
             }
@@ -804,9 +906,6 @@ String t="false";
     }
 
 
-
-
-
     private void DeletfromDB(Cars car) throws SQLException {
         int selectedId = car.idCarProperty().get();
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres1", "postgres", "1234");
@@ -816,23 +915,22 @@ String t="false";
         statement.close();
         connection.close();
     }
-@FXML
-   private void Remove() throws SQLException {
-        Cars selectedCar = CarInfo.getSelectionModel().getSelectedItem();
-if(selectedCar !=null)
-{
-    CarInfo.getItems().remove(selectedCar);
-    DeletfromDB(selectedCar);
-}
 
+    @FXML
+    private void Remove() throws SQLException {
+        Cars selectedCar = CarInfo.getSelectionModel().getSelectedItem();
+        if (selectedCar != null) {
+            CarInfo.getItems().remove(selectedCar);
+            DeletfromDB(selectedCar);
+        }
 
 
     }
+
     @FXML
     private void RemoveExpenses() throws SQLException {
         Expenses selectedExpenses = ExpensesTable.getSelectionModel().getSelectedItem();
-        if(selectedExpenses !=null)
-        {
+        if (selectedExpenses != null) {
             ExpensesTable.getItems().remove(selectedExpenses);
             DeleteExpenses(selectedExpenses);
         }
@@ -868,57 +966,74 @@ if(selectedCar !=null)
             vbox.getChildren().clear();
 
             while (notesResultSet.next()) {
-                String note = "note :"+notesResultSet.getString("note");
+                String note = "note :" + notesResultSet.getString("note");
                 Label label = new Label(note);
                 label.setStyle("-fx-font-weight: bold; -fx-font-size: 18px;");
                 vbox.getChildren().add(label);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
     }
-    public void returnFromAddCar()
-    {
+
+
+
+
+
+
+    public void returnFromAddCar() {
         addcar.setVisible(false);
         CarTableView.setVisible(false);
     }
 
-    public void returnFromTableview()
-    {
+    public void returnFromTableview() {
         addcar.setVisible(false);
         CarTableView.setVisible(false);
     }
 
 
-public void GetExpenses() {
-    ObservableList<Expenses> expensesList = FXCollections.observableArrayList();
 
-    try {
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SELECT * FROM expenses ORDER BY id_expenses");
-        ObservableList<Expenses> expenses = FXCollections.observableArrayList();
-        while (resultSet.next()) {
-            Expenses expenses1 = new Expenses(
-                    resultSet.getInt("id_expenses"),
-                    resultSet.getDate("expenses_date").toLocalDate(),
-                    resultSet.getInt("amount"),
-                    resultSet.getString("description"),
-                    resultSet.getString("category"),
-                    resultSet.getInt("id_exhibition"),
-                    resultSet.getInt("id_employee")
-            );
-            expenses.add(expenses1);
+
+
+
+
+
+
+
+    public void GetExpenses() {
+        ObservableList<Expenses> expensesList = FXCollections.observableArrayList();
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM expenses ORDER BY id_expenses");
+            ObservableList<Expenses> expenses = FXCollections.observableArrayList();
+            while (resultSet.next()) {
+                Expenses expenses1 = new Expenses(
+                        resultSet.getInt("id_expenses"),
+                        resultSet.getDate("expenses_date").toLocalDate(),
+                        resultSet.getInt("amount"),
+                        resultSet.getString("description"),
+                        resultSet.getString("category"),
+                        resultSet.getInt("id_exhibition"),
+                        resultSet.getInt("id_employee")
+                );
+                expenses.add(expenses1);
+            }
+            ExpensesTable.setItems(expenses);
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        ExpensesTable.setItems(expenses);
-        connection.close();
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
 
     }
+
+
+
+
+
+
 
 
 
@@ -927,19 +1042,18 @@ public void GetExpenses() {
     public void SearchExpenses() throws SQLException {
         try {
 
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-Statement statement =connection.createStatement();
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement = connection.createStatement();
 
-        StringBuilder sql = new StringBuilder("SELECT * FROM expenses WHERE 1=1");
-        String id = ExpensesIdText.getText();
-        String Cat=CategoryText.getText();
-        String idemplo=EmployeeIdText.getText();
-        String idexp=ExhibtionIdText.getText();
+            StringBuilder sql = new StringBuilder("SELECT * FROM expenses WHERE 1=1");
+            String id = ExpensesIdText.getText();
+            String Cat = CategoryText.getText();
+            String idemplo = EmployeeIdText.getText();
+            String idexp = ExhibtionIdText.getText();
 
-
-        if (id != null && !id.isEmpty()) {
-           sql.append(" AND id_expenses = ").append(id);
-        }
+            if (id != null && !id.isEmpty()) {
+                sql.append(" AND id_expenses = ").append(id);
+            }
             if (Cat != null && !Cat.isEmpty()) {
                 sql.append(" AND category = '").append(Cat).append("'");
             }
@@ -951,7 +1065,7 @@ Statement statement =connection.createStatement();
             }
 
 
-ExpensesTable.getItems().clear();
+            ExpensesTable.getItems().clear();
             ResultSet resultSet = statement.executeQuery(sql.toString());
             ObservableList<Expenses> expenses = FXCollections.observableArrayList();
             while (resultSet.next()) {
@@ -973,18 +1087,6 @@ ExpensesTable.getItems().clear();
         }
     }
 
-
-
-    public void Sales() throws SQLException {
-        salesPane.setVisible(true);
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-        Statement statement = connection.createStatement();
-        String sql = "INSERT INTO public.sales (id_car, id_customer, date_sales, exhibition_id, id_employee, amount)\n" +
-                "SELECT car_customer.id_car, car_customer.id_customer, CURRENT_DATE, 1, NULL, 10000\n" +
-                "FROM public.car_customer\n" +
-                "JOIN public.customer ON car_customer.id_customer = customer.id_customer;";
-        statement.executeUpdate(sql);
-    }
 
     public void ShowEmployeeTable() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
@@ -1012,8 +1114,12 @@ ExpensesTable.getItems().clear();
 
 
 
-@FXML
-    public void   DeleteExpenses(Expenses expenses) {
+
+
+
+
+    @FXML
+    public void DeleteExpenses(Expenses expenses) {
         int selectedId = expenses.idExpensesProperty().get();
 
         if (selectedId <= 0) {
@@ -1025,12 +1131,202 @@ ExpensesTable.getItems().clear();
             String delete = "DELETE FROM expenses WHERE id_expenses = " + selectedId + ";";
             statement.executeUpdate(delete);
 
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
+    public void GoToSales() {
+        salesPane.setVisible(true);
+    }
+
+
+    public void SearchSales() throws SQLException {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement = connection.createStatement();
+            StringBuilder sql = new StringBuilder("select * from sales where 1=1");
+
+            String idsales = SalesTextFiled.getText();
+            String idEmp = EmployeeTextFiled.getText();
+            String idCust = CustomerTextFiled.getText();
+            String idCar = CarTextFiled.getText();
+
+            if (idsales != null && !idsales.isEmpty()) {
+                sql.append(" AND id_sales = ").append(idsales);
+            }
+            if (idEmp != null && !idEmp.isEmpty()) {
+                sql.append(" AND id_employee = ").append(idEmp);
+            }
+            if (idCust != null && !idCust.isEmpty()) {
+                sql.append(" AND id_customer = ").append(idCust);
+            }
+            if (idCar != null && !idCar.isEmpty()) {
+                sql.append(" AND id_car = ").append(idCar);
+            }
+
+
+
+
+
+
+
+
+
+
+            SalesTable.getItems().clear();
+            ResultSet resultSet = statement.executeQuery(sql.toString());
+            ObservableList<Sales> sales = FXCollections.observableArrayList();
+
+            while (resultSet.next()) {
+                Sales sale = new Sales(
+                        resultSet.getInt("id_sales"),
+                        resultSet.getInt("id_car"),
+                        resultSet.getString("date_sales"),
+                        resultSet.getInt("exhibition_id"),
+                        resultSet.getInt("id_employee"),
+                        resultSet.getInt("id_customer"),
+                        resultSet.getInt("amount")
+                );
+                sales.add(sale);
+            }
+
+            SalesTable.setItems(sales);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    public void AddSales() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+
+        String sql = "INSERT INTO sales (id_car, date_sales, exhibition_id, id_employee, id_customer, amount) VALUES (?, ?, ?, ?, ?, ?)";
+        int idcar = Integer.parseInt(CarTextFiled.getText());
+        int idCus = Integer.parseInt(CustomerTextFiled.getText());
+        int amount = Integer.parseInt(AmountTextFiled.getText());
+        int ex = Integer.parseInt(ExhibtionTextFiled.getText());
+        int idemp = Integer.parseInt(EmployeeTextFiled.getText());
+        LocalDate currentDate = LocalDate.now();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, idcar);
+            preparedStatement.setDate(2, java.sql.Date.valueOf(currentDate));
+            preparedStatement.setInt(3, ex);
+            preparedStatement.setInt(4, idemp);
+            preparedStatement.setInt(5, idCus);
+            preparedStatement.setInt(6, amount);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.println("Rows inserted: " + rowsAffected);
+
+            resetTextFields();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void resetTextFields() {
+        CarTextFiled.setText("");
+        CustomerTextFiled.setText("");
+        AmountTextFiled.setText("");
+        ExhibtionTextFiled.setText("");
+        EmployeeTextFiled.setText("");
+        SalesTextFiled.setText("");
+    }
+
+
+
+    @FXML
+    private void RemoveSales() throws SQLException {
+        Sales selectedSales = SalesTable.getSelectionModel().getSelectedItem();
+        if (selectedSales != null) {
+            SalesTable.getItems().remove(selectedSales);
+            DeleteSales(selectedSales);
+        }
+    }
+
+
+
+
+
+
+
+
+    @FXML
+    public void DeleteSales(Sales sales) {
+        int selectedId = sales.getIdSales();
+
+        if (selectedId <= 0) {
+            return;
+        }
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             Statement statement = connection.createStatement()) {
+
+            String delete = "DELETE FROM sales WHERE id_sales = " + selectedId + ";";
+            statement.executeUpdate(delete);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
+    public void InsertSales() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Statement statement = connection.createStatement();
+        String sql = "Select * from sales order by id_sales;";
+        ResultSet resultSet = statement.executeQuery(sql);
+        ObservableList<Sales> sales = FXCollections.observableArrayList();
+        while (resultSet.next()) {
+
+            Sales sale = new Sales(
+                    resultSet.getInt("id_sales"),
+                    resultSet.getInt("id_car"),
+                    resultSet.getString("date_sales"),
+                    resultSet.getInt("exhibition_id"),
+                    resultSet.getInt("id_employee"),
+                    resultSet.getInt("id_customer"),
+                    resultSet.getInt("amount")
+            );
+            sales.add(sale);
+        }
+
+        SalesTable.setItems(sales);
+    }
+
 }
+
+
+
+
 
 
 

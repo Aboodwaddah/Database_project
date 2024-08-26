@@ -16,9 +16,10 @@ public class Cars {
     private StringProperty CarPend;
     private StringProperty bodyStyle;
     private IntegerProperty distance;
+    private StringProperty sell;
 
     public Cars(int idCar, String make, String model, String condition, int year, int price, int engineCapacity,
-                String color, String fuelType, String transmission, String bodyStyle, int distance,String CarPend) {
+                String color, String fuelType, String transmission, String bodyStyle, int distance,String CarPend,String sell) {
         this.idCar = new SimpleIntegerProperty(idCar);
         this.make = new SimpleStringProperty(make);
         this.model = new SimpleStringProperty(model);
@@ -32,6 +33,7 @@ public class Cars {
         this.bodyStyle = new SimpleStringProperty(bodyStyle);
         this.distance = new SimpleIntegerProperty(distance);
         this.CarPend =new SimpleStringProperty(CarPend);
+        this.sell= new SimpleStringProperty(sell);
     }
     public StringProperty PendingCarProperty() { return CarPend; }
 
@@ -46,6 +48,7 @@ public class Cars {
     public StringProperty fuelTypeProperty() { return fuelType; }
     public StringProperty transmissionProperty() { return transmission; }
     public StringProperty bodyStyleProperty() { return bodyStyle; }
+    public StringProperty sellProperty() { return sell; }
     public IntegerProperty distanceProperty() { return distance; }
 
     public void setPending(String CarPend) { this.CarPend.set(CarPend); }
@@ -60,4 +63,5 @@ public class Cars {
     public void setTransmission(String transmission) { this.transmission.set(transmission); }
     public void setBodyStyle(String bodyStyle) { this.bodyStyle.set(bodyStyle); }
     public void setDistance(int distance) { this.distance.set(distance); }
+    public void setSell(String sell) { this.sell.set(sell); }
 }

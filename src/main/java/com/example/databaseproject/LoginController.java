@@ -64,7 +64,6 @@ public class LoginController implements Initializable {
     private TextField phone;
 
     @FXML
-
     private TextField usreName;
 
     @FXML
@@ -119,7 +118,7 @@ public String x;
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
-                employeeButton.setVisible(true);
+
 
             } else if ("customer".equals(personType)) {
 
@@ -204,16 +203,12 @@ public String x;
         connection.close();
 
     }
-
     public void goSignup() {
         SignupPane.setVisible(true);
     }
-
     public void returnSignup() {
         SignupPane.setVisible(false);
     }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

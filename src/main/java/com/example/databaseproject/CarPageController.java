@@ -4,12 +4,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -17,7 +19,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import org.postgresql.Driver;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,8 +31,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class CarPageController implements Initializable {
-@FXML
-public Label getuserid;
+    @FXML
+    public Label getuserid;
     @FXML
     private ComboBox<String> Distance1;
     @FXML
@@ -109,13 +115,13 @@ public Label getuserid;
     @FXML
     private Label year;
     @FXML
-    private  Label id;
+    private Label id;
     @FXML
     private Label Phone;
     @FXML
     private Label Email;
     @FXML
-    private  Pane Contact;
+    private Pane Contact;
     public static int id1;
     int value;
     private byte[] image;
@@ -140,7 +146,7 @@ public Label getuserid;
     @FXML
     private TableColumn<Cars, Integer> YearColumn;
     @FXML
-    private TableColumn<Cars,String> PendCarColumn;
+    private TableColumn<Cars, String> PendCarColumn;
     @FXML
     private TableColumn<Cars, Integer> PriceColumn;
     @FXML
@@ -155,6 +161,8 @@ public Label getuserid;
     private TableColumn<Cars, String> BodystyleColumn;
     @FXML
     private TableColumn<Cars, Integer> DistanceColumn;
+    @FXML
+    private ImageView CarPhoto;
 
     public void setButtonEmployee(ActionEvent event) {
         paneEmp.setVisible(true);
@@ -205,9 +213,9 @@ public Label getuserid;
             Distance1.getItems().add(String.valueOf(i));
         }
         Distance1.setEditable(true);
-        Make.getItems().addAll("","bmw", "audi", "mercedes", "toyota", "honda", "ford", "chevrolet", "nissan", "volkswagen", "hyundai,kia,seat");
-         Cond.getItems().addAll("","new","used","rent");
-         Trans.getItems().addAll("","manual","automatic");
+        Make.getItems().addAll("", "bmw", "audi", "mercedes", "toyota", "honda", "ford", "chevrolet", "nissan", "volkswagen", "hyundai,kia,seat");
+        Cond.getItems().addAll("", "new", "used", "rent");
+        Trans.getItems().addAll("", "manual", "automatic");
         for (int year = 2000; year <= 2024; year++) {
             Year.getItems().add(String.valueOf(year));
         }
@@ -224,9 +232,26 @@ public Label getuserid;
         BodystyleColumn.setCellValueFactory(cellData -> cellData.getValue().bodyStyleProperty());
         DistanceColumn.setCellValueFactory(cellData -> cellData.getValue().distanceProperty().asObject());
         PendCarColumn.setCellValueFactory(cellData -> cellData.getValue().PendingCarProperty());
+
         fillTableWithCars();
 
+        CarInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                int idCar = newValue.idCarProperty().get();
+                try {
+                    Image image = getImageFromDatabase(idCar);
+                    CarPhoto.setImage(image);
+                } catch (SQLException | IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+        try {
+            EmployeeButton();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
@@ -245,7 +270,7 @@ public Label getuserid;
         distance = Distance;
         engine = Engine;
         idd = hiddenid;
-          }
+    }
 
     public void Return() {
         Contact.setVisible(false);
@@ -295,35 +320,30 @@ public Label getuserid;
         StringBuilder searchQuery = new StringBuilder("SELECT * FROM car WHERE pending='true' and sell='false'");
         String d = Distance1.getValue();
         String m = Make.getValue();
-        String e =Model1.getText();
-        String c=Cond.getValue();
-        String y= Year.getValue();
-        String u=Trans.getValue();
-        double w= mySlider.getValue();
+        String e = Model1.getText();
+        String c = Cond.getValue();
+        String y = Year.getValue();
+        String u = Trans.getValue();
+        double w = mySlider.getValue();
         if (d != null && !d.isEmpty()) {
             searchQuery.append(" and distance = ").append(d);
         }
         if (m != null && !m.isEmpty()) {
             searchQuery.append(" and make='").append(m).append("'");
         }
-        if(e!=null && !e.isEmpty())
-        {
+        if (e != null && !e.isEmpty()) {
             searchQuery.append(" and model='").append(e).append("'");
         }
-        if(c!=null && !c.isEmpty())
-        {
+        if (c != null && !c.isEmpty()) {
             searchQuery.append(" and condition='").append(c).append("'");
         }
-        if(y!=null && !y.isEmpty())
-        {
+        if (y != null && !y.isEmpty()) {
             searchQuery.append(" and year='").append(y).append("'");
         }
-        if(u!=null && !u.isEmpty())
-        {
+        if (u != null && !u.isEmpty()) {
             searchQuery.append(" and transmission='").append(u).append("'");
         }
-        if(w>0)
-        {
+        if (w > 0) {
             searchQuery.append(" and price='").append(w).append("'");
         }
         System.out.println("Executing query: " + searchQuery.toString());
@@ -354,6 +374,7 @@ public Label getuserid;
         resultSet.close();
         connection.close();
     }
+
     private void updateCarContainer(ObservableList<Car> observableCarList) {
         CarContainer.getChildren().clear();
         int row = 1;
@@ -379,6 +400,7 @@ public Label getuserid;
             }
         }
     }
+
     @FXML
     public void SerachByBodyStyle(ActionEvent event) throws SQLException {
 
@@ -418,12 +440,12 @@ public Label getuserid;
         resultSet.close();
         connection.close();
     }
+
     public void BuyOperation() throws SQLException {
 
 
         String insertSql = "INSERT INTO car_customer (id_car,id_customer) VALUES (?,?)";
         String updateSql = "UPDATE car SET sell = 'yes' WHERE id_car = ?";
-
 
 
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234")) {
@@ -438,7 +460,7 @@ public Label getuserid;
                     insertStatement.setInt(1, Integer.parseInt(hiddenid.getText()));
                     insertStatement.setInt(2, Integer.parseInt(String.valueOf(id1)));
 
-                     insertStatement.executeUpdate();
+                    insertStatement.executeUpdate();
 
                 }
 
@@ -449,6 +471,7 @@ public Label getuserid;
 
                 }
                 connection.commit();
+                Sales();
             } catch (SQLException e) {
                 e.printStackTrace();
 
@@ -460,12 +483,11 @@ public Label getuserid;
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         DriverManager.registerDriver(new org.postgresql.Driver());
         Statement statement = connection.createStatement();
-        String str="select from person where person_type='employee'";
+        String str = "select from person where person_type='employee'";
     }
 
     @FXML
-    private void fillTableWithCars()
-    {
+    private void fillTableWithCars() {
         try {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
             Statement statement = connection.createStatement();
@@ -486,7 +508,8 @@ public Label getuserid;
                         resultSet.getString("transmission"),
                         resultSet.getString("body_style"),
                         resultSet.getInt("distance"),
-                        resultSet.getString("pending")
+                        resultSet.getString("pending"),
+                        resultSet.getString("sell")
                 );
                 cars.add(car);
             }
@@ -498,23 +521,85 @@ public Label getuserid;
             e.printStackTrace();
         }
     }
+
     @FXML
     public void ContactUs() throws SQLException {
         Contact.setVisible(true);
         Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-        Statement statement= connection.createStatement();;
+        Statement statement = connection.createStatement();
+        ;
         DriverManager.registerDriver(new org.postgresql.Driver());
-        String sql ="select email,phone from person where person_type='employee' ORDER BY RANDOM() LIMIT 1;";
-        ResultSet resultSet= statement.executeQuery(sql);
-        while(resultSet.next())
-        {
-        Phone.setText(resultSet.getString("phone"));
-        Email.setText(resultSet.getString("email"));
+        String sql = "select email,phone from person where person_type='employee' ORDER BY RANDOM() LIMIT 1;";
+        ResultSet resultSet = statement.executeQuery(sql);
+        while (resultSet.next()) {
+            Phone.setText(resultSet.getString("phone"));
+            Email.setText(resultSet.getString("email"));
         }
         resultSet.close();
         statement.close();
         connection.close();
     }
+
+    public void Sales() throws SQLException {
+
+        String idCar = hiddenid.getText();
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Statement statement = connection.createStatement();
+        String sql = "INSERT INTO public.sales (id_car, id_customer, date_sales, exhibition_id, id_employee, amount)\n" +
+                "SELECT " + idCar + ", " + id1 + ", CURRENT_DATE, 1, \n" +
+                "       (SELECT id_person FROM public.person WHERE person_type = 'employee' ORDER BY random() LIMIT 1), \n" +
+                "       car.price\n" +
+                "FROM public.car\n" +
+                "WHERE car.id_car = " + idCar + ";";
+
+        statement.executeUpdate(sql);
+        statement.close();
+        connection.close();
+    }
+
+    private Image getImageFromDatabase(int idCar) throws SQLException, IOException {
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234")) {
+            DriverManager.registerDriver(new Driver());
+            String sql = "SELECT image FROM car WHERE id_car = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setInt(1, idCar);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        byte[] imageBytes = resultSet.getBytes("image");
+                        if (imageBytes != null) {
+                            InputStream is = new ByteArrayInputStream(imageBytes);
+                            BufferedImage bufferedImage = ImageIO.read(is);
+                            return SwingFXUtils.toFXImage(bufferedImage, null);
+                        }
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+
+    public void EmployeeButton() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        DriverManager.registerDriver(new Driver());
+        Statement statement = connection.createStatement();
+        String personType = "";
+        String sql = "select person_type from person where id_person =" + id1;
+        ResultSet resultSet = statement.executeQuery(sql);
+        if (resultSet.next()) {
+            personType = resultSet.getString("person_type");
+        }
+        if (personType.equals("employee"))
+            butEmp.setVisible(true);
+        else {
+            butEmp.setVisible(false);
+
+        }
+    }
+
+
+
 
 
 }

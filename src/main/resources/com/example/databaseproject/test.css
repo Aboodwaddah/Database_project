@@ -46,6 +46,11 @@
 
     -fx-background-radius:0 0 0 0;
 }
+#sales{
+
+    -fx-background-radius:30 0 30 0 ;
+
+}
 #details
 {
     -fx-background-radius: 15;

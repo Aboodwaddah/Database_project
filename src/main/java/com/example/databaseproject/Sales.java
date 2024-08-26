@@ -15,7 +15,7 @@ public class Sales {
     private IntegerProperty idCustomer;
     private IntegerProperty amount;
 
-    // Default constructor
+
     public Sales() {
         this.idSales = new SimpleIntegerProperty();
         this.idCar = new SimpleIntegerProperty();
@@ -28,12 +28,11 @@ public class Sales {
     }
 
     // Parameterized constructor
-    public Sales(int idSales, int idCar, String dateSales, int exhibitionId, int idAdmin, int idEmployee, int idCustomer, int amount) {
+    public Sales(int idSales, int idCar, String dateSales, int exhibitionId,int idEmployee, int idCustomer, int amount) {
         this.idSales = new SimpleIntegerProperty(idSales);
         this.idCar = new SimpleIntegerProperty(idCar);
         this.dateSales = new SimpleStringProperty(dateSales);
         this.exhibitionId = new SimpleIntegerProperty(exhibitionId);
-        this.idAdmin = new SimpleIntegerProperty(idAdmin);
         this.idEmployee = new SimpleIntegerProperty(idEmployee);
         this.idCustomer = new SimpleIntegerProperty(idCustomer);
         this.amount = new SimpleIntegerProperty(amount);
