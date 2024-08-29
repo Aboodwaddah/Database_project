@@ -1425,7 +1425,7 @@ public class Admin  implements Initializable {
         connection.close();
     }
 
-    public void showReport() {
+    public void showReportSales() {
         try {
 
 
@@ -1445,7 +1445,7 @@ public class Admin  implements Initializable {
     public void showReportExpenses(){
         try {
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-            JasperDesign design= JRXmlLoader.load("src/main/resources/Report/Expenses.jrxml");
+            JasperDesign design= JRXmlLoader.load("src/main/resources/Report/newExpenses.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(design);
             JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null,connection);
             JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);
@@ -1454,6 +1454,22 @@ public class Admin  implements Initializable {
         catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
+    }
+
+
+    public void showAll(){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            JasperDesign design= JRXmlLoader.load("src/main/resources/Report/SE.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint=JasperFillManager.fillReport(jasperReport,null,connection);
+            JasperViewer jasperViewer = new JasperViewer(jasperPrint,false);
+            jasperViewer.setVisible(true);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
     }
 
 }

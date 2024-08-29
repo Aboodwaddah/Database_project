@@ -9,26 +9,26 @@
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
-    car.make || ' ' || car. Model AS "Car Name",
+    car.make || ' ' || car.model AS "Car Name",
     employee_person.name AS "Employee Name",
     employee_person.phone AS "Employee Phone",
     customer_person.name AS "Customer Name",
     customer_person.phone AS "Customer Phone",
     customer_person.email AS "Customer Email",
-    sales. Amount AS "Amount",
+    sales.amount AS "Amount",
     sales.date_sales AS "Date of Sale"
 FROM 
-    public. Sales
+    public.sales
 JOIN 
-    public. Car ON sales.id_car = car.id_car
+    public.car ON sales.id_car = car.id_car
 JOIN 
-    public. Employee ON sales.id_employee = employee.id_employee
+    public.employee ON sales.id_employee = employee.id_employee
 JOIN 
-    public. Person AS employee_person ON employee.id_person = employee_person.id_person
+    public.person AS employee_person ON employee.id_person = employee_person.id_person
 JOIN 
-    public. Customer ON sales.id_customer = customer.id_customer
+    public.customer ON sales.id_customer = customer.id_customer
 JOIN 
-    public. Person AS customer_person ON customer.id_person = customer_person.id_person;]]>
+    public.person AS customer_person ON customer.id_person = customer_person.id_person;]]>
 	</queryString>
 	<field name="Car Name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Car Name"/>
@@ -256,13 +256,6 @@ JOIN
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="49" y="-164" width="267" height="20" uuid="0ec52099-dcd7-42f4-8baa-f3874f05208a"/>
-				<textElement textAlignment="Center">
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[Waves Title Report]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 	<summary>
