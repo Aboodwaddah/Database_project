@@ -10,20 +10,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.converter.IntegerStringConverter;
 import org.postgresql.Driver;
+
+import javax.swing.*;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.*;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CarPageController implements Initializable {
@@ -137,6 +143,8 @@ public class CarPageController implements Initializable {
     @FXML
     private TableColumn<Cars, String> ModelColumn;
     @FXML
+    private TableColumn<Cars, String> SellCarColumn;
+    @FXML
     private TableColumn<Cars, String> ConditionColumn;
     @FXML
     private TableColumn<Cars, Integer> YearColumn;
@@ -158,6 +166,21 @@ public class CarPageController implements Initializable {
     private TableColumn<Cars, Integer> DistanceColumn;
     @FXML
     private ImageView CarPhoto;
+    @FXML
+    private TextField IDForCar;
+    @FXML
+    private ChoiceBox<String> MakeForCar;
+    @FXML
+    ChoiceBox<String> StyleForCar;
+    @FXML
+    private ChoiceBox<String> ConditionForCar;
+    @FXML
+    private Slider PriceForCar1;
+    @FXML
+    private Label PriceOfCar;
+
+
+    @FXML
 
     public void setButtonEmployee(ActionEvent event) {
         paneEmp.setVisible(true);
@@ -208,9 +231,52 @@ public class CarPageController implements Initializable {
             Distance1.getItems().add(String.valueOf(i));
         }
         Distance1.setEditable(true);
-        Make.getItems().addAll("", "bmw", "audi", "mercedes", "toyota", "honda", "ford", "chevrolet", "nissan", "volkswagen", "hyundai,kia,seat");
-        Cond.getItems().addAll("", "new", "used", "rent");
+        Make.getItems().addAll( "",
+                "bmw",
+                "skoda",
+                "toyota",
+                "mercedes-benz",
+                "audi",
+                "honda",
+                "ford",
+                "volkswagen",
+                "hyundai",
+                "nissan",
+                "chevrolet",
+                "kia",
+                "volvo",
+                "tesla",
+                "subaru",
+                "peugeot",
+                "renault",
+                "jaguar",
+                "land rover",
+                "porsche",
+                "fiat",
+                "mini",
+                "mitsubishi",
+                "buick",
+                "cadillac",
+                "lincoln",
+                "infiniti",
+                "acura",
+                "lexus",
+                "mazda",
+                "dodge",
+                "chrysler",
+                "ram",
+                "gmc",
+                "suzuki",
+                "hummer",
+                "great wall",
+                "changan",
+                "byd",
+                "geely",
+                "dongfeng",
+                "nissan");
+        Cond.getItems().addAll("", "new", "used");
         Trans.getItems().addAll("", "manual", "automatic");
+        Year.getItems().add("");
         for (int year = 2000; year <= 2024; year++) {
             Year.getItems().add(String.valueOf(year));
         }
@@ -227,9 +293,12 @@ public class CarPageController implements Initializable {
         BodystyleColumn.setCellValueFactory(cellData -> cellData.getValue().bodyStyleProperty());
         DistanceColumn.setCellValueFactory(cellData -> cellData.getValue().distanceProperty().asObject());
         PendCarColumn.setCellValueFactory(cellData -> cellData.getValue().PendingCarProperty());
-
         fillTableWithCars();
-
+        PriceForCar1.valueProperty().addListener((observable, oldValue, newValue) -> {
+            NumberFormat numberFormat = NumberFormat.getInstance(Locale.ENGLISH);
+            String formattedPrice = numberFormat.format(newValue.intValue());
+            PriceOfCar.setText(formattedPrice);
+        });
         CarInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 int idCar = newValue.idCarProperty().get();
@@ -463,7 +532,7 @@ public class CarPageController implements Initializable {
                 try (PreparedStatement updateStatement = connection.prepareStatement(updateSql)) {
                     updateStatement.setInt(1, Integer.parseInt(hiddenid.getText()));
                     updateStatement.executeUpdate();
-
+                    JOptionPane.showMessageDialog(null,"Thank you for trusting us, enjoy your drive. ");
                 }
                 connection.commit();
                 Sales();
@@ -596,8 +665,222 @@ public class CarPageController implements Initializable {
         }
     }
 
+    private void setupColumnEditing() {
+
+        MakeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        MakeColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setMake(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+        ModelColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        ModelColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setModel(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+        ConditionColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        ConditionColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setCondition(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        YearColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        YearColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setYear(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        PriceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        PriceColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setPrice(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        EngineColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        EngineColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setEngineCapacity(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        ColorColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        ColorColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setColor(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        FuelColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        FuelColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setFuelType(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        TransColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        TransColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setTransmission(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        BodystyleColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        BodystyleColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setBodyStyle(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+
+        DistanceColumn.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        DistanceColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setDistance(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+
+        PendCarColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        PendCarColumn.setOnEditCommit(event -> {
+            Cars car = event.getRowValue();
+            car.setPending(event.getNewValue());
+            updateCarInDatabase(car);
+        });
+    }
+    @FXML
+    private void updateCarInDatabase(Cars car) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            Statement statement = connection.createStatement();
+
+            String query = "UPDATE Car SET make = '" + car.makeProperty().get() + "', " +
+                    "model = '" + car.modelProperty().get() + "', " +
+                    "condition = '" + car.conditionProperty().get() + "', " +
+                    "year = " + car.yearProperty().get() + ", " +
+                    "price = " + car.priceProperty().get() + ", " +
+                    "engine_capacity = " + car.engineCapacityProperty().get() + ", " +
+                    "color = '" + car.colorProperty().get() + "', " +
+                    "fuel_type = '" + car.fuelTypeProperty().get() + "', " +
+                    "transmission = '" + car.transmissionProperty().get() + "', " +
+                    "body_style = '" + car.bodyStyleProperty().get() + "', " +
+                    "distance = " + car.distanceProperty().get() + ", " +
+                    "pending = '" + car.PendingCarProperty().get() + "' " +
+                    "WHERE id_car = " + car.idCarProperty().get() + ";";
+
+
+            statement.executeUpdate(query);
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void setEdit() {
+        CarInfo.setEditable(true);
+
+        setupColumnEditing();
+    }
+    @FXML
+    public void search(ActionEvent event) {
+        CarInfo.getItems().clear();
+
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+             Statement statement = connection.createStatement()) {
+
+            double price = PriceForCar1.getValue();
+            String selectedMake = MakeForCar.getValue();
+            String idForCar = IDForCar.getText();
+            String cond = ConditionForCar.getValue();
+            String style = StyleForCar.getValue();
+
+            StringBuilder searchQuery = new StringBuilder("SELECT * FROM car WHERE 1=1");
+
+            if (idForCar != null && !idForCar.isEmpty()) {
+                searchQuery.append(" AND id_car = ").append(idForCar);
+            }
+
+            if (selectedMake != null && !selectedMake.isEmpty()) {
+                searchQuery.append(" AND make = '").append(selectedMake).append("'");
+            }
+
+            if (cond != null && !cond.isEmpty()) {
+                searchQuery.append(" AND condition = '").append(cond).append("'");
+            }
+
+            if (price > 0) {
+                searchQuery.append(" AND price BETWEEN 0 AND ").append(price);
+            }
+
+            if (style != null && !style.isEmpty()) {
+                searchQuery.append(" AND body_style = '").append(style).append("'");
+            }
+
+            System.out.println("Search Query: " + searchQuery.toString());
+
+            ResultSet resultSet = statement.executeQuery(searchQuery.toString());
+
+            ArrayList<Cars> carList = new ArrayList<>();
+
+            while (resultSet.next()) {
+                Cars car = new Cars(
+                        resultSet.getInt("id_car"),
+                        resultSet.getString("make"),
+                        resultSet.getString("model"),
+                        resultSet.getString("condition"),
+                        resultSet.getInt("year"),
+                        resultSet.getInt("price"),
+                        resultSet.getInt("engine_capacity"),
+                        resultSet.getString("color"),
+                        resultSet.getString("fuel_type"),
+                        resultSet.getString("transmission"),
+                        resultSet.getString("body_style"),
+                        resultSet.getInt("distance"),
+                        resultSet.getString("pending"),
+                        resultSet.getString("sell")
+                );
+                carList.add(car);
+            }
+
+            CarInfo.setItems(FXCollections.observableArrayList(carList));
 
 
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void Remove() throws SQLException {
+        Cars selectedCar = CarInfo.getSelectionModel().getSelectedItem();
+        if (selectedCar != null) {
+            CarInfo.getItems().remove(selectedCar);
+            DeletfromDB(selectedCar);
+        }
+    }
+    private void DeletfromDB(Cars car) throws SQLException {
+        int selectedId = car.idCarProperty().get();
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres1", "postgres", "1234");
+        Statement statement = connection.createStatement();
+        String delete = "DELETE FROM car WHERE id_car = " + selectedId + ";";
+        statement.executeUpdate(delete);
+        statement.close();
+        connection.close();
+    }
+public void Return1()
+{
+    paneEmp.setVisible(true);
+}
 
 }

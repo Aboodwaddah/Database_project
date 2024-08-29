@@ -9,26 +9,26 @@
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
-    car.make || ' ' || car.model AS "Car Name",
+    car.make || ' ' || car. Model AS "Car Name",
     employee_person.name AS "Employee Name",
     employee_person.phone AS "Employee Phone",
     customer_person.name AS "Customer Name",
     customer_person.phone AS "Customer Phone",
     customer_person.email AS "Customer Email",
-    sales.amount AS "Amount",
+    sales. Amount AS "Amount",
     sales.date_sales AS "Date of Sale"
 FROM 
-    public.sales
+    public. Sales
 JOIN 
-    public.car ON sales.id_car = car.id_car
+    public. Car ON sales.id_car = car.id_car
 JOIN 
-    public.employee ON sales.id_employee = employee.id_employee
+    public. Employee ON sales.id_employee = employee.id_employee
 JOIN 
-    public.person AS employee_person ON employee.id_person = employee_person.id_person
+    public. Person AS employee_person ON employee.id_person = employee_person.id_person
 JOIN 
-    public.customer ON sales.id_customer = customer.id_customer
+    public. Customer ON sales.id_customer = customer.id_customer
 JOIN 
-    public.person AS customer_person ON customer.id_person = customer_person.id_person;]]>
+    public. Person AS customer_person ON customer.id_person = customer_person.id_person;]]>
 	</queryString>
 	<field name="Car Name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="Car Name"/>

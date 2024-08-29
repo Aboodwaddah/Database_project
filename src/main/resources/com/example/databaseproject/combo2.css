@@ -1,0 +1,6 @@
+.combo-box{
+    -fx-background-color : #100F18FF;
+    -fx-border-color :red;
+-fx-text-fill: #f1dbdb;
+    -fx-font-size: 15;
+}

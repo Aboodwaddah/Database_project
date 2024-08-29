@@ -14,8 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="1124.0" prefWidth="889.0" stylesheets="@radiobutton.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.reviews">
+<AnchorPane prefHeight="860.0" prefWidth="889.0" stylesheets="@radiobutton.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.reviews">
    <children>
       <ImageView fitHeight="385.0" fitWidth="1184.0" opacity="0.69" pickOnBounds="true">
          <image>
@@ -29,9 +28,9 @@
       </Text>
       <Pane layoutX="664.0" layoutY="347.0" prefHeight="167.0" prefWidth="494.0" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 10; -fx-border-radius: 10;">
          <children>
-            <Label layoutX="367.0" layoutY="22.0" text="4.8" textFill="#203e79">
+            <Label fx:id="AVG" layoutX="363.0" layoutY="31.0" text="4.8" textFill="#203e79">
                <font>
-                  <Font name="Gill Sans MT" size="53.0" />
+                  <Font name="Gill Sans MT" size="44.0" />
                </font>
             </Label>
             <Text fill="#203e79cc" layoutX="28.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“If you're not happy, neither are we!”" wrappingWidth="438.79052734375">
@@ -39,11 +38,16 @@
                   <Font name="Gill Sans MT" size="28.0" />
                </font>
             </Text>
-            <Text layoutX="75.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1764  reviews" wrappingWidth="253.48388671875">
+            <Text layoutX="166.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reviews" wrappingWidth="175.48388671875">
                <font>
                   <Font name="System Bold" size="37.0" />
                </font>
             </Text>
+            <Label fx:id="numofRev" layoutX="78.0" layoutY="30.0" prefHeight="54.0" prefWidth="88.0" text="1222" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Text fill="#dd0d0d" layoutX="26.0" layoutY="423.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" text="Do you have any comments or suggestions?">
@@ -56,7 +60,6 @@
             <Font name="System Bold Italic" size="16.0" />
          </font>
       </TextArea>
-      <Button fx:id="submit" layoutX="505.0" layoutY="1061.0" mnemonicParsing="false" onAction="#submitInformation" prefHeight="31.0" prefWidth="199.0" stylesheets="@test2.css" text="SUBMIT" textAlignment="CENTER" />
       <ScrollPane layoutY="579.0" prefHeight="471.0" prefWidth="1168.0">
          <content>
             <HBox prefHeight="714.0" prefWidth="1131.0">
@@ -287,5 +290,6 @@
             </HBox>
          </content>
       </ScrollPane>
+      <Button fx:id="submit" layoutX="971.0" layoutY="538.0" mnemonicParsing="false" onAction="#submitInformation" prefHeight="31.0" prefWidth="199.0" stylesheets="@test2.css" text="SUBMIT" textAlignment="CENTER" />
    </children>
 </AnchorPane>

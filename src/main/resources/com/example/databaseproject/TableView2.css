@@ -34,7 +34,7 @@
     -fx-text-fill: white;
 }
 
-/* Text alignment in cells */
+
 .table-view .cell {
     -fx-alignment: CENTER_LEFT;
 }

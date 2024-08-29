@@ -13,9 +13,9 @@
             <Image url="@../../../welcome.gif" />
          </image>
       </ImageView>
-      <Label fx:id="WelcomeName" layoutX="646.0" layoutY="476.0" prefHeight="43.0" prefWidth="106.0" text="NAME" textFill="WHITE">
+      <Label fx:id="WelcomeName" layoutX="639.0" layoutY="479.0" prefHeight="43.0" prefWidth="163.0" text="NAME" textFill="WHITE">
          <font>
-            <Font name="Franklin Gothic Demi" size="34.0" />
+            <Font name="Franklin Gothic Demi" size="28.0" />
          </font>
       </Label>
    </children>

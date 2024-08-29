@@ -135,7 +135,7 @@ public class Admin  implements Initializable {
     @FXML
     private TextField color;
     @FXML
-    private TextField body;
+    private ComboBox<String> body;
     @FXML
     private Pane ReviewPane;
     @FXML
@@ -145,7 +145,7 @@ public class Admin  implements Initializable {
     @FXML
     private ChoiceBox<String> MakeForCar;
     @FXML
-    private TextField condition;
+    private ComboBox<String> condition;
     @FXML
     private TextField distance;
     @FXML
@@ -153,7 +153,7 @@ public class Admin  implements Initializable {
     @FXML
     private TextField engine;
     @FXML
-    private TextField fuel;
+    private ComboBox<String> fuel;
     @FXML
     private ImageView showroom;
     @FXML
@@ -168,7 +168,7 @@ public class Admin  implements Initializable {
     @FXML
     private TextField price;
     @FXML
-    private TextField trans;
+    private ComboBox<String> trans;
     @FXML
     private TextField year;
 
@@ -199,6 +199,10 @@ public class Admin  implements Initializable {
     private ImageView ExpensesPic;
     @FXML
     private Pane expensesPane;
+    @FXML
+    private ComboBox<String>CarType;
+    @FXML
+    private  ImageView salespic;
     private final String[] conditions = {"", "new", "used"};
     private final String[] CarsType = {
             "",
@@ -216,7 +220,34 @@ public class Admin  implements Initializable {
             "kia",
             "volvo",
             "tesla",
-            "subaru"
+            "subaru",
+            "peugeot",
+            "renault",
+            "jaguar",
+            "land rover",
+            "porsche",
+            "fiat",
+            "mini",
+            "mitsubishi",
+            "buick",
+            "cadillac",
+            "lincoln",
+            "infiniti",
+            "acura",
+            "lexus",
+            "mazda",
+            "dodge",
+            "chrysler",
+            "ram",
+            "gmc",
+            "suzuki",
+            "hummer",
+            "great wall",
+            "changan",
+            "byd",
+            "geely",
+            "dongfeng",
+            "nissan"
     };
     private final String[] CarStyle =
             {
@@ -226,69 +257,117 @@ public class Admin  implements Initializable {
                     "hatchback",
                     "convertible",
                     "coupe",
-                    "wagon",
                     "pickup",
                     "van"
             };
+    private final String[] Fuel = {
+            "",
+            "Petrol",
+            "Diesel",
+            "Electric",
+            "Hybrid"
+    };
 
+    private final String[] Transmission = {
+            "",
+            "Manual",
+            "Automatic"
+
+    };
     @FXML
     private void insertCar() {
+        if (this.CarType.getValue() == null ||
+                this.model.getText().isEmpty() ||
+                this.condition.getValue() == null ||
+                this.year.getText().isEmpty() ||
+                this.price.getText().isEmpty() ||
+                this.engine.getText().isEmpty() ||
+                this.color.getText().isEmpty() ||
+                this.fuel.getValue() == null ||
+                this.trans.getValue() == null ||
+                this.body.getValue() == null ||
+                this.distance.getText().isEmpty()) {
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+            JOptionPane.showMessageDialog(null, "Please fill in all fields.");
+            return;
+        }
 
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png"));
+        int result = fileChooser.showOpenDialog(null);
+        File file = fileChooser.getSelectedFile();
+
+        if (result != JFileChooser.APPROVE_OPTION || file == null) {
+            JOptionPane.showMessageDialog(null, "Please select a valid image file.");
+            return;
+        }
+
+        String fileName = file.getName().toLowerCase();
+        if (!(fileName.endsWith(".jpg") || fileName.endsWith(".jpeg") || fileName.endsWith(".png"))) {
+            JOptionPane.showMessageDialog(null, "Invalid file format. Please select a JPG or PNG image.");
+            return;
+        }
+
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234")) {
             DriverManager.registerDriver(new org.postgresql.Driver());
 
-            String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance, image,pending,sell) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+            String sql = "INSERT INTO Car (make, model, condition, year, price, engine_capacity, color, fuel_type, transmission, body_style, distance, image, pending, sell) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            PreparedStatement statement = connection.prepareStatement(sql);
-            String s = "true";
-            String t = "false";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                String s = "true";
+                String t = "false";
 
-            statement.setString(1, this.make.getText());
-            statement.setString(2, this.model.getText());
-            statement.setString(3, this.condition.getText());
-            statement.setInt(4, Integer.parseInt(this.year.getText()));
-            statement.setInt(5, Integer.parseInt(this.price.getText()));
-            statement.setInt(6, Integer.parseInt(this.engine.getText()));
-            statement.setString(7, this.color.getText());
-            statement.setString(8, this.fuel.getText());
-            statement.setString(9, this.trans.getText());
-            statement.setString(10, this.body.getText());
-            statement.setInt(11, Integer.parseInt(this.distance.getText()));
-            statement.setString(13, s);
-            statement.setString(14, t);
+                statement.setString(1, this.CarType.getValue());
+                statement.setString(2, this.model.getText());
+                statement.setString(3, this.condition.getValue());
+                statement.setInt(4, Integer.parseInt(this.year.getText()));
+                statement.setInt(5, Integer.parseInt(this.price.getText()));
+                statement.setInt(6, Integer.parseInt(this.engine.getText()));
+                statement.setString(7, this.color.getText());
+                statement.setString(8, this.fuel.getValue());
+                statement.setString(9, this.trans.getValue());
+                statement.setString(10, this.body.getValue());
+                statement.setInt(11, Integer.parseInt(this.distance.getText()));
+                statement.setString(13, s);
+                statement.setString(14, t);
 
-            JFileChooser fileChooser = new JFileChooser();
-            fileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png"));
-            fileChooser.showOpenDialog(null);
-            File file = fileChooser.getSelectedFile();
-            if (file != null) {
-                statement.setBinaryStream(12, new FileInputStream(file));
-            } else {
+                if (file != null) {
+                    statement.setBinaryStream(12, new FileInputStream(file));
+                } else {
+                    statement.setNull(12, java.sql.Types.BINARY);
+                }
 
-                statement.setNull(12, java.sql.Types.BINARY);
+                statement.executeUpdate();
+                connection.commit();
+
+
+                clearForm();
+
+                JOptionPane.showMessageDialog(null, "Add car successfully.");
             }
-
-
-            statement.executeUpdate();
-            connection.commit();
-            connection.close();
-
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Car added successfully");
-            alert.showAndWait();
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (FileNotFoundException e) {
+        } catch (SQLException | FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
+
+    private void clearForm() {
+
+        this.model.clear();
+        this.year.clear();
+        this.price.clear();
+        this.engine.clear();
+        this.color.clear();
+        this.distance.clear();
+
+
+        this.CarType.setValue(null);
+        this.condition.setValue(null);
+        this.fuel.setValue(null);
+        this.trans.setValue(null);
+        this.body.setValue(null);
+    }
+
 
 
     @FXML
@@ -342,6 +421,19 @@ public class Admin  implements Initializable {
     @FXML
     public void changePhoto8() {
         ExpensesPic.setImage(new Image(getClass().getResource("/expenses1.png").toString()));
+    }
+
+
+
+    @FXML
+    public void changePhoto9() {
+
+        salespic.setImage(new Image(getClass().getResource("/sales2.png").toString()));
+    }
+
+    @FXML
+    public void changePhoto10() {
+        salespic.setImage(new Image(getClass().getResource("/sales1.jpg").toString()));
     }
 
     @FXML
@@ -413,6 +505,11 @@ public class Admin  implements Initializable {
         ConditionForCar.getItems().addAll(conditions);
         MakeForCar.getItems().addAll(CarsType);
         StyleForCar.getItems().addAll(CarStyle);
+        CarType.getItems().addAll(CarsType);
+        condition.getItems().addAll(conditions);
+        body.getItems().addAll(CarStyle);
+        fuel.getItems().addAll(Fuel);
+        trans.getItems().addAll(Transmission);
         try {
             InsertSales();
         } catch (SQLException e) {
@@ -433,6 +530,7 @@ public class Admin  implements Initializable {
             String formattedPrice = numberFormat.format(newValue.intValue());
             PriceOfCar.setText(formattedPrice);
         });
+
     }
 
 
@@ -922,7 +1020,7 @@ public class Admin  implements Initializable {
 
     private void DeletfromDB(Cars car) throws SQLException {
         int selectedId = car.idCarProperty().get();
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres1", "postgres", "1234");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Statement statement = connection.createStatement();
         String delete = "DELETE FROM car WHERE id_car = " + selectedId + ";";
         statement.executeUpdate(delete);
@@ -1182,13 +1280,6 @@ public class Admin  implements Initializable {
 
 
 
-
-
-
-
-
-
-
             SalesTable.getItems().clear();
             ResultSet resultSet = statement.executeQuery(sql.toString());
             ObservableList<Sales> sales = FXCollections.observableArrayList();
@@ -1212,12 +1303,6 @@ public class Admin  implements Initializable {
             e.printStackTrace();
         }
     }
-
-
-
-
-
-
 
 
 
@@ -1270,7 +1355,6 @@ public class Admin  implements Initializable {
         EmployeeTextFiled.setText("");
         SalesTextFiled.setText("");
     }
-
 
 
     @FXML
@@ -1345,18 +1429,6 @@ public class Admin  implements Initializable {
         try {
 
 
-            /*Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
-
-            String reportPath = "C:\\Users\\mokha\\Database_project\\src\\main\\resources\\Report";
-            JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile(reportPath);
-
-            Map<String, Object> parameters = new HashMap<>();
-
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
-
-            JasperViewer.viewReport(jasperPrint, false);
-
-            connection.close();*/
             Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
             JasperDesign design= JRXmlLoader.load("src/main/resources/Report/sales.jrxml");
             JasperReport jasperReport = JasperCompileManager.compileReport(design);

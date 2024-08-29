@@ -1,0 +1,16 @@
+.button
+{
+    -fx-font-size: 15;
+    -fx-text-fill: #000000;
+    -fx-font-family: "Fredoka One";
+    -fx-background-color: #ffffff;
+    -fx-border-width: 4;
+    -fx-background-radius: 25px 25px 25px 25px;
+}
+
+.button:hover
+{
+    -fx-background-color: #bc0808;
+    -fx-text-fill:white;
+    -fx-background-radius:30 30 30 30;
+}
