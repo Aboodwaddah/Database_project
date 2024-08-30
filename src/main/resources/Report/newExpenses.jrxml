@@ -52,10 +52,6 @@ ORDER BY
 	</field>
 	<background>
 		<band height="575" splitType="Stretch">
-			<image vAlign="Bottom">
-				<reportElement positionType="Float" x="-20" y="66" width="105" height="409" uuid="64ca4020-b604-4de9-9ed1-921b74cfd593"/>
-				<imageExpression><![CDATA["waves.jpg"]]></imageExpression>
-			</image>
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="475" width="105" height="100" backcolor="#666666" uuid="6eb7cb61-0dd7-47a8-8475-5fa6c3a348dc"/>
 				<textField>
@@ -82,7 +78,7 @@ ORDER BY
 	<title>
 		<band height="160" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="161" y="0" width="480" height="67" uuid="47757961-0328-4f33-86aa-67c837215aa1"/>
+				<reportElement style="Title" x="200" y="0" width="480" height="67" uuid="47757961-0328-4f33-86aa-67c837215aa1"/>
 				<textElement textAlignment="Left" verticalAlignment="Top">
 					<font size="40" isBold="false"/>
 				</textElement>
@@ -103,7 +99,7 @@ ORDER BY
 	<columnHeader>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="97" y="5" width="705" height="20" backcolor="#666666" uuid="35d90a9b-bb7e-4ec4-bfa2-68be1967d6b2"/>
+				<reportElement mode="Opaque" x="60" y="5" width="705" height="20" backcolor="#666666" uuid="35d90a9b-bb7e-4ec4-bfa2-68be1967d6b2"/>
 				<staticText>
 					<reportElement style="Column header" x="0" y="0" width="141" height="15" uuid="55b68a2c-8c1a-4dbd-bf4a-674ec19b3d15">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51df3625-6afd-47e2-bfed-89eab750ba7a"/>
@@ -140,7 +136,7 @@ ORDER BY
 	<detail>
 		<band height="21" splitType="Stretch">
 			<frame>
-				<reportElement x="97" y="1" width="705" height="15" uuid="89a3da05-fdde-4ffe-965f-cc476f72e3ab"/>
+				<reportElement x="60" y="1" width="705" height="15" uuid="89a3da05-fdde-4ffe-965f-cc476f72e3ab"/>
 				<textField>
 					<reportElement style="Detail" x="0" y="0" width="141" height="15" uuid="922d4ebe-f6a9-4fc0-9058-1a73e836ed19">
 						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="51df3625-6afd-47e2-bfed-89eab750ba7a"/>
@@ -173,7 +169,7 @@ ORDER BY
 				</textField>
 			</frame>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="97" y="16" width="705" height="1" uuid="e5f21b91-7f24-498e-97a1-0e93db9225a4"/>
+				<reportElement positionType="FixRelativeToBottom" x="60" y="16" width="705" height="1" uuid="e5f21b91-7f24-498e-97a1-0e93db9225a4"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -186,7 +182,7 @@ ORDER BY
 	<pageFooter>
 		<band height="39" splitType="Stretch">
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement style="Column header" x="671" y="0" width="131" height="20" forecolor="#000000" uuid="95484ca0-40b4-4752-95d8-1afbc33c820b"/>
+				<reportElement style="Column header" x="634" y="0" width="131" height="20" forecolor="#000000" uuid="95484ca0-40b4-4752-95d8-1afbc33c820b"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="false"/>
 				</textElement>
