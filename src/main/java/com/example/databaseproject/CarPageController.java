@@ -389,6 +389,7 @@ public class CarPageController implements Initializable {
         String y = Year.getValue();
         String u = Trans.getValue();
         double w = mySlider.getValue();
+
         if (d != null && !d.isEmpty()) {
             searchQuery.append(" and distance = ").append(d);
         }
@@ -408,8 +409,10 @@ public class CarPageController implements Initializable {
             searchQuery.append(" and transmission='").append(u).append("'");
         }
         if (w > 0) {
-            searchQuery.append(" and price='").append(w).append("'");
+            int price = (int) w;
+            searchQuery.append(" and price <=").append(price);
         }
+
         System.out.println("Executing query: " + searchQuery.toString());
         ResultSet resultSet = statement.executeQuery(searchQuery.toString());
         ArrayList<Car> carList = new ArrayList<>();
@@ -431,7 +434,6 @@ public class CarPageController implements Initializable {
             carList.add(car);
         }
         ObservableList<Car> observableCarList = FXCollections.observableArrayList(carList);
-
 
         updateCarContainer(observableCarList);
 
@@ -871,7 +873,7 @@ public class CarPageController implements Initializable {
     }
     private void DeletfromDB(Cars car) throws SQLException {
         int selectedId = car.idCarProperty().get();
-        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres1", "postgres", "1234");
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
         Statement statement = connection.createStatement();
         String delete = "DELETE FROM car WHERE id_car = " + selectedId + ";";
         statement.executeUpdate(delete);
