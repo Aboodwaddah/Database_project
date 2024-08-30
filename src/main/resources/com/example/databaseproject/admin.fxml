@@ -23,7 +23,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
+<AnchorPane onDragOver="#changePhoto" prefHeight="860.0" prefWidth="1184.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.Admin">
    <children>
       <Pane layoutX="1194.0" prefHeight="900.0" prefWidth="5.0" style="-fx-background-color: #8f0d0d;" />
       <Pane layoutY="-1.0" prefHeight="75.0" prefWidth="1199.0" style="-fx-background-color: #8f0d0d;">
@@ -85,11 +85,11 @@
                </image>
             </ImageView>
          </children></Pane>
-      <Pane layoutX="775.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black;">
+      <Pane layoutX="775.0" layoutY="499.0" prefHeight="200.0" prefWidth="286.0" style="-fx-border-color: black; -fx-border-width: 15;">
          <children>
-            <ImageView fitHeight="188.0" fitWidth="286.0" layoutX="-1.0" layoutY="1.0" onMouseClicked="#showAll" pickOnBounds="true">
+            <ImageView fx:id="report" fitHeight="188.0" fitWidth="272.0" layoutX="7.0" layoutY="6.0" onMouseClicked="#showAll" onMouseEntered="#changePhoto12" onMouseExited="#changePhoto11" pickOnBounds="true">
                <image>
-                  <Image url="@../../../download.png" />
+                  <Image url="@../../../d1.jpg" />
                </image></ImageView>
          </children></Pane>
       <Pane fx:id="addcar" prefHeight="860.0" prefWidth="1199.0" style="-fx-background-color: white;" stylesheets="@textfiled.css" visible="false">
@@ -271,7 +271,25 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="82.0" layoutY="277.0" minHeight="14.0" minWidth="5.0" mnemonicParsing="false" onAction="#returnFromTableview" prefHeight="42.0" prefWidth="167.0" text="Return to main page" textAlignment="CENTER">
+            <Button layoutX="80.0" layoutY="274.0" minHeight="14.0" minWidth="5.0" mnemonicParsing="false" onAction="#returnFromTableview" prefHeight="42.0" prefWidth="167.0" text="Return to main page" textAlignment="CENTER">
+               <stylesheets>
+                  <URL value="@CarPage.css" />
+                  <URL value="@test2.css" />
+               </stylesheets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="289.0" layoutY="275.0" minHeight="14.0" minWidth="5.0" mnemonicParsing="false" onAction="#ShowUnSoledCar" prefHeight="42.0" prefWidth="167.0" text="Show unsold cars" textAlignment="CENTER">
+               <stylesheets>
+                  <URL value="@CarPage.css" />
+                  <URL value="@test2.css" />
+               </stylesheets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="505.0" layoutY="274.0" minHeight="14.0" minWidth="5.0" mnemonicParsing="false" onAction="#ShowSoledCar" prefHeight="42.0" prefWidth="167.0" text="Show sold cars" textAlignment="CENTER">
                <stylesheets>
                   <URL value="@CarPage.css" />
                   <URL value="@test2.css" />
@@ -282,7 +300,7 @@
             </Button>
          </children>
       </Pane>
-      <Pane fx:id="salesPane" prefHeight="900.0" prefWidth="1199.0" style="-fx-background-color: white;">
+      <Pane fx:id="salesPane" prefHeight="900.0" prefWidth="1199.0" style="-fx-background-color: white;" visible="false">
          <children>
             <TableView fx:id="SalesTable" layoutY="310.0" prefHeight="568.0" prefWidth="1199.0" stylesheets="@viewtable.css">
                <columns>

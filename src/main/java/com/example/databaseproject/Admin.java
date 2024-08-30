@@ -203,6 +203,8 @@ public class Admin  implements Initializable {
     private ComboBox<String>CarType;
     @FXML
     private  ImageView salespic;
+    @FXML
+    private  ImageView report;
     private final String[] conditions = {"", "new", "used"};
     private final String[] CarsType = {
             "",
@@ -436,6 +438,18 @@ public class Admin  implements Initializable {
         salespic.setImage(new Image(getClass().getResource("/sales1.jpg").toString()));
     }
 
+
+    @FXML
+    public void changePhoto11() {
+
+        report.setImage(new Image(getClass().getResource("/d1.jpg").toString()));
+    }
+
+    @FXML
+    public void changePhoto12() {
+
+        report.setImage(new Image(getClass().getResource("/d2.png").toString()));
+    }
     @FXML
     public void EnterExpensesPage() {
         expensesPane.setVisible(true);
@@ -1472,6 +1486,64 @@ public class Admin  implements Initializable {
 
     }
 
+    public void ShowSoledCar() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Statement statement= connection.createStatement();
+        String sql="select * from car where sell='true'";
+        ResultSet resultSet= statement.executeQuery(sql);
+        CarInfo.getItems().clear();
+        ObservableList<Cars> car = FXCollections.observableArrayList();
+        while (resultSet.next())
+        {
+            Cars cars = new Cars(
+                    resultSet.getInt("id_car"),
+                    resultSet.getString("make"),
+                    resultSet.getString("model"),
+                    resultSet.getString("condition"),
+                    resultSet.getInt("year"),
+                    resultSet.getInt("price"),
+                    resultSet.getInt("engine_capacity"),
+                    resultSet.getString("color"),
+                    resultSet.getString("fuel_type"),
+                    resultSet.getString("transmission"),
+                    resultSet.getString("body_style"),
+                    resultSet.getInt("distance"),
+                    resultSet.getString("pending"),
+                               resultSet.getString("sell"));
+            car.add(cars);
+        }
+        CarInfo.setItems(car);
+    }
+
+
+    public void ShowUnSoledCar() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Statement statement= connection.createStatement();
+        String sql="select * from car where sell='false'";
+        ResultSet resultSet= statement.executeQuery(sql);
+        CarInfo.getItems().clear();
+        ObservableList<Cars> car = FXCollections.observableArrayList();
+        while (resultSet.next())
+        {
+            Cars cars = new Cars(
+                    resultSet.getInt("id_car"),
+                    resultSet.getString("make"),
+                    resultSet.getString("model"),
+                    resultSet.getString("condition"),
+                    resultSet.getInt("year"),
+                    resultSet.getInt("price"),
+                    resultSet.getInt("engine_capacity"),
+                    resultSet.getString("color"),
+                    resultSet.getString("fuel_type"),
+                    resultSet.getString("transmission"),
+                    resultSet.getString("body_style"),
+                    resultSet.getInt("distance"),
+                    resultSet.getString("pending"),
+                    resultSet.getString("sell"));
+            car.add(cars);
+        }
+        CarInfo.setItems(car);
+    }
 }
 
 
