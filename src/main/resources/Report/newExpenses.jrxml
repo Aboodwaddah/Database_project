@@ -82,16 +82,12 @@ ORDER BY
 	<title>
 		<band height="160" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="68" y="0" width="480" height="67" uuid="47757961-0328-4f33-86aa-67c837215aa1"/>
+				<reportElement style="Title" x="161" y="0" width="480" height="67" uuid="47757961-0328-4f33-86aa-67c837215aa1"/>
 				<textElement textAlignment="Left" verticalAlignment="Top">
 					<font size="40" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Detailed Expenses Report]]></text>
 			</staticText>
-			<image>
-				<reportElement x="560" y="-20" width="310" height="170" uuid="c7eaf6cf-1164-4b85-ac48-534a6c0d58ea"/>
-				<imageExpression><![CDATA["C:/Users/mokha/Database_project/src/main/resources/12121.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement style="SubTitle" x="110" y="113" width="568" height="37" uuid="6b1165f6-16e2-4db9-8a6f-59acda7f8360"/>
 				<textElement>

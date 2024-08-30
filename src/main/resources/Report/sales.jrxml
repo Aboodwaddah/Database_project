@@ -95,18 +95,14 @@ JOIN
 		</band>
 	</background>
 	<title>
-		<band height="319" splitType="Stretch">
+		<band height="394" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="0" width="490" height="100" uuid="1dcadd54-7d50-4470-85ed-189e4d910b25"/>
+				<reportElement style="Title" x="138" y="0" width="490" height="100" uuid="1dcadd54-7d50-4470-85ed-189e4d910b25"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="25" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Sales report with vehicle, employee and customer details]]></text>
 			</staticText>
-			<image>
-				<reportElement x="430" y="-40" width="400" height="319" uuid="5fd5eabd-7e23-48f1-a8e9-530fbe9ed18b"/>
-				<imageExpression><![CDATA["C:/Users/mokha/Database_project/src/main/resources/1212.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
