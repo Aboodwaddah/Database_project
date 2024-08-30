@@ -1544,6 +1544,35 @@ public class Admin  implements Initializable {
         }
         CarInfo.setItems(car);
     }
+    public void ShowPendingCar() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
+        Statement statement= connection.createStatement();
+        String sql="select * from car where pending='false'";
+        ResultSet resultSet= statement.executeQuery(sql);
+        CarInfo.getItems().clear();
+        ObservableList<Cars> car = FXCollections.observableArrayList();
+        while (resultSet.next())
+        {
+            Cars cars = new Cars(
+                    resultSet.getInt("id_car"),
+                    resultSet.getString("make"),
+                    resultSet.getString("model"),
+                    resultSet.getString("condition"),
+                    resultSet.getInt("year"),
+                    resultSet.getInt("price"),
+                    resultSet.getInt("engine_capacity"),
+                    resultSet.getString("color"),
+                    resultSet.getString("fuel_type"),
+                    resultSet.getString("transmission"),
+                    resultSet.getString("body_style"),
+                    resultSet.getInt("distance"),
+                    resultSet.getString("pending"),
+                    resultSet.getString("sell"));
+            car.add(cars);
+        }
+        CarInfo.setItems(car);
+    }
+
 }
 
 

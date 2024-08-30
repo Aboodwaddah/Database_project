@@ -164,7 +164,7 @@
             </AnchorPane>
          </children>
       </Pane>
-      <Pane fx:id="CarTableView" prefHeight="874.0" prefWidth="1199.0" style="-fx-background-color: white;" visible="false">
+      <Pane fx:id="CarTableView" prefHeight="874.0" prefWidth="1199.0" style="-fx-background-color: white;">
          <children>
             <Pane prefHeight="354.0" prefWidth="66.0" style="-fx-background-color: #8F0D0DFF;">
                <children>
@@ -290,6 +290,15 @@
                </font>
             </Button>
             <Button layoutX="505.0" layoutY="274.0" minHeight="14.0" minWidth="5.0" mnemonicParsing="false" onAction="#ShowSoledCar" prefHeight="42.0" prefWidth="167.0" text="Show sold cars" textAlignment="CENTER">
+               <stylesheets>
+                  <URL value="@CarPage.css" />
+                  <URL value="@test2.css" />
+               </stylesheets>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="713.0" layoutY="274.0" minHeight="14.0" minWidth="5.0" mnemonicParsing="false" onAction="#ShowPendingCar" prefHeight="42.0" prefWidth="167.0" text="Show Pending Car" textAlignment="CENTER">
                <stylesheets>
                   <URL value="@CarPage.css" />
                   <URL value="@test2.css" />

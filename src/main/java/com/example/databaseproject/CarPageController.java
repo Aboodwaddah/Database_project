@@ -509,7 +509,7 @@ public class CarPageController implements Initializable {
 
 
         String insertSql = "INSERT INTO car_customer (id_car,id_customer) VALUES (?,?)";
-        String updateSql = "UPDATE car SET sell = 'yes' WHERE id_car = ?";
+        String updateSql = "UPDATE car SET sell = 'true' WHERE id_car = ?";
 
 
         try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234")) {
